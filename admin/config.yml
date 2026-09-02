@@ -1,0 +1,257 @@
+# Use DecapBridge PKCE auth (required)
+backend:
+  name: git-gateway
+  repo: giovannipaolofusco/demo-pannello-git
+  branch: main
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/1519a2cf-c67e-4156-bc41-fecbfa945492/pkce
+  auth_token_endpoint: /sites/1519a2cf-c67e-4156-bc41-fecbfa945492/token
+  gateway_url: https://gateway.decapbridge.com
+  commit_messages:
+    create: Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    update: Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    delete: Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    uploadMedia: Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    deleteMedia: Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge
+
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+site_url: https://demo-pannello-git.netlify.app
+
+# ─────────────────────────────────────────────────────────────
+# Va IN CODA al backend generato da DecapBridge, nello stesso file.
+# Non sostituirlo: il backend resta quello.
+# ─────────────────────────────────────────────────────────────
+
+locale: it
+
+# Le immagini caricate finiscono qui. Il .webp lo genera il build dal .jpg.
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+
+  # ── MENU ───────────────────────────────────────────────────
+  - name: menu
+    label: "Menu"
+    files:
+      - name: menu
+        label: "Voci del menu"
+        file: "contenuti/menu.json"
+        format: json
+        fields:
+          - name: sezioni
+            label: "Sezioni"
+            widget: list
+            label_singular: "Sezione"
+            summary: "{{fields.nome.it}}"
+            fields:
+              - name: nome
+                label: "Nome della sezione"
+                widget: object
+                fields:
+                  - {name: it, label: "Italiano", widget: string}
+                  - {name: en, label: "English", widget: string}
+
+              - name: voci
+                label: "Piatti"
+                widget: list
+                label_singular: "Piatto"
+                summary: "{{fields.nome.it}} — € {{fields.prezzo}}"
+                fields:
+                  - name: nome
+                    label: "Nome del piatto"
+                    widget: object
+                    fields:
+                      - {name: it, label: "Italiano", widget: string}
+                      - name: en
+                        label: "English"
+                        widget: string
+                        required: false
+                        hint: "Lascia vuoto se il nome non si traduce. La voce resterà in italiano anche nella pagina inglese, con la nota esplicativa."
+
+                  - name: prezzo
+                    label: "Prezzo"
+                    widget: number
+                    value_type: float
+                    min: 0
+                    step: 0.5
+                    hint: "Solo il numero: 14 oppure 14.5. Il simbolo e la virgola li mette il sito."
+
+                  - name: allergeni
+                    label: "Allergeni"
+                    widget: select
+                    multiple: true
+                    required: false
+                    hint: "Le 14 categorie del Reg. UE 1169/2011. Se il piatto non ne contiene nessuno, lascia vuoto."
+                    options:
+                      - {label: "Glutine", value: glutine}
+                      - {label: "Crostacei", value: crostacei}
+                      - {label: "Uova", value: uova}
+                      - {label: "Pesce", value: pesce}
+                      - {label: "Arachidi", value: arachidi}
+                      - {label: "Soia", value: soia}
+                      - {label: "Latte", value: latte}
+                      - {label: "Frutta a guscio", value: frutta-a-guscio}
+                      - {label: "Sedano", value: sedano}
+                      - {label: "Senape", value: senape}
+                      - {label: "Sesamo", value: sesamo}
+                      - {label: "Solfiti", value: solfiti}
+                      - {label: "Lupini", value: lupini}
+                      - {label: "Molluschi", value: molluschi}
+
+  # ── ORARI ──────────────────────────────────────────────────
+  - name: orari
+    label: "Orari"
+    files:
+      - name: orari
+        label: "Orari di apertura"
+        file: "contenuti/orari.json"
+        format: json
+        fields:
+          - name: _nota
+            label: "Nota interna"
+            widget: text
+            required: false
+            hint: "Non compare sul sito."
+
+          - {name: fuso, label: "Fuso orario", widget: hidden, default: "Europe/Rome"}
+
+          - name: settimana
+            label: "Settimana"
+            widget: list
+            label_singular: "Fascia di giorni"
+            summary: "{{fields.etichetta.it}}"
+            fields:
+              - name: giorni
+                label: "Giorni"
+                widget: select
+                multiple: true
+                hint: "In inglese: è il formato che leggono i motori di ricerca."
+                options: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+
+              - name: etichetta
+                label: "Come appare nella tabella"
+                widget: object
+                fields:
+                  - {name: it, label: "Italiano", widget: string, hint: "Es. Lunedì – Venerdì"}
+                  - {name: en, label: "English", widget: string, hint: "Es. Monday – Friday"}
+
+              - name: breve
+                label: "Come appare nel footer"
+                widget: object
+                fields:
+                  - {name: it, label: "Italiano", widget: string, hint: "Es. Lun–Ven"}
+                  - {name: en, label: "English", widget: string, hint: "Es. Mon–Fri"}
+
+              - name: chiuso
+                label: "Chiuso tutto il giorno"
+                widget: boolean
+                default: false
+                required: false
+                hint: "Se attivo, lascia vuoti i turni qui sotto."
+
+              - name: turni
+                label: "Turni"
+                widget: list
+                required: false
+                label_singular: "Turno"
+                summary: "{{fields.apre}} – {{fields.chiude}}"
+                fields:
+                  - {name: apre, label: "Apre", widget: string, pattern: ['^\d{2}:\d{2}$', "Formato 12:00"]}
+                  - {name: chiude, label: "Chiude", widget: string, pattern: ['^\d{2}:\d{2}$', "Formato 15:00"]}
+
+          - name: chiusura_stagionale
+            label: "Chiusura stagionale"
+            widget: object
+            required: false
+            fields:
+              - {name: dal, label: "Dal", widget: date, format: "YYYY-MM-DD"}
+              - {name: al, label: "Al", widget: date, format: "YYYY-MM-DD"}
+              - name: nota
+                label: "Testo dell'avviso"
+                widget: object
+                fields:
+                  - {name: it, label: "Italiano", widget: string}
+                  - {name: en, label: "English", widget: string}
+              - name: chiuso_etichetta
+                label: "Parola per «chiuso»"
+                widget: object
+                fields:
+                  - {name: it, label: "Italiano", widget: string}
+                  - {name: en, label: "English", widget: string}
+
+  # ── PIATTI IN HOME ─────────────────────────────────────────
+  - name: piatti
+    label: "Piatti in evidenza"
+    files:
+      - name: piatti
+        label: "Le tre schede in home"
+        file: "contenuti/piatti.json"
+        format: json
+        fields:
+          - name: piatti
+            label: "Schede"
+            widget: list
+            label_singular: "Scheda"
+            summary: "{{fields.nome.it}}"
+            fields:
+              - name: nome
+                label: "Nome"
+                widget: object
+                fields:
+                  - {name: it, label: "Italiano", widget: string}
+                  - {name: en, label: "English", widget: string}
+
+              - name: note
+                label: "Descrizione breve"
+                widget: object
+                fields:
+                  - {name: it, label: "Italiano", widget: text}
+                  - {name: en, label: "English", widget: text}
+
+              - name: allergeni
+                label: "Allergeni"
+                widget: select
+                multiple: true
+                required: false
+                options:
+                  - {label: "Glutine", value: glutine}
+                  - {label: "Crostacei", value: crostacei}
+                  - {label: "Uova", value: uova}
+                  - {label: "Pesce", value: pesce}
+                  - {label: "Arachidi", value: arachidi}
+                  - {label: "Soia", value: soia}
+                  - {label: "Latte", value: latte}
+                  - {label: "Frutta a guscio", value: frutta-a-guscio}
+                  - {label: "Sedano", value: sedano}
+                  - {label: "Senape", value: senape}
+                  - {label: "Sesamo", value: sesamo}
+                  - {label: "Solfiti", value: solfiti}
+                  - {label: "Lupini", value: lupini}
+                  - {label: "Molluschi", value: molluschi}
+
+              - {name: prezzo, label: "Prezzo", widget: number, value_type: float, min: 0, step: 0.5}
+
+              - name: immagine
+                label: "Fotografia"
+                widget: image
+                media_library: {config: {multiple: false}}
+                hint: "Viene alleggerita e ripulita dei metadati prima del caricamento."
+
+              - name: alt
+                label: "Descrizione della foto per chi non la vede"
+                widget: object
+                fields:
+                  - {name: it, label: "Italiano", widget: string}
+                  - {name: en, label: "English", widget: string}
+
+              - {name: larghezza, label: "Larghezza in pixel", widget: number, value_type: int}
+              - {name: altezza, label: "Altezza in pixel", widget: number, value_type: int}

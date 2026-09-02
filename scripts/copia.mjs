@@ -13,7 +13,9 @@ const paginePagineEn = ['en/index.html', 'en/menu.html', 'en/about-us.html', 'en
 const servizio = ['_headers', '_redirects', 'robots.txt',
                   'site.webmanifest', 'favicon.ico'];
 
-const cartelle = ['assets', '.well-known'];
+// admin/ e' il pannello: senza questa riga non esiste online.
+// Non e' fra le `pagine`, quindi il minificatore HTML non lo tocca.
+const cartelle = ['assets', '.well-known', 'admin'];
 
 for (const f of [...pagine, ...paginePagineEn, ...servizio]) {
   if (!existsSync(f)) { console.warn(`  manca, salto: ${f}`); continue; }

@@ -35,6 +35,14 @@ export function verificaAllergeni() {
   }
 }
 
+// Decap scrive nel campo immagine il percorso pubblico completo
+// ("/assets/img/foto.jpg"), perche' `public_folder` gli serve per l'anteprima.
+// I dati vogliono il nome base. Normalizziamo in ingresso invece di
+// pretendere che chi compila sappia la differenza: si accettano entrambe le
+// forme e si tiene il nome del file senza cartella e senza estensione.
+export const nomeBase = (v) =>
+  String(v || '').split('/').pop().replace(/\.[^.]+$/, '');
+
 export const prezzo = (n) => `€ ${n.toFixed(2).replace('.', ',')}`;
 // Solo il primo elemento resta capitalizzato: e' la forma usata su tutte e
 // venti le voci del menu, e il CSS la rende comunque in maiuscoletto.
@@ -53,7 +61,7 @@ export function verificaImmagini() {
     const jpg = `assets/img/${slug}.jpg`;
     if (!existsSync(jpg)) errori.push(`${dove}: manca ${jpg} (il campo "immagine" vale "${slug}")`);
   };
-  for (const p of PIATTI.piatti) attesa(p.immagine, `piatti → ${p.nome.it}`);
+  for (const p of PIATTI.piatti) attesa(nomeBase(p.immagine), `piatti → ${p.nome.it}`);
   for (const s of IMMAGINI_FISSE) attesa(s, 'template');
   if (errori.length) {
     console.error('\nImmagini mancanti:\n' + errori.map((e) => '  - ' + e).join('\n')
@@ -61,4 +69,26 @@ export function verificaImmagini() {
       + 'deve esistere in assets/img/. La variante .webp la genera il build.\n');
     process.exit(1);
   }
+}
+
+// Le dimensioni reali dell'immagine, lette dal file invece che dai dati.
+// Servono agli attributi width/height, che prevengono lo spostamento di
+// layout: se vengono dai dati, chi carica una foto di proporzioni diverse
+// e non aggiorna i due numeri reintroduce il difetto senza accorgersene.
+// Il file e' la sola fonte che non puo' mentire.
+export function misureJpeg(percorso) {
+  const b = readFileSync(percorso);
+  if (b.readUInt16BE(0) !== 0xffd8) return null; // non e' un JPEG
+  let o = 2;
+  while (o < b.length) {
+    if (b[o] !== 0xff) { o++; continue; }
+    const marker = b[o + 1];
+    // SOF0..SOF15, esclusi DHT (c4), JPGA (c8) e DAC (cc): sono i soli
+    // segmenti che portano le dimensioni del fotogramma.
+    if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+      return { altezza: b.readUInt16BE(o + 5), larghezza: b.readUInt16BE(o + 7) };
+    }
+    o += 2 + b.readUInt16BE(o + 2);
+  }
+  return null;
 }
