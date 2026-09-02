@@ -1,12 +1,13 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { TESTI, verificaAllergeni } from './genera/dati.mjs';
+import { TESTI, verificaAllergeni, verificaImmagini } from './genera/dati.mjs';
 import { pagina, url, DOM } from './genera/guscio.mjs';
 import { jsonLd } from './genera/orari.mjs';
 import * as corpi from './genera/corpi.mjs';
 
 const DEST = process.argv[2] || '.';
 verificaAllergeni();
+verificaImmagini();
 
 const OG = `${DOM}/assets/img/og-trattoria-del-molo.jpg`;
 const S = TESTI.sito;

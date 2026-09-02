@@ -1,12 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "build": "npm run copia && npm run html && npm run js && npm run css && npm run img",
+    "build": "npm run genera && npm run copia && npm run html && npm run js && npm run css && npm run img",
     "copia": "node scripts/copia.mjs",
     "html": "html-minifier-terser --input-dir dist --output-dir dist --file-ext html --collapse-whitespace --remove-redundant-attributes --minify-css true --minify-js true",
     "js": "node scripts/minifica-js.mjs",
     "css": "postcss dist/assets/css/style.css --use cssnano --no-map -o dist/assets/css/style.css",
-    "img": "node scripts/immagini.mjs"
+    "img": "node scripts/immagini.mjs",
+    "genera": "node scripts/genera.mjs ."
   },
   "devDependencies": {
     "terser": "^5",

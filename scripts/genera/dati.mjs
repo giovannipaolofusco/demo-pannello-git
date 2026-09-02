@@ -1,6 +1,11 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 
 const carica = (n) => JSON.parse(readFileSync(new URL(`../../contenuti/${n}.json`, import.meta.url), 'utf8'));
+
+// Le immagini referenziate dai template invece che dai dati: il controllo
+// deve coprirle comunque, altrimenti resta scoperta proprio quella che decide
+// l'LCP della home.
+export const IMMAGINI_FISSE = ['trattoria-del-molo-apertura'];
 
 export const ALLERGENI = carica('allergeni');
 export const MENU      = carica('menu');
@@ -37,3 +42,23 @@ export const allergeniTesto = (codici, lang) =>
   codici
     .map((c, i) => (i === 0 ? ALLERGENI[c][lang] : ALLERGENI[c][lang].toLowerCase()))
     .join(', ');
+
+// Un nome base di immagine sbagliato produce HTML valido e un'immagine rotta:
+// nessun errore di build, nessun rilievo negli audit, e il difetto si vede
+// solo aprendo la pagina. Col pannello quel nome lo scrive il cliente, quindi
+// il caso passa da raro a probabile.
+export function verificaImmagini() {
+  const errori = [];
+  const attesa = (slug, dove) => {
+    const jpg = `assets/img/${slug}.jpg`;
+    if (!existsSync(jpg)) errori.push(`${dove}: manca ${jpg} (il campo "immagine" vale "${slug}")`);
+  };
+  for (const p of PIATTI.piatti) attesa(p.immagine, `piatti → ${p.nome.it}`);
+  for (const s of IMMAGINI_FISSE) attesa(s, 'template');
+  if (errori.length) {
+    console.error('\nImmagini mancanti:\n' + errori.map((e) => '  - ' + e).join('\n')
+      + '\n\nIl nome va scritto senza percorso e senza estensione, e il file .jpg\n'
+      + 'deve esistere in assets/img/. La variante .webp la genera il build.\n');
+    process.exit(1);
+  }
+}
