@@ -15,14 +15,14 @@
         "crostacei",
         "glutine"
       ],
-      "immagine": "/assets/img/trattoria-del-molo-fritturina-01.jpg",
+      "immagine": "/assets/img/test-gps.jpg",
       "alt": {
         "it": "Fritturina di paranza servita nel piatto, con gamberi, alici e calamari",
         "en": "Fritturina di paranza on the plate, with prawns, anchovies and squid"
       },
       "larghezza": 562,
       "altezza": 1000,
-      "prezzo": 13.0
+      "prezzo": 13
     },
     {
       "nome": {
@@ -44,7 +44,7 @@
       },
       "larghezza": 562,
       "altezza": 1000,
-      "prezzo": 14.0
+      "prezzo": 14
     },
     {
       "nome": {
@@ -65,7 +65,7 @@
       },
       "larghezza": 562,
       "altezza": 1000,
-      "prezzo": 9.0
+      "prezzo": 9
     }
   ]
 }
