@@ -1,0 +1,83 @@
+name: Verifica del ripristino da B2
+
+# Un backup mai ripristinato e' un file, non una copia. Questo workflow
+# scarica l'ultimo archivio dal bucket, lo estrae in una cartella vuota e
+# verifica che contenga davvero cio' che serve a ricostruire il sito.
+# Si lancia a mano: e' un collaudo, non un'automazione.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ripristino:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Elenca gli archivi presenti nel bucket
+        id: elenco
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.B2_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+          AWS_DEFAULT_REGION: eu-central-003
+        run: |
+          set -euo pipefail
+          ENDPOINT=$(printf '%s' "${{ secrets.B2_ENDPOINT }}" | tr -d '\r\n[:space:]')
+          BUCKET=$(printf '%s' "${{ secrets.B2_BUCKET }}" | tr -d '\r\n[:space:]')
+          echo "--- archivi nel bucket ---"
+          aws --endpoint-url "$ENDPOINT" s3 ls "s3://${BUCKET}/demo-pannello-git/" --human-readable
+          ULTIMO=$(aws --endpoint-url "$ENDPOINT" s3 ls "s3://${BUCKET}/demo-pannello-git/" | sort | tail -1 | awk '{print $4}')
+          echo "ultimo=${ULTIMO}" >> "$GITHUB_OUTPUT"
+          echo "Ultimo archivio: ${ULTIMO}"
+
+      - name: Scarica ed estrai in una cartella vuota
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.B2_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+          AWS_DEFAULT_REGION: eu-central-003
+        run: |
+          set -euo pipefail
+          ENDPOINT=$(printf '%s' "${{ secrets.B2_ENDPOINT }}" | tr -d '\r\n[:space:]')
+          BUCKET=$(printf '%s' "${{ secrets.B2_BUCKET }}" | tr -d '\r\n[:space:]')
+          NOME="${{ steps.elenco.outputs.ultimo }}"
+          mkdir -p /tmp/ripristino && cd /tmp/ripristino
+          aws --endpoint-url "$ENDPOINT" s3 cp "s3://${BUCKET}/demo-pannello-git/${NOME}" ./archivio.tar.gz
+          echo "scaricato: $(stat -c%s archivio.tar.gz) byte"
+          tar -xzf archivio.tar.gz && rm archivio.tar.gz
+
+          echo ""
+          echo "=== contenuti/ ==="
+          MANCA=0
+          for f in menu.json orari.json piatti.json testi.json privacy.json allergeni.json; do
+            if [ -s "contenuti/$f" ]; then
+              echo "  OK    contenuti/$f  ($(stat -c%s "contenuti/$f") byte)"
+            else
+              echo "  MANCA contenuti/$f"; MANCA=$((MANCA+1))
+            fi
+          done
+
+          echo ""
+          echo "=== assets/ ==="
+          for d in css js img fonts libs map favicon; do
+            N=$(find "assets/$d" -type f 2>/dev/null | wc -l)
+            echo "  assets/$d: $N file"
+            [ "$N" -eq 0 ] && MANCA=$((MANCA+1))
+          done
+
+          echo ""
+          echo "=== storia git ==="
+          git -C . log --oneline | head -3 | sed 's/^/  /'
+          echo "  revisioni totali: $(git -C . rev-list --count HEAD)"
+
+          echo ""
+          echo "=== il sito si ricostruisce da qui? ==="
+          git -C . checkout -- . 2>/dev/null || true
+          echo "  file ripristinati dall'albero git: $(git -C . ls-files | wc -l)"
+
+          if [ "$MANCA" -gt 0 ]; then
+            echo ""
+            echo "RIPRISTINO INCOMPLETO: $MANCA voci mancanti"
+            exit 1
+          fi
+          echo ""
+          echo "RIPRISTINO COMPLETO"
