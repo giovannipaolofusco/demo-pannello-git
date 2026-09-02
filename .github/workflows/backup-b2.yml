@@ -1,0 +1,86 @@
+name: Backup su Backblaze B2
+
+# Settimanale piu' lancio a mano.
+#
+# NESSUN KEEPALIVE, ed e' una scelta con due ragioni indipendenti.
+#   1. La disabilitazione degli schedule dopo 60 giorni e' documentata da
+#      GitHub per i repository *pubblici*. Questo repository e' privato.
+#   2. Anche se si applicasse, aggirarla e' una violazione dei termini di
+#      servizio: GitHub ha disabilitato `gautamkrishnar/keepalive-workflow`,
+#      l'azione piu' usata per questo scopo, proprio con quella motivazione.
+#
+# contenuti/_backup.json viene quindi committato per una ragione sola:
+# alimentare il banner nel pannello, cioe' far sapere al Cliente quando e'
+# stata fatta l'ultima copia. Non e' un espediente per tenere vivo il cron.
+on:
+  schedule:
+    - cron: '17 3 * * 1'      # ogni lunedi' alle 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write              # serve solo al commit di contenuti/_backup.json
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clona con tutta la storia
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0       # la storia E' il backup: senza questo si copia una sola revisione
+
+      - name: Prepara l'archivio
+        id: archivio
+        run: |
+          set -euo pipefail
+          DATA=$(date -u +%Y-%m-%d)
+          NOME="demo-pannello-git-${DATA}.tar.gz"
+          # admin/ resta fuori: 6,4 MB di software di terzi riscaricabile.
+          # dist/ e node_modules/ sono generati. foto/ non e' materiale di progetto.
+          tar --exclude='./admin' \
+              --exclude='./dist' \
+              --exclude='./node_modules' \
+              --exclude='./foto' \
+              -czf "/tmp/${NOME}" \
+              ./contenuti ./assets ./.git
+          BYTE=$(stat -c%s "/tmp/${NOME}")
+          echo "nome=${NOME}"   >> "$GITHUB_OUTPUT"
+          echo "byte=${BYTE}"   >> "$GITHUB_OUTPUT"
+          echo "data=${DATA}"   >> "$GITHUB_OUTPUT"
+          echo "Archivio: ${NOME} — $((BYTE/1024)) KB"
+          tar -tzf "/tmp/${NOME}" | head -5
+          echo "voci totali: $(tar -tzf "/tmp/${NOME}" | wc -l)"
+
+      - name: Carica su B2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.B2_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+          AWS_DEFAULT_REGION: eu-central-003
+        run: |
+          set -euo pipefail
+          aws --endpoint-url "${{ secrets.B2_ENDPOINT }}" \
+              s3 cp "/tmp/${{ steps.archivio.outputs.nome }}" \
+              "s3://${{ secrets.B2_BUCKET }}/demo-pannello-git/${{ steps.archivio.outputs.nome }}"
+
+      - name: Registra l'esito in contenuti/_backup.json
+        if: always()
+        run: |
+          set -euo pipefail
+          ESITO="${{ job.status }}"
+          cat > contenuti/_backup.json <<JSON
+          {
+            "_nota": "Scritto dal workflow di backup. Non modificare a mano: viene riscritto a ogni esecuzione.",
+            "ultimo_backup": "${{ steps.archivio.outputs.data }}",
+            "esito": "${ESITO}",
+            "dimensione_byte": ${{ steps.archivio.outputs.byte || 0 }},
+            "archivio": "${{ steps.archivio.outputs.nome }}",
+            "destinazione": "Backblaze B2, bucket del Cliente",
+            "contenuto": ["contenuti/", "assets/", "storia git"],
+            "escluso": ["admin/ (software di terzi riscaricabile)", "dist/", "node_modules/"]
+          }
+          JSON
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contenuti/_backup.json
+          git diff --staged --quiet || git commit -m "chore: esito del backup del ${{ steps.archivio.outputs.data }}"
+          git push
