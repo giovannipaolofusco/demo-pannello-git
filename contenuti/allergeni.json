@@ -1,0 +1,17 @@
+{
+  "_nota": "Le 14 categorie dell'Allegato II del Reg. UE 1169/2011. Chiave = valore ammesso nei dati; il generatore fallisce su qualunque altro valore.",
+  "glutine":        { "it": "Glutine",          "en": "Gluten" },
+  "crostacei":      { "it": "Crostacei",        "en": "Crustaceans" },
+  "uova":           { "it": "Uova",             "en": "Eggs" },
+  "pesce":          { "it": "Pesce",            "en": "Fish" },
+  "arachidi":       { "it": "Arachidi",         "en": "Peanuts" },
+  "soia":           { "it": "Soia",             "en": "Soy" },
+  "latte":          { "it": "Latte",            "en": "Milk" },
+  "frutta-a-guscio":{ "it": "Frutta a guscio",  "en": "Nuts" },
+  "sedano":         { "it": "Sedano",           "en": "Celery" },
+  "senape":         { "it": "Senape",           "en": "Mustard" },
+  "sesamo":         { "it": "Sesamo",           "en": "Sesame" },
+  "solfiti":        { "it": "Solfiti",          "en": "Sulphites" },
+  "lupini":         { "it": "Lupini",           "en": "Lupin" },
+  "molluschi":      { "it": "Molluschi",        "en": "Molluscs" }
+}

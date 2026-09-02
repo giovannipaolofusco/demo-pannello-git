@@ -1,0 +1,279 @@
+{
+  "_nota": "Prezzi in euro come numero: la formattazione '€ 14,00' la applica il generatore. Una voce senza 'en' nel nome resta in italiano anche nella pagina inglese, con la nota esplicativa.",
+  "sezioni": [
+    {
+      "nome": {
+        "it": "Antipasti",
+        "en": "Starters"
+      },
+      "voci": [
+        {
+          "nome": {
+            "it": "Alici marinate al limone",
+            "en": "Marinated anchovies with lemon"
+          },
+          "prezzo": 9.0,
+          "allergeni": [
+            "pesce"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Polpo su crema di ceci",
+            "en": "Octopus on chickpea cream"
+          },
+          "prezzo": 12.0,
+          "allergeni": [
+            "molluschi"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Cozze alla marinara",
+            "en": "Mussels marinara"
+          },
+          "prezzo": 10.0,
+          "allergeni": [
+            "molluschi",
+            "sedano",
+            "solfiti"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Bruschetta al pomodoro",
+            "en": "Tomato bruschetta"
+          },
+          "prezzo": 5.0,
+          "allergeni": [
+            "glutine"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Scapece di alici"
+          },
+          "prezzo": 9.0,
+          "allergeni": [
+            "pesce",
+            "glutine",
+            "solfiti"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Fritturina di paranza",
+            "en": "Mixed fried small fish"
+          },
+          "prezzo": 13.0,
+          "allergeni": [
+            "pesce",
+            "crostacei",
+            "glutine"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": {
+        "it": "Primi",
+        "en": "First courses"
+      },
+      "voci": [
+        {
+          "nome": {
+            "it": "Spaghetti alle vongole",
+            "en": "Spaghetti with clams"
+          },
+          "prezzo": 14.0,
+          "allergeni": [
+            "glutine",
+            "molluschi"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Linguine all'astice",
+            "en": "Linguine with lobster"
+          },
+          "prezzo": 22.0,
+          "allergeni": [
+            "glutine",
+            "crostacei",
+            "solfiti"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Risotto alla pescatora",
+            "en": "Seafood risotto"
+          },
+          "prezzo": 16.0,
+          "allergeni": [
+            "pesce",
+            "molluschi",
+            "crostacei",
+            "sedano",
+            "solfiti"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Tiella di Gaeta con scarola e alici"
+          },
+          "prezzo": 8.0,
+          "allergeni": [
+            "glutine",
+            "pesce"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Zuppa di pesce alla fondana"
+          },
+          "prezzo": 20.0,
+          "allergeni": [
+            "pesce",
+            "molluschi",
+            "crostacei",
+            "glutine",
+            "sedano"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Gnocchi al ragù di seppia",
+            "en": "Gnocchi with cuttlefish ragù"
+          },
+          "prezzo": 13.0,
+          "allergeni": [
+            "glutine",
+            "uova",
+            "molluschi",
+            "sedano"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": {
+        "it": "Secondi",
+        "en": "Main courses"
+      },
+      "voci": [
+        {
+          "nome": {
+            "it": "Frittura mista di calamari e gamberi",
+            "en": "Mixed fried squid and prawns"
+          },
+          "prezzo": 18.0,
+          "allergeni": [
+            "molluschi",
+            "crostacei",
+            "glutine"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Orata all'acqua pazza",
+            "en": "Sea bream all'acqua pazza"
+          },
+          "prezzo": 19.0,
+          "allergeni": [
+            "pesce",
+            "sedano"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Baccalà in umido con olive di Gaeta",
+            "en": "Stewed salt cod with Gaeta olives"
+          },
+          "prezzo": 16.0,
+          "allergeni": [
+            "pesce",
+            "sedano",
+            "solfiti"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Polpette di melanzane",
+            "en": "Aubergine fritters"
+          },
+          "prezzo": 10.0,
+          "allergeni": [
+            "glutine",
+            "uova",
+            "latte"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": {
+        "it": "Contorni",
+        "en": "Sides"
+      },
+      "voci": [
+        {
+          "nome": {
+            "it": "Insalata di mare",
+            "en": "Seafood salad"
+          },
+          "prezzo": 15.0,
+          "allergeni": [
+            "pesce",
+            "molluschi",
+            "crostacei",
+            "sedano"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Puntarelle alla salsa d'alici",
+            "en": "Puntarelle with anchovy dressing"
+          },
+          "prezzo": 6.0,
+          "allergeni": [
+            "pesce"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": {
+        "it": "Dolci",
+        "en": "Desserts"
+      },
+      "voci": [
+        {
+          "nome": {
+            "it": "Crostata di visciole",
+            "en": "Sour cherry tart"
+          },
+          "prezzo": 6.0,
+          "allergeni": [
+            "glutine",
+            "uova",
+            "latte",
+            "frutta-a-guscio"
+          ]
+        },
+        {
+          "nome": {
+            "it": "Tiramisù della casa",
+            "en": "House tiramisu"
+          },
+          "prezzo": 5.0,
+          "allergeni": [
+            "glutine",
+            "uova",
+            "latte",
+            "soia"
+          ]
+        }
+      ]
+    }
+  ]
+}

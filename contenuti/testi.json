@@ -1,0 +1,292 @@
+{
+  "_nota": "Testi delle pagine, IT ed EN affiancati. Una stringa vuota in 'alt' e' voluta: segna un'immagine decorativa, che gli screen reader devono saltare. Il corpo dell'informativa sta in privacy.json perche' e' un documento a se'.",
+  "sito": {
+    "nome": "Trattoria del Molo",
+    "telefono": "+390771000000",
+    "telefono_leggibile": {
+      "it": "0771 000000",
+      "en": "+39 0771 000000"
+    },
+    "email": "demo@example.invalid",
+    "indirizzo_riga1": "Via del Porto 1",
+    "indirizzo_riga2": "04022 Fondi (LT)",
+    "indirizzo_en_riga2": "04022 Fondi (LT), Italy",
+    "coordinate": {
+      "lat": 41.3588836,
+      "lon": 13.4219646
+    }
+  },
+  "head": {
+    "index": {
+      "title": {
+        "it": "Trattoria del Molo — Cucina di mare a Fondi",
+        "en": "Trattoria del Molo — Seafood in Fondi, Italy"
+      },
+      "description": {
+        "it": "Trattoria di mare sul porto di Fondi: fritturina di paranza, spaghetti alle vongole, crudi del golfo. Aperti a pranzo e a cena, chiusi la domenica.",
+        "en": "A seafood trattoria on the harbour of Fondi: fried paranza, spaghetti with clams, raw fish from the gulf. Open for lunch and dinner, closed on Sunday."
+      }
+    },
+    "menu": {
+      "title": {
+        "it": "Il menù — Trattoria del Molo",
+        "en": "Menu — Trattoria del Molo"
+      },
+      "description": {
+        "it": "Venti piatti di mare con gli allergeni indicati per ogni preparazione. Prezzi IVA inclusa, coperto € 2,00.",
+        "en": "Twenty seafood dishes with allergens listed for each preparation. Prices include VAT, € 2.00 cover charge."
+      }
+    },
+    "chi_siamo": {
+      "title": {
+        "it": "Chi siamo — Trattoria del Molo",
+        "en": "About us — Trattoria del Molo"
+      },
+      "description": {
+        "it": "Come lavoriamo alla Trattoria del Molo: pesce del giorno, menù che cambia, venti coperti sul porto di Fondi.",
+        "en": "How we work at Trattoria del Molo: fish of the day, a menu that changes, twenty covers on the harbour of Fondi."
+      }
+    },
+    "contatti": {
+      "title": {
+        "it": "Contatti — Trattoria del Molo",
+        "en": "Contact — Trattoria del Molo"
+      },
+      "description": {
+        "it": "Telefono, indirizzo e orari della Trattoria del Molo, Via del Porto 1, Fondi (LT). Come raggiungerci.",
+        "en": "Phone, address and opening hours of Trattoria del Molo, Via del Porto 1, Fondi (LT), Italy. How to reach us."
+      }
+    },
+    "privacy": {
+      "title": {
+        "it": "Privacy &amp; Cookie Policy — Trattoria del Molo",
+        "en": "Privacy &amp; Cookie Policy — Trattoria del Molo"
+      },
+      "description": {
+        "it": "Informativa privacy e cookie policy della Trattoria del Molo, Fondi (LT): quali dati raccoglie il sito, perché e per quanto tempo.",
+        "en": "Privacy notice and cookie policy of Trattoria del Molo, Fondi (LT), Italy: what data the website collects, why and for how long."
+      }
+    },
+    "quattrocentoquattro": {
+      "title": {
+        "it": "Pagina non trovata — Trattoria del Molo"
+      },
+      "description": {
+        "it": "La pagina cercata non esiste. Torna alla home o chiamaci allo 0771 000000."
+      }
+    }
+  },
+  "home": {
+    "occhiello": {
+      "it": "Sul porto di Fondi",
+      "en": "On the harbour of Fondi"
+    },
+    "titolo": {
+      "it": "Trattoria del Molo",
+      "en": "Trattoria del Molo"
+    },
+    "sommario": {
+      "it": "Cucina di mare della costa fondana. Il pesce arriva la mattina, il menù cambia con quello che c'è.",
+      "en": "Seafood cooking from the Fondi coast. The fish comes in every morning, so the menu changes with the catch."
+    },
+    "cta_chiama": {
+      "it": "Chiama 0771 000000",
+      "en": "Call 0771 000000"
+    },
+    "cta_menu": {
+      "it": "Il menù",
+      "en": "Menu"
+    },
+    "apertura_alt": {
+      "it": "Fritturina di paranza appena servita",
+      "en": "Fritturina di paranza, freshly served"
+    },
+    "titolo_piatti": {
+      "it": "Quello che ci chiedono di più",
+      "en": "What people order most"
+    },
+    "link_menu_completo": {
+      "it": "Il menù completo, venti piatti con gli allergeni →",
+      "en": "The full menu, twenty dishes with allergens →"
+    },
+    "titolo_racconto": {
+      "it": "Una cucina che non inventa niente",
+      "en": "A kitchen that invents nothing"
+    },
+    "racconto_p1": {
+      "it": "Il pesce è quello della paranza che rientra la mattina, e quando una cosa finisce, è finita.",
+      "en": "The fish is whatever the boats bring in at dawn, and when something runs out, it is out."
+    },
+    "racconto_p2": {
+      "it": "Per questo il menù cambia: non è una scelta di stile, è come funziona qui.",
+      "en": "That is why the menu changes: not a matter of style, just how it works here."
+    },
+    "racconto_link": {
+      "it": "Come lavoriamo →",
+      "en": "How we work →"
+    },
+    "sala_alt": {
+      "it": "",
+      "en": ""
+    },
+    "titolo_pratico": {
+      "it": "Orari e indirizzo",
+      "en": "Hours and address"
+    },
+    "voce_orari": {
+      "it": "Quando siamo aperti",
+      "en": "When we are open"
+    },
+    "voce_dove": {
+      "it": "Dove siamo",
+      "en": "Where we are"
+    },
+    "indirizzo": {
+      "it": "Via del Porto 1<br>04022 Fondi (LT)",
+      "en": "Via del Porto 1<br>04022 Fondi (LT)"
+    },
+    "cta_arrivare": {
+      "it": "Come arrivare",
+      "en": "Get directions"
+    },
+    "mappa_alt": {
+      "it": "Segnaposto: qui andrà la mappa della sede",
+      "en": "Placeholder: the location map goes here"
+    }
+  },
+  "chi_siamo": {
+    "titolo": {
+      "it": "Come lavoriamo",
+      "en": "How we work"
+    },
+    "paragrafi": [
+      {
+        "it": "La trattoria sta sul porto, e questo decide quasi tutto. Il pesce lo prendiamo dalla paranza che rientra la mattina: non scegliamo noi cosa cucinare, lo decide quello che c'è nelle cassette.",
+        "en": "The trattoria sits on the harbour, and that decides almost everything. We buy the fish from the boats that come in at dawn: we do not choose what to cook, the crates do."
+      },
+      {
+        "it": "Per questo il menù cambia, e per questo qualche piatto ogni tanto non c'è. Quando finisce, è finita: non lo ricompriamo altrove per averlo comunque in carta.",
+        "en": "That is why the menu changes, and why a dish is sometimes missing. When it runs out, it is out: we do not buy it elsewhere just to keep it on the card."
+      },
+      {
+        "it": "La sala è piccola, venti coperti, e d'estate si mangia anche fuori. Se siete in tanti conviene chiamare prima, così troviamo il modo di farvi stare tutti insieme.",
+        "en": "The room is small, twenty covers, and in summer you can eat outside. If you are a large group, call ahead and we will find a way to seat you together."
+      },
+      {
+        "it": "<a class=\"collegamento-testo\" href=\"/menu.html\">Guarda il menù →</a>",
+        "en": "<a class=\"collegamento-testo\" href=\"/en/menu.html\">See the menu →</a>"
+      }
+    ]
+  },
+  "contatti": {
+    "titolo": {
+      "it": "Contatti",
+      "en": "Contact"
+    },
+    "voce_prenotare": {
+      "it": "Per prenotare o chiedere",
+      "en": "To book or ask"
+    },
+    "nota_orario": {
+      "it": "Si risponde negli orari di apertura.",
+      "en": "We answer during opening hours."
+    },
+    "voce_dove": {
+      "it": "Dove siamo",
+      "en": "Where we are"
+    },
+    "indirizzo": {
+      "it": "Via del Porto 1<br>04022 Fondi (LT)",
+      "en": "Via del Porto 1<br>04022 Fondi (LT), Italy"
+    },
+    "indicazioni_titolo": {
+      "it": "Apri le indicazioni in",
+      "en": "Open directions in"
+    },
+    "copia": {
+      "it": "Copia indirizzo",
+      "en": "Copy address"
+    },
+    "copia_dato": {
+      "it": "Via del Porto 1, 04022 Fondi (LT)",
+      "en": "Via del Porto 1, 04022 Fondi (LT), Italy"
+    },
+    "voce_orari": {
+      "it": "Orari",
+      "en": "Opening hours"
+    },
+    "mappa_label": {
+      "it": "Mappa della zona del porto di Fondi, con il segnaposto della trattoria in Via del Porto 1",
+      "en": "Map of the harbour area of Fondi, with the marker of the trattoria at Via del Porto 1"
+    },
+    "mappa_ripiego": {
+      "it": "Se la mappa non si carica, l'indirizzo è <strong>Via del Porto 1, 04022 Fondi (LT)</strong> e i collegamenti alle indicazioni stradali sono qui sopra.",
+      "en": "If the map does not load, the address is <strong>Via del Porto 1, 04022 Fondi (LT), Italy</strong> and the links to directions are above."
+    }
+  },
+  "quattrocentoquattro": {
+    "titolo": "Questa pagina non è nel menù",
+    "testo": "Capita: forse il link era vecchio, o c'è un refuso nell'indirizzo. Nessun problema, si torna indietro e si riparte.",
+    "cta_home": "Torna alla home",
+    "cta_menu": "Vai al menù",
+    "recapiti_intro": "Se cercavi un'informazione e fai prima a chiedercela:",
+    "riga_en": "Page not found. <a href=\"/en/\">Go to the English home page</a> or call us on <a href=\"tel:+390771000000\">+39 0771 000000</a>."
+  },
+  "menu_pagina": {
+    "titolo": {
+      "it": "Il menù",
+      "en": "Menu"
+    },
+    "intro": {
+      "it": "Venti piatti, che cambiano con quello che porta la paranza. Accanto a ogni voce trovi gli allergeni presenti nella preparazione, come chiede il Regolamento UE 1169/2011.",
+      "en": "Twenty dishes, changing with what the boats bring in. Next to each item you will find the allergens present in the preparation, as required by EU Regulation 1169/2011."
+    },
+    "condizioni": {
+      "it": "Prezzi in euro, IVA inclusa. Coperto € 2,00 a persona. Listino del 02/09/2026.",
+      "en": "Prices in euro, VAT included. Cover charge € 2.00 per person. Price list dated 02/09/2026."
+    },
+    "nota_solo_it": {
+      "en": "Italian name only — ask us, we will explain it"
+    }
+  },
+  "navigazione": {
+    "salta": {
+      "it": "Salta al contenuto",
+      "en": "Skip to content"
+    },
+    "etichetta": {
+      "it": "Navigazione principale",
+      "en": "Main navigation"
+    },
+    "altra_lingua": {
+      "it": "English",
+      "en": "Italiano"
+    }
+  },
+  "footer": {
+    "etichetta_orari": {
+      "it": "Orari",
+      "en": "Opening hours"
+    },
+    "privacy": {
+      "it": "Privacy &amp; Cookie Policy",
+      "en": "Privacy &amp; Cookie Policy"
+    },
+    "preferenze": {
+      "it": "Preferenze cookie",
+      "en": "Cookie preferences"
+    },
+    "credito_verbo": {
+      "it": "Creato da",
+      "en": "Created by"
+    },
+    "credito_firma": "Gioppy",
+    "credito_url": "https://giovannipaolofusco.it",
+    "legale": [
+      "Trattoria del Molo di Mario Bianchi — Ditta individuale",
+      "Sede legale: Via del Porto 1, 04022 Fondi (LT)",
+      "P.IVA 00000000000 — C.F. BNCMRA75A01D662X",
+      "Iscr. Reg. Imprese di Latina"
+    ]
+  }
+}

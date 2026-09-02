@@ -1,0 +1,36 @@
+{
+  "_nota": "Sorgente UNICA degli orari. Da qui il generatore produce tre uscite che oggi sono scritte a mano in undici file: la tabella di contatti.html e index.html, la riga compatta del footer, e openingHoursSpecification nel JSON-LD. Cambiare un orario qui li aggiorna tutti e tre insieme.",
+  "fuso": "Europe/Rome",
+  "settimana": [
+    {
+      "giorni": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "etichetta": { "it": "Lunedì – Venerdì", "en": "Monday – Friday" },
+      "breve":     { "it": "Lun–Ven",          "en": "Mon–Fri" },
+      "turni": [
+        { "apre": "12:00", "chiude": "15:00" },
+        { "apre": "19:00", "chiude": "23:00" }
+      ]
+    },
+    {
+      "giorni": ["Saturday"],
+      "etichetta": { "it": "Sabato", "en": "Saturday" },
+      "breve":     { "it": "Sab",    "en": "Sat" },
+      "turni": [
+        { "apre": "19:00", "chiude": "23:30" }
+      ]
+    },
+    {
+      "giorni": ["Sunday"],
+      "etichetta": { "it": "Domenica", "en": "Sunday" },
+      "breve":     { "it": "Domenica", "en": "Sunday" },
+      "turni": [],
+      "chiuso": true
+    }
+  ],
+  "chiusura_stagionale": {
+    "dal": "2027-01-07",
+    "al": "2027-01-21",
+    "nota":   { "it": "Chiusura stagionale dal 7 al 21 gennaio.", "en": "Closed for the season from 7 to 21 January." },
+    "chiuso_etichetta": { "it": "Chiuso", "en": "Closed" }
+  }
+}
