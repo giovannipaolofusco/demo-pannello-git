@@ -62,9 +62,19 @@ jobs:
           AWS_DEFAULT_REGION: eu-central-003
         run: |
           set -euo pipefail
-          aws --endpoint-url "${{ secrets.B2_ENDPOINT }}" \
+          # I valori incollati nei secret dal pannello web portano spesso un
+          # a capo finale, e `aws` lo rifiuta con "Invalid endpoint" senza
+          # dire perche'. Si ripulisce l'input invece di fidarsene.
+          ENDPOINT=$(printf '%s' "${{ secrets.B2_ENDPOINT }}" | tr -d '\r\n[:space:]')
+          BUCKET=$(printf '%s' "${{ secrets.B2_BUCKET }}" | tr -d '\r\n[:space:]')
+          case "$ENDPOINT" in
+            https://*) ;;
+            *) echo "B2_ENDPOINT deve cominciare con https:// — trovato qualcosa di diverso"; exit 1 ;;
+          esac
+          echo "Endpoint: ${ENDPOINT%%.*}...  bucket: ${#BUCKET} caratteri"
+          aws --endpoint-url "$ENDPOINT" \
               s3 cp "/tmp/${{ steps.archivio.outputs.nome }}" \
-              "s3://${{ secrets.B2_BUCKET }}/demo-pannello-git/${{ steps.archivio.outputs.nome }}"
+              "s3://${BUCKET}/demo-pannello-git/${{ steps.archivio.outputs.nome }}"
 
       - name: Registra l'esito in contenuti/_backup.json
         if: always()
