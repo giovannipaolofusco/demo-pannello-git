@@ -12,7 +12,7 @@
             "it": "Alici marinate al limone",
             "en": "Marinated anchovies with lemon"
           },
-          "prezzo": 9.0,
+          "prezzo": 9,
           "allergeni": [
             "pesce"
           ]
@@ -22,7 +22,7 @@
             "it": "Polpo su crema di ceci",
             "en": "Octopus on chickpea cream"
           },
-          "prezzo": 12.0,
+          "prezzo": 12,
           "allergeni": [
             "molluschi"
           ]
@@ -32,7 +32,7 @@
             "it": "Cozze alla marinara",
             "en": "Mussels marinara"
           },
-          "prezzo": 10.0,
+          "prezzo": 10,
           "allergeni": [
             "molluschi",
             "sedano",
@@ -44,7 +44,7 @@
             "it": "Bruschetta al pomodoro",
             "en": "Tomato bruschetta"
           },
-          "prezzo": 5.0,
+          "prezzo": 5,
           "allergeni": [
             "glutine"
           ]
@@ -53,7 +53,7 @@
           "nome": {
             "it": "Scapece di alici"
           },
-          "prezzo": 9.0,
+          "prezzo": 9,
           "allergeni": [
             "pesce",
             "glutine",
@@ -65,7 +65,7 @@
             "it": "Fritturina di paranza",
             "en": "Mixed fried small fish"
           },
-          "prezzo": 13.0,
+          "prezzo": 13,
           "allergeni": [
             "pesce",
             "crostacei",
@@ -76,7 +76,7 @@
     },
     {
       "nome": {
-        "it": "Primi",
+        "it": "Primii",
         "en": "First courses"
       },
       "voci": [
@@ -85,7 +85,7 @@
             "it": "Spaghetti alle vongole",
             "en": "Spaghetti with clams"
           },
-          "prezzo": 14.0,
+          "prezzo": 14,
           "allergeni": [
             "glutine",
             "molluschi"
@@ -96,7 +96,7 @@
             "it": "Linguine all'astice",
             "en": "Linguine with lobster"
           },
-          "prezzo": 22.0,
+          "prezzo": 22,
           "allergeni": [
             "glutine",
             "crostacei",
@@ -108,7 +108,7 @@
             "it": "Risotto alla pescatora",
             "en": "Seafood risotto"
           },
-          "prezzo": 16.0,
+          "prezzo": 16,
           "allergeni": [
             "pesce",
             "molluschi",
@@ -121,7 +121,7 @@
           "nome": {
             "it": "Tiella di Gaeta con scarola e alici"
           },
-          "prezzo": 8.0,
+          "prezzo": 8,
           "allergeni": [
             "glutine",
             "pesce"
@@ -131,7 +131,7 @@
           "nome": {
             "it": "Zuppa di pesce alla fondana"
           },
-          "prezzo": 20.0,
+          "prezzo": 20,
           "allergeni": [
             "pesce",
             "molluschi",
@@ -145,7 +145,7 @@
             "it": "Gnocchi al ragù di seppia",
             "en": "Gnocchi with cuttlefish ragù"
           },
-          "prezzo": 13.0,
+          "prezzo": 13,
           "allergeni": [
             "glutine",
             "uova",
@@ -166,7 +166,7 @@
             "it": "Frittura mista di calamari e gamberi",
             "en": "Mixed fried squid and prawns"
           },
-          "prezzo": 18.0,
+          "prezzo": 18,
           "allergeni": [
             "molluschi",
             "crostacei",
@@ -178,7 +178,7 @@
             "it": "Orata all'acqua pazza",
             "en": "Sea bream all'acqua pazza"
           },
-          "prezzo": 19.0,
+          "prezzo": 19,
           "allergeni": [
             "pesce",
             "sedano"
@@ -189,7 +189,7 @@
             "it": "Baccalà in umido con olive di Gaeta",
             "en": "Stewed salt cod with Gaeta olives"
           },
-          "prezzo": 16.0,
+          "prezzo": 16,
           "allergeni": [
             "pesce",
             "sedano",
@@ -201,7 +201,7 @@
             "it": "Polpette di melanzane",
             "en": "Aubergine fritters"
           },
-          "prezzo": 10.0,
+          "prezzo": 10,
           "allergeni": [
             "glutine",
             "uova",
@@ -221,7 +221,7 @@
             "it": "Insalata di mare",
             "en": "Seafood salad"
           },
-          "prezzo": 15.0,
+          "prezzo": 15,
           "allergeni": [
             "pesce",
             "molluschi",
@@ -234,7 +234,7 @@
             "it": "Puntarelle alla salsa d'alici",
             "en": "Puntarelle with anchovy dressing"
           },
-          "prezzo": 6.0,
+          "prezzo": 6,
           "allergeni": [
             "pesce"
           ]
@@ -252,7 +252,7 @@
             "it": "Crostata di visciole",
             "en": "Sour cherry tart"
           },
-          "prezzo": 6.0,
+          "prezzo": 6,
           "allergeni": [
             "glutine",
             "uova",
@@ -265,7 +265,7 @@
             "it": "Tiramisù della casa",
             "en": "House tiramisu"
           },
-          "prezzo": 5.0,
+          "prezzo": 5,
           "allergeni": [
             "glutine",
             "uova",
