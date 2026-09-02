@@ -48,8 +48,12 @@ jobs:
           echo "byte=${BYTE}"   >> "$GITHUB_OUTPUT"
           echo "data=${DATA}"   >> "$GITHUB_OUTPUT"
           echo "Archivio: ${NOME} — $((BYTE/1024)) KB"
-          tar -tzf "/tmp/${NOME}" | head -5
-          echo "voci totali: $(tar -tzf "/tmp/${NOME}" | wc -l)"
+          # L'elenco si legge UNA volta in una variabile: con `tar | head` la
+          # pipe si chiude dopo cinque righe, tar riceve SIGPIPE e `pipefail`
+          # fa fallire il passo pur avendo gia' scritto l'archivio.
+          ELENCO=$(tar -tzf "/tmp/${NOME}")
+          echo "${ELENCO}" | head -5
+          echo "voci totali: $(echo "${ELENCO}" | wc -l)"
 
       - name: Carica su B2
         env:
