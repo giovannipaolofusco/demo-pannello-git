@@ -1,4 +1,4 @@
-import { TESTI, MENU, PIATTI, PRIVACY, prezzo, allergeniTesto, nomeBase, misureJpeg } from './dati.mjs';
+import { TESTI, MENU, PIATTI, PRIVACY, prezzo, allergeniTesto, nomeBase, misureJpeg, listaAllergeni } from './dati.mjs';
 import { tabella, notaStagionale } from './orari.mjs';
 
 const S = TESTI.sito;
@@ -21,7 +21,7 @@ function schedePiatti(lang) {
         ${figura(nomeBase(p.immagine), p.alt[lang], p.larghezza, p.altezza, 'piatto__figura')}
         <h3 class="piatto__nome">${p.nome[lang]}</h3>
         <p class="piatto__note">${p.note[lang]}</p>
-        <p class="piatto__allergeni">${allergeniTesto(p.allergeni, lang)}</p>
+        <p class="piatto__allergeni">${allergeniTesto(listaAllergeni(p.allergeni), lang)}</p>
         <p class="piatto__prezzo">${prezzo(p.prezzo)}</p>
       </li>`).join('\n');
 }
@@ -96,7 +96,7 @@ export function menu(lang) {
         ? `<span class="menu__nota" lang="it">${m.nota_solo_it.en}</span>` : '';
       return `      <li class="menu__voce rivela">
         <p class="menu__nome"${attrLang}>${nome}</p>
-        <p class="menu__allergeni">${allergeniTesto(v.allergeni, lang)}</p>${nota}
+        <p class="menu__allergeni">${allergeniTesto(listaAllergeni(v.allergeni), lang)}</p>${nota}
         <p class="menu__prezzo">${prezzo(v.prezzo)}</p>
       </li>`;
     }).join('\n');

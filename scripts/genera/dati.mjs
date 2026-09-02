@@ -19,11 +19,29 @@ export const PRIVACY   = carica('privacy');
 // sono l'informazione con le conseguenze più serie. Il build si ferma.
 const AMMESSI = new Set(Object.keys(ALLERGENI).filter((k) => k !== '_nota'));
 
+// "nessuno" e' la scelta esplicita del pannello: dice che il piatto non
+// contiene alcuno dei 14, ed esiste perche' un campo vuoto non si distingue
+// da un campo non compilato. Insieme ad altri valori e' una contraddizione:
+// o non ce n'e' nessuno, o ce ne sono. Il build si ferma invece di decidere
+// al posto di chi ha compilato.
+export const NESSUNO = 'nessuno';
+export const listaAllergeni = (codici) =>
+  (codici || []).includes(NESSUNO) ? [] : (codici || []);
+
 export function verificaAllergeni() {
   const errori = [];
   const controlla = (codici, dove) => {
-    for (const c of codici) {
-      if (!AMMESSI.has(c)) errori.push(`${dove}: allergene "${c}" non è fra le 14 categorie del Reg. UE 1169/2011`);
+    const l = codici || [];
+    if (l.length === 0) {
+      errori.push(`${dove}: allergeni non compilati. Se il piatto non ne contiene, scegli "nessuno"`);
+      return;
+    }
+    if (l.includes(NESSUNO) && l.length > 1) {
+      errori.push(`${dove}: "nessuno" insieme a ${l.filter((c) => c !== NESSUNO).map((c) => `"${c}"`).join(', ')} — o non ce n'è nessuno, o ce ne sono`);
+      return;
+    }
+    for (const c of l) {
+      if (c !== NESSUNO && !AMMESSI.has(c)) errori.push(`${dove}: allergene "${c}" non è fra le 14 categorie del Reg. UE 1169/2011`);
     }
   };
   for (const sez of MENU.sezioni)

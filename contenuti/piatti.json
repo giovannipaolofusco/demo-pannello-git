@@ -1,5 +1,5 @@
 {
-  "_nota": "Le tre schede della home. Hanno una nota descrittiva che il menù completo non ha. L'immagine è il nome del file senza estensione: il generatore compone <picture> con .webp e .jpg e ne scrive le misure.",
+  "_nota": "Le tre schede della home. Hanno una nota descrittiva che il menù completo non ha. Il campo immagine porta il percorso pubblico completo, che è quello che Decap scrive e che gli serve per l'anteprima. Il generatore normalizza in ingresso e accetta anche il nome nudo. il generatore compone <picture> con .webp e .jpg e ne scrive le misure.",
   "piatti": [
     {
       "nome": {
@@ -15,7 +15,7 @@
         "crostacei",
         "glutine"
       ],
-      "immagine": "trattoria-del-molo-fritturina-01",
+      "immagine": "/assets/img/trattoria-del-molo-fritturina-01.jpg",
       "alt": {
         "it": "Fritturina di paranza servita nel piatto, con gamberi, alici e calamari",
         "en": "Fritturina di paranza on the plate, with prawns, anchovies and squid"
@@ -37,7 +37,7 @@
         "glutine",
         "molluschi"
       ],
-      "immagine": "trattoria-del-molo-tagliatelle-01",
+      "immagine": "/assets/img/trattoria-del-molo-tagliatelle-01.jpg",
       "alt": {
         "it": "Un primo di pasta fresca appena impiattato",
         "en": "A fresh pasta dish just plated"
@@ -58,7 +58,7 @@
       "allergeni": [
         "pesce"
       ],
-      "immagine": "trattoria-del-molo-crudo-alici-01",
+      "immagine": "/assets/img/trattoria-del-molo-crudo-alici-01.jpg",
       "alt": {
         "it": "Alici marinate disposte a raggiera su insalata, con cipolla rossa e pepe rosa",
         "en": "Marinated anchovies fanned over salad, with red onion and pink pepper"

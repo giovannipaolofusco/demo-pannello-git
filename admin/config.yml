@@ -32,6 +32,11 @@ site_url: https://demo-pannello-git.netlify.app
 
 locale: it
 
+# La colonna di anteprima mostrava i campi grezzi e non somigliava al sito:
+# il pannello resta il solo form.
+editor:
+  preview: false
+
 # Le immagini caricate finiscono qui. Il .webp lo genera il build dal .jpg.
 media_folder: "assets/img"
 public_folder: "/assets/img"
@@ -89,9 +94,10 @@ collections:
                     label: "Allergeni"
                     widget: select
                     multiple: true
-                    required: false
-                    hint: "Le 14 categorie del Reg. UE 1169/2011. Se il piatto non ne contiene nessuno, lascia vuoto."
+                    required: true
+                    hint: "Le 14 categorie del Reg. UE 1169/2011. Se il piatto non ne contiene nessuno, scegli «Nessuno»: lasciare vuoto non si distingue da un campo non compilato."
                     options:
+                      - {label: "Nessuno — nessun allergene fra i 14", value: nessuno}
                       - {label: "Glutine", value: glutine}
                       - {label: "Crostacei", value: crostacei}
                       - {label: "Uova", value: uova}
@@ -221,8 +227,10 @@ collections:
                 label: "Allergeni"
                 widget: select
                 multiple: true
-                required: false
+                required: true
+                hint: "Se il piatto non ne contiene nessuno, scegli «Nessuno»."
                 options:
+                  - {label: "Nessuno — nessun allergene fra i 14", value: nessuno}
                   - {label: "Glutine", value: glutine}
                   - {label: "Crostacei", value: crostacei}
                   - {label: "Uova", value: uova}
