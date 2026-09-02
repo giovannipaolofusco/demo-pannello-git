@@ -10,8 +10,8 @@ const pagine = ['index.html', 'menu.html', 'chi-siamo.html', 'contatti.html', 'p
 const paginePagineEn = ['en/index.html', 'en/menu.html', 'en/about-us.html', 'en/contacts.html', 'en/privacy.html'];
 
 // tutto ciò che NON si minifica ma va pubblicato
-const servizio = ['_headers', '_redirects', 'robots.txt', 'sitemap.xml',
-                  'site.webmanifest', 'llms.txt', 'favicon.ico'];
+const servizio = ['_headers', '_redirects', 'robots.txt',
+                  'site.webmanifest', 'favicon.ico'];
 
 const cartelle = ['assets', '.well-known'];
 

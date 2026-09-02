@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://demo-pannello-git.netlify.app/sitemap.xml
+Disallow: /

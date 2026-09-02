@@ -14,3 +14,8 @@
   for = "/*"
   [context.branch-deploy.headers.values]
     X-Robots-Tag = "noindex"
+
+[[context.production.headers]]
+  for = "/*"
+  [context.production.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
