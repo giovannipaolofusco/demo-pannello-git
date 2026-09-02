@@ -1,0 +1,19 @@
+# Trattoria del Molo
+
+> Trattoria di cucina di mare sul porto di Fondi (LT). Menù di venti piatti che cambia con il pescato del giorno, con gli allergeni indicati per ogni preparazione. Aperta a pranzo e a cena dal lunedì al venerdì, la sera il sabato, chiusa la domenica.
+
+## Pagine
+- [Home](https://demo-pannello-git.netlify.app/): presentazione, piatti più richiesti, orari e indirizzo.
+- [Il menù](https://demo-pannello-git.netlify.app/menu.html): venti voci con prezzo e allergeni, divise per portata.
+- [Chi siamo](https://demo-pannello-git.netlify.app/chi-siamo.html): come funziona la cucina e da dove arriva il pesce.
+- [Contatti](https://demo-pannello-git.netlify.app/contatti.html): telefono, indirizzo, orari, indicazioni stradali.
+- [Privacy & Cookie Policy](https://demo-pannello-git.netlify.app/privacy.html): informativa ai sensi degli artt. 13-14 GDPR.
+
+## In inglese
+- [Home](https://demo-pannello-git.netlify.app/en/), [Menu](https://demo-pannello-git.netlify.app/en/menu.html), [About us](https://demo-pannello-git.netlify.app/en/about-us.html), [Contact](https://demo-pannello-git.netlify.app/en/contacts.html)
+
+## Dati utili
+- Indirizzo: Via del Porto 1, 04022 Fondi (LT)
+- Telefono: +39 0771 000000
+- Orari: lun-ven 12:00-15:00 e 19:00-23:00; sab 19:00-23:30; domenica chiuso
+- Chiusura stagionale: dal 7 al 21 gennaio

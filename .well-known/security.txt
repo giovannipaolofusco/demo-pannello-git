@@ -1,0 +1,3 @@
+Contact: mailto:demo@example.invalid
+Expires: 2027-09-02T23:59:59.000Z
+Preferred-Languages: it, en

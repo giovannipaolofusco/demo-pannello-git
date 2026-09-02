@@ -1,0 +1,14 @@
+{
+  "name": "Trattoria del Molo",
+  "short_name": "del Molo",
+  "description": "Cucina di mare della costa fondana, sul porto di Fondi.",
+  "lang": "it",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F6F1E7",
+  "theme_color": "#4A5A4A",
+  "icons": [
+    { "src": "/assets/favicon/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/favicon/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
