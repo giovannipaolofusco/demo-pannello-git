@@ -1,9 +1,9 @@
 {
   "_nota": "Scritto dal workflow di backup. Non modificare a mano: viene riscritto a ogni esecuzione.",
-  "ultimo_backup": "2026-09-21",
+  "ultimo_backup": "2026-09-23",
   "esito": "success",
-  "dimensione_byte": 10424802,
-  "archivio": "demo-pannello-git-2026-09-21.tar.gz",
+  "dimensione_byte": 10428870,
+  "archivio": "demo-pannello-git-2026-09-23.tar.gz",
   "destinazione": "Backblaze B2, bucket del Cliente",
   "contenuto": ["contenuti/", "assets/", "storia git"],
   "escluso": ["admin/ (software di terzi riscaricabile)", "dist/", "node_modules/"]
