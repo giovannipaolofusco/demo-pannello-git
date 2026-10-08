@@ -298,5 +298,46 @@
       "P.IVA 00000000000 — C.F. BNCMRA75A01D662X",
       "Iscr. Reg. Imprese di Latina"
     ]
+  },
+  "recensioni_esempio": {
+    "titolo": {
+      "it": "Recensioni di esempio, scritte per questa demo",
+      "en": "Sample reviews, written for this demo"
+    },
+    "fonte": {
+      "it": "Non sono recensioni di clienti veri.",
+      "en": "They are not reviews from real customers."
+    },
+    "firma": {
+      "it": "Cliente di esempio",
+      "en": "Sample customer"
+    },
+    "stelle_etichetta": {
+      "it": "{n} stelle su 5",
+      "en": "{n} out of 5 stars"
+    },
+    "voci": [
+      {
+        "stelle": 5,
+        "testo": {
+          "it": "Fritturina leggera e asciutta, arrivata in tavola appena uscita dalla padella. Si sente che il pesce è del giorno.",
+          "en": "Light, dry fritturina, brought to the table straight from the pan. You can tell the fish came in that morning."
+        }
+      },
+      {
+        "stelle": 5,
+        "testo": {
+          "it": "Sala piccola e tranquilla, servizio senza fretta. Abbiamo chiamato prima e ci hanno tenuto un tavolo fuori.",
+          "en": "A small, quiet room and unhurried service. We called ahead and they kept a table outside for us."
+        }
+      },
+      {
+        "stelle": 4,
+        "testo": {
+          "it": "Spaghetti alle vongole ottimi. Il crudo quella sera era finito, ma ce l’hanno detto subito.",
+          "en": "Excellent spaghetti with clams. The raw fish had run out that evening, but they told us straight away."
+        }
+      }
+    ]
   }
 }

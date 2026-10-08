@@ -26,6 +26,24 @@ function schedePiatti(lang) {
       </li>`).join('\n');
 }
 
+// Recensioni di esempio: testi statici, dichiarati come tali sotto il titolo.
+// Nessun JSON-LD Review/AggregateRating: le stelle restano testo in pagina.
+function recensioniEsempio(lang) {
+  const r = TESTI.recensioni_esempio;
+  const voci = r.voci.map((v) => `      <li class="recensione rivela">
+        <p class="recensione__stelle" role="img" aria-label="${r.stelle_etichetta[lang].replace('{n}', v.stelle)}">${'★'.repeat(v.stelle)}${'☆'.repeat(5 - v.stelle)}</p>
+        <blockquote class="recensione__testo"><p>${v.testo[lang]}</p></blockquote>
+        <p class="recensione__firma">${r.firma[lang]}</p>
+      </li>`).join('\n');
+  return `<section class="recensioni" aria-labelledby="recensioni-titolo">
+    <h2 class="sezione__titolo rivela" id="recensioni-titolo">${r.titolo[lang]}</h2>
+    <p class="recensioni__fonte rivela">${r.fonte[lang]}</p>
+    <ul class="recensioni__lista gruppo">
+${voci}
+    </ul>
+  </section>`;
+}
+
 export function home(lang) {
   const t = TESTI.home, h = lang === 'it' ? '' : '/en';
   return `<section class="apertura">
@@ -49,6 +67,8 @@ ${schedePiatti(lang)}
     </ul>
     <p class="piatti__coda rivela"><a class="collegamento-testo" href="${h}/menu.html">${t.link_menu_completo[lang]}</a></p>
   </section>
+
+  ${recensioniEsempio(lang)}
 
   <section class="racconto" aria-labelledby="racconto-titolo">
     <div class="racconto__testo gruppo">

@@ -68,6 +68,15 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .piatto__allergeni{margin:0 0 .55rem;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--salvia)}
 .piatto__prezzo{margin:0;font-family:var(--titolo);font-size:1.15rem}
 .piatti__coda{margin:1.8rem 0 0}
+.recensioni{max-width:var(--max);margin:0 auto;padding:2.75rem var(--sp)}
+.recensioni .sezione__titolo{margin-bottom:.5rem}
+.recensioni__fonte{margin:0 0 1.4rem;font-size:.9rem;color:var(--testo-tenue)}
+.recensioni__lista{list-style:none;margin:0;padding:0;display:grid;gap:1.2rem}
+.recensione{background:#fff;border:1px solid rgba(43,39,36,.12);border-radius:var(--raggio);padding:1.1rem 1.2rem}
+.recensione__stelle{margin:0 0 .5rem;color:var(--mattone);letter-spacing:.12em;font-size:1.05rem}
+.recensione__testo{margin:0 0 .7rem}
+.recensione__testo p{margin:0}
+.recensione__firma{margin:0;font-size:.85rem;color:var(--salvia)}
 .racconto{display:grid;gap:2rem}
 .racconto__testo p{max-width:40ch;color:var(--testo-tenue)}
 .racconto__figura{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raggio)}
@@ -115,6 +124,7 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
   .apre .apertura__testo>*:nth-child(3){animation-delay:.18s}
   .apre .apertura__testo>*:nth-child(4){animation-delay:.26s}
   .piatti__lista{grid-template-columns:repeat(3,1fr)}
+  .recensioni__lista{grid-template-columns:repeat(3,1fr)}
   .racconto{grid-template-columns:1.1fr 1fr;align-items:center;gap:3rem}
   .pratico__griglia{grid-template-columns:1fr 1fr;gap:3rem}
   .piede__interno{grid-template-columns:repeat(3,1fr)}
