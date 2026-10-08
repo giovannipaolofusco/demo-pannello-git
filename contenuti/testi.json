@@ -388,5 +388,17 @@
       "it": "In questa demo il pulsante scrive a Giovanni Paolo Fusco",
       "en": "In this demo the button messages Giovanni Paolo Fusco"
     }
+  },
+  "link_bio": {
+    "_nota": "Pagina Link-in-Bio (MOD_pagina_link_bio.md), una versione sola per eccezione della demo. Non e linkata da nessuna pagina del sito e porta noindex.",
+    "title": "Trattoria del Molo — Link",
+    "description": "Menù, telefono, WhatsApp e indicazioni della Trattoria del Molo, sul porto di Fondi.",
+    "tagline": "Cucina di mare sul porto di Fondi",
+    "sito": "Il sito",
+    "menu": "Il menù",
+    "chiama": "Chiama per prenotare",
+    "mappa": "Mappa e indicazioni",
+    "salva": "Salva il contatto",
+    "privacy": "Privacy &amp; Cookie Policy"
   }
 }

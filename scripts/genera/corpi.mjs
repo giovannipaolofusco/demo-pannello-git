@@ -224,3 +224,20 @@ export function quattrocentoquattro() {
     <p class="q404__en" lang="en">${q.riga_en}</p>
   </section>`;
 }
+
+export function linkBio() {
+  const l = TESTI.link_bio;
+  return `  <section class="link-bio__corpo" aria-labelledby="t">
+    <h1 class="link-bio__nome" id="t">${S.nome}</h1>
+    <p class="link-bio__tagline">${l.tagline}</p>
+    <ul class="link-bio__lista">
+      <li><a class="pulsante pulsante--pieno" href="/">${l.sito}</a></li>
+      <li><a class="pulsante pulsante--vuoto" href="/menu.html">${l.menu}</a></li>
+      <li><a class="pulsante pulsante--vuoto" href="tel:${S.telefono}">${l.chiama} · ${S.telefono_leggibile.it}</a></li>
+      <li>${whatsapp('it')}</li>
+      <li><a class="pulsante pulsante--vuoto" href="/contatti.html#mappa">${l.mappa}</a></li>
+      <li><a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${l.salva}</a></li>
+    </ul>
+    <p class="link-bio__indirizzo">${S.indirizzo_riga1}, ${S.indirizzo_riga2}</p>
+  </section>`;
+}

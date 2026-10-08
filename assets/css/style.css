@@ -243,3 +243,14 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .tabella-cookie th,.tabella-cookie td{text-align:left;padding:.6rem .7rem;border:1px solid rgba(43,39,36,.16);vertical-align:top}
 .tabella-cookie thead th{background:rgba(74,90,74,.09);font-weight:600}
 .tabella-cookie code{font-size:.88em;background:rgba(43,39,36,.06);padding:.1rem .3rem;border-radius:2px}
+
+/* Pagina Link-in-Bio: una colonna stretta, pulsanti a tutta larghezza */
+.link-bio__corpo{max-width:28rem;margin:0 auto;padding:2.5rem var(--sp) 1.5rem;text-align:center}
+.link-bio__nome{font-size:clamp(2rem,8vw,2.6rem);margin:0 0 .3rem}
+.link-bio__tagline{margin:0 0 1.8rem;color:var(--testo-tenue)}
+.link-bio__lista{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.link-bio__lista .pulsante{width:100%}
+.link-bio__lista .whatsapp__nota{text-align:center}
+.link-bio__indirizzo{margin:1.6rem 0 0;font-size:.92rem;color:var(--testo-tenue)}
+.link-bio__piede{text-align:center;font-size:.85rem;padding:1rem var(--sp) max(1.4rem,env(safe-area-inset-bottom));color:var(--testo-tenue)}
+.link-bio__piede p{margin:0 0 .4rem}

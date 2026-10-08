@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { TESTI, verificaAllergeni, verificaImmagini } from './genera/dati.mjs';
-import { pagina, url, DOM, VCARD } from './genera/guscio.mjs';
+import { pagina, url, DOM, VCARD, paginaLink, LINK_BIO } from './genera/guscio.mjs';
 import { jsonLd, moduloJs } from './genera/orari.mjs';
 import * as corpi from './genera/corpi.mjs';
 import { eventiAttivi, ics, nomeFile, CARTELLA } from './genera/eventi.mjs';
@@ -72,6 +72,11 @@ const q = pagina('it', 'index.html', TESTI.head.quattrocentoquattro.title.it,
                  TESTI.head.quattrocentoquattro.description.it, corpi.quattrocentoquattro());
 writeFileSync(join(DEST, '404.html'),
   q.replace(/<link rel="canonical"[^>]*>\n/, '').replace(/<link rel="alternate"[^>]*>\n/g, ''));
+n++;
+
+// La pagina Link-in-Bio: fuori da PAGINE perche' non ha navigazione ne'
+// versione inglese, e nessuna pagina del sito la collega.
+writeFileSync(join(DEST, LINK_BIO), paginaLink(corpi.linkBio()));
 n++;
 
 // I dati del badge «aperto adesso»: generati come le pagine, dalla stessa

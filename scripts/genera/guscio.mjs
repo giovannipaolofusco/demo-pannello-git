@@ -153,3 +153,36 @@ ${main.includes('data-stato-apertura') ? '<script type="module" src="/assets/js/
 </html>
 `;
 }
+
+// Pagina Link-in-Bio (MOD_pagina_link_bio.md): nessuna navigazione, nessuno
+// script, canonical su se stessa e nessun hreflang (esiste solo in italiano).
+export const LINK_BIO = 'link.html';
+export function paginaLink(main) {
+  const l = TESTI.link_bio, f = TESTI.footer;
+  const self = `${DOM}/${LINK_BIO}`;
+  const testa = head('it', 'index.html', l.title, l.description)
+    .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${self}">`)
+    .replace(/<link rel="alternate"[^>]*>\n/g, '')
+    .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${self}">`)
+    .replace(/<link rel="stylesheet" href="\/assets\/libs\/cookieconsent[^>]*>\n/, '');
+  return `<!DOCTYPE html>
+<html lang="it">
+<head>
+${testa}
+</head>
+<body class="link-bio">
+<a class="salta-contenuto" href="#contenuto">${TESTI.navigazione.salta.it}</a>
+<p class="avviso-demo">${TESTI.demo.avviso.it} <span class="avviso-demo__pannello">${TESTI.demo.pannello.it}</span></p>
+
+<main id="contenuto">
+${main}
+</main>
+
+<footer class="link-bio__piede">
+  <p><a href="/privacy.html">${l.privacy}</a></p>
+  <p class="credito">${f.credito_verbo.it} <a href="${f.credito_url}" rel="noopener">${f.credito_firma}</a></p>
+</footer>
+</body>
+</html>
+`;
+}
