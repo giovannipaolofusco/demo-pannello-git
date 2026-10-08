@@ -16,6 +16,12 @@
       "lon": 13.4219646
     }
   },
+  "demo": {
+    "avviso": {
+      "it": "Sito dimostrativo: la Trattoria del Molo non esiste.",
+      "en": "Demo website: Trattoria del Molo is not a real business."
+    }
+  },
   "head": {
     "index": {
       "title": {
