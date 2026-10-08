@@ -103,6 +103,8 @@ export function piede(lang) {
       <p>${via}<br>
       <a href="tel:${s.telefono}">${s.telefono_leggibile.it}</a><br>
       <a href="mailto:${s.email}">${s.email}</a></p>
+      <p><button type="button" class="condividi" data-condividi data-copiato="${TESTI.servizio.condividi_copiato[lang]}" hidden>${TESTI.servizio.condividi[lang]}</button></p>
+      <p class="condividi__ripiego" hidden>${TESTI.servizio.condividi_ripiego[lang]} <span class="condividi__indirizzo"></span></p>
     </div>
     <div class="piede__blocco">
       <p class="piede__etichetta">${f.etichetta_orari[lang]}</p>

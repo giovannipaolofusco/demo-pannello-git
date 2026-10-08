@@ -115,6 +115,10 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .piede a{color:var(--crema)}
 .piede__blocco--legale{font-size:.85rem;opacity:.92}
 .credito{margin-top:1.1rem}
+.condividi{font:inherit;font-size:.95rem;min-height:44px;padding:.5rem .95rem;margin-top:.4rem;
+  border:1px solid currentColor;border-radius:var(--raggio);background:none;color:inherit;cursor:pointer}
+[data-condividi][hidden],.condividi__ripiego[hidden]{display:none}
+.condividi__indirizzo{font-weight:600}
 
 /* Rivelazione coordinata: gruppi in sequenza con ritardo progressivo */
 .rivela{opacity:1;transform:none;transition:opacity .6s ease-out,transform .6s ease-out}

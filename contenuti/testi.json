@@ -362,6 +362,18 @@
     "nota_evento_ics": {
       "it": "Evento di esempio di un sito dimostrativo: la Trattoria del Molo non esiste.",
       "en": "Sample event from a demo website: Trattoria del Molo is not a real business."
+    },
+    "condividi": {
+      "it": "Condividi questa pagina",
+      "en": "Share this page"
+    },
+    "condividi_copiato": {
+      "it": "Link copiato",
+      "en": "Link copied"
+    },
+    "condividi_ripiego": {
+      "it": "Copia questo indirizzo:",
+      "en": "Copy this address:"
     }
   }
 }
