@@ -159,9 +159,9 @@
       "it": "Come arrivare",
       "en": "Get directions"
     },
-    "mappa_alt": {
-      "it": "Segnaposto: qui andrà la mappa della sede",
-      "en": "Placeholder: the location map goes here"
+    "link_mappa": {
+      "it": "Guarda la mappa nella pagina Contatti →",
+      "en": "See the map on the Contact page →"
     }
   },
   "chi_siamo": {

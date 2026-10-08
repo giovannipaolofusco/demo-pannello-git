@@ -123,7 +123,7 @@ ${tabella(lang, sepTurni(lang), 12)}
         </p>
       </div>
     </div>
-    <img class="pratico__mappa rivela" src="/assets/img/segnaposto-mappa-segnaposto.svg" alt="${t.mappa_alt[lang]}" width="1200" height="700" loading="lazy">
+    <p class="pratico__mappa-link rivela"><a class="collegamento-testo" href="${h}/${lang === 'it' ? 'contatti' : 'contacts'}.html#mappa">${t.link_mappa[lang]}</a></p>
   </section>`;
 }
 

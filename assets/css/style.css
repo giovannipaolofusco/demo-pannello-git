@@ -103,7 +103,7 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .orari__nota{margin:.9rem 0 0;font-size:.9rem;color:var(--testo-tenue)}
 .pratico__indirizzo{font-size:1.2rem;font-family:var(--titolo);margin:0 0 1.2rem}
 .pratico__azioni{display:flex;flex-wrap:wrap;gap:.7rem;margin:0}
-.pratico__mappa{width:100%;aspect-ratio:12/7;object-fit:cover;border-radius:var(--raggio)}
+.pratico__mappa-link{margin:0}
 
 .piede{background:var(--salvia);color:var(--crema);margin-top:2.5rem;
   padding-bottom:max(1.4rem,env(safe-area-inset-bottom))}
