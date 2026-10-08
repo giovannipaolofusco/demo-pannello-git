@@ -28,8 +28,8 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 
 .testata{background:var(--crema);position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(43,39,36,.1)}
 /* La striscia demo sta dentro la testata appiccicata: resta in vista su ogni pagina */
-.avviso-demo{margin:0;padding:.4rem var(--sp);background:var(--inchiostro);color:var(--crema);
-  font-size:.84rem;line-height:1.4;text-align:center}
+.avviso-demo{margin:0;padding:.3rem var(--sp);background:var(--inchiostro);color:var(--crema);
+  font-size:.8rem;line-height:1.35;text-align:center}
 .testata__interno{max-width:var(--max);margin:0 auto;padding:1rem var(--sp);
   display:flex;align-items:center;gap:var(--sp);flex-wrap:wrap}
 .testata__marchio{font-family:var(--titolo);font-size:1.25rem;font-weight:600;color:var(--inchiostro);text-decoration:none;margin-right:auto}

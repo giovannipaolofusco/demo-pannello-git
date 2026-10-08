@@ -77,7 +77,7 @@ export function testata(lang, attiva) {
   return `<a class="salta-contenuto" href="#contenuto">${n.salta[lang]}</a>
 
 <header class="testata">
-  <p class="avviso-demo">${TESTI.demo.avviso[lang]}</p>
+  <p class="avviso-demo">${TESTI.demo.avviso[lang]} <span class="avviso-demo__pannello">${TESTI.demo.pannello[lang]}</span></p>
   <div class="testata__interno">
     <a class="testata__marchio" href="${lang === 'it' ? '/' : '/en/'}">Trattoria <em>del Molo</em></a>
     <button class="testata__attiva-menu" type="button" aria-expanded="false" aria-controls="menu-principale">Menu</button>

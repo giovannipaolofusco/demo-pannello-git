@@ -20,6 +20,10 @@
     "avviso": {
       "it": "Sito dimostrativo: la Trattoria del Molo non esiste.",
       "en": "Demo website: Trattoria del Molo is not a real business."
+    },
+    "pannello": {
+      "it": "Il pannello per modificare menu e orari da soli è un servizio a parte (450 euro).",
+      "en": "The panel to edit menu and hours yourself is a separate service."
     }
   },
   "head": {
