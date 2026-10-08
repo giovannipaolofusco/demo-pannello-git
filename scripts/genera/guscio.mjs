@@ -135,7 +135,7 @@ ${piede(lang)}
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/libs/cookieconsent/cookieconsent.umd.js" defer></script>
 <script src="/assets/js/consenso.js" defer></script>
-${mappa ? '<script src="/assets/libs/maplibre/maplibre-gl.js" defer></script>\n<script src="/assets/libs/pmtiles/pmtiles.js" defer></script>\n<script src="/assets/js/mappa.js" defer></script>\n' : ''}</body>
+${main.includes('data-stato-apertura') ? '<script type="module" src="/assets/js/avvio-stato-apertura.js"></script>\n' : ''}${mappa ? '<script src="/assets/libs/maplibre/maplibre-gl.js" defer></script>\n<script src="/assets/libs/pmtiles/pmtiles.js" defer></script>\n<script src="/assets/js/mappa.js" defer></script>\n' : ''}</body>
 </html>
 `;
 }

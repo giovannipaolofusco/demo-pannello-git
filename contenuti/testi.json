@@ -339,5 +339,11 @@
         }
       }
     ]
+  },
+  "stato_apertura": {
+    "motivo_chiusura_stagionale": {
+      "it": "Chiusura stagionale",
+      "en": "Seasonal closure"
+    }
   }
 }

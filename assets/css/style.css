@@ -82,6 +82,13 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .racconto__figura{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raggio)}
 .pratico__griglia{display:grid;gap:2rem;margin-bottom:2rem}
 .pratico__voce{font-size:1.15rem;margin:0 0 .8rem}
+/* Badge «aperto adesso» (UTIL_stato_apertura.md): nasce nascosto, lo mostra lo script.
+   La regola su [hidden] non e' facoltativa: senza, il display della classe vince. */
+.stato-apertura{display:inline-block;margin:0 0 .9rem;padding:.3rem .75rem;border-radius:var(--raggio);
+  font-size:.92rem;font-weight:600;border:1px solid currentColor}
+.stato-apertura--aperto{color:var(--salvia)}
+.stato-apertura--chiuso{color:var(--mattone)}
+[data-stato-apertura][hidden]{display:none}
 .orari{width:100%;border-collapse:collapse}
 .orari th{text-align:left;font-weight:600;padding:.5rem 0;vertical-align:top}
 .orari td{text-align:right;padding:.5rem 0;color:var(--testo-tenue)}

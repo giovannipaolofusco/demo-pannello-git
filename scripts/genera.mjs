@@ -2,7 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { TESTI, verificaAllergeni, verificaImmagini } from './genera/dati.mjs';
 import { pagina, url, DOM } from './genera/guscio.mjs';
-import { jsonLd } from './genera/orari.mjs';
+import { jsonLd, moduloJs } from './genera/orari.mjs';
 import * as corpi from './genera/corpi.mjs';
 
 const DEST = process.argv[2] || '.';
@@ -73,4 +73,10 @@ writeFileSync(join(DEST, '404.html'),
   q.replace(/<link rel="canonical"[^>]*>\n/, '').replace(/<link rel="alternate"[^>]*>\n/g, ''));
 n++;
 
-console.log(`genera: ${n} pagine scritte in ${DEST}/`);
+// I dati del badge «aperto adesso»: generati come le pagine, dalla stessa
+// sorgente degli orari.
+const ORARI_JS = join(DEST, 'assets/js/orari.js');
+mkdirSync(dirname(ORARI_JS), { recursive: true });
+writeFileSync(ORARI_JS, moduloJs(TESTI.stato_apertura.motivo_chiusura_stagionale));
+
+console.log(`genera: ${n} pagine scritte in ${DEST}/, piu' assets/js/orari.js`);

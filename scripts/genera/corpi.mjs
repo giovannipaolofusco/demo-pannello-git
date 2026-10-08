@@ -85,6 +85,7 @@ ${schedePiatti(lang)}
     <div class="pratico__griglia gruppo">
       <div class="rivela">
         <h3 class="pratico__voce">${t.voce_orari[lang]}</h3>
+        <p class="stato-apertura" data-stato-apertura hidden></p>
         <div class="tabella-scorrevole"><table class="orari">
           <tbody>
 ${tabella(lang, sepTurni(lang), 12)}
@@ -168,6 +169,7 @@ export function contatti(lang) {
       </div>
     </div>
     <h2 class="contatti__voce">${c.voce_orari[lang]}</h2>
+    <p class="stato-apertura" data-stato-apertura hidden></p>
     <div class="tabella-scorrevole"><table class="orari">
       <tbody>
 ${tabella(lang, sepTurni(lang))}
