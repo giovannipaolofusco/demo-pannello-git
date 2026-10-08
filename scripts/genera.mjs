@@ -1,9 +1,10 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { TESTI, verificaAllergeni, verificaImmagini } from './genera/dati.mjs';
 import { pagina, url, DOM, VCARD } from './genera/guscio.mjs';
 import { jsonLd, moduloJs } from './genera/orari.mjs';
 import * as corpi from './genera/corpi.mjs';
+import { eventiAttivi, ics, nomeFile, CARTELLA } from './genera/eventi.mjs';
 
 const DEST = process.argv[2] || '.';
 verificaAllergeni();
@@ -96,4 +97,12 @@ const vcard = [
 ].join('\r\n');
 writeFileSync(join(DEST, VCARD), vcard);
 
-console.log(`genera: ${n} pagine scritte in ${DEST}/, piu' assets/js/orari.js e ${VCARD}`);
+// Un .ics per evento attivo e per lingua. La cartella si riscrive da capo:
+// un evento passato non deve restare scaricabile.
+const CAL = join(DEST, CARTELLA);
+rmSync(CAL, { recursive: true, force: true });
+mkdirSync(CAL, { recursive: true });
+const attivi = eventiAttivi();
+for (const e of attivi) for (const lang of ['it', 'en']) writeFileSync(join(CAL, nomeFile(e, lang)), ics(e, lang));
+
+console.log(`genera: ${n} pagine scritte in ${DEST}/, piu' assets/js/orari.js, ${VCARD} e ${attivi.length * 2} .ics`);

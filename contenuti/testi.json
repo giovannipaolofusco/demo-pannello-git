@@ -350,6 +350,18 @@
     "salva_contatto": {
       "it": "Salva il contatto",
       "en": "Save contact"
+    },
+    "aggiungi_calendario": {
+      "it": "Aggiungi al calendario",
+      "en": "Add to calendar"
+    },
+    "titolo_evento": {
+      "it": "Prossima serata",
+      "en": "Coming up"
+    },
+    "nota_evento_ics": {
+      "it": "Evento di esempio di un sito dimostrativo: la Trattoria del Molo non esiste.",
+      "en": "Sample event from a demo website: Trattoria del Molo is not a real business."
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "_nota": "Eventi della demo, inventati. Il generatore pubblica in home solo quelli non ancora finiti alla data del build, e per ciascuno scrive un .ics per lingua. L'uid resta lo stesso nelle due lingue: e' lo stesso evento, e un uid stabile fa si' che una seconda importazione aggiorni invece di duplicare.",
+  "eventi": [
+    {
+      "uid": "serata-pesce-azzurro-2026",
+      "file": "serata-pesce-azzurro",
+      "data": "2026-11-20",
+      "inizio": "20:00",
+      "fine": "23:00",
+      "pubblicato": "2026-10-08",
+      "titolo": {
+        "it": "Serata del pesce azzurro",
+        "en": "Pesce azzurro evening"
+      },
+      "descrizione": {
+        "it": "Una cena di alici, sgombri e sarde della paranza del mattino. Su prenotazione.",
+        "en": "A dinner of anchovies, mackerel and sardines from the morning boats. Booking required."
+      }
+    }
+  ]
+}

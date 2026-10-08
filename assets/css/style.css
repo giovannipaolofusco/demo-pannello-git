@@ -77,6 +77,13 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .recensione__testo{margin:0 0 .7rem}
 .recensione__testo p{margin:0}
 .recensione__firma{margin:0;font-size:.85rem;color:var(--salvia)}
+.evento{max-width:var(--max);margin:0 auto;padding:2.75rem var(--sp)}
+.evento__scheda{background:#fff;border:1px solid rgba(43,39,36,.12);border-left:4px solid var(--ottone);
+  border-radius:var(--raggio);padding:1.2rem 1.3rem;max-width:40rem}
+.evento__quando{margin:0 0 .4rem;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--salvia)}
+.evento__nome{font-size:1.3rem;margin:0 0 .4rem}
+.evento__descrizione{margin:0 0 1rem;color:var(--testo-tenue)}
+.evento__azioni{margin:0}
 .racconto{display:grid;gap:2rem}
 .racconto__testo p{max-width:40ch;color:var(--testo-tenue)}
 .racconto__figura{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--raggio)}

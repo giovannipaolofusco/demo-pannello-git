@@ -1,6 +1,7 @@
 import { TESTI, MENU, PIATTI, PRIVACY, prezzo, allergeniTesto, nomeBase, misureJpeg, listaAllergeni } from './dati.mjs';
 import { tabella, notaStagionale } from './orari.mjs';
 import { VCARD } from './guscio.mjs';
+import { eventiAttivi, nomeFile, quando, CARTELLA } from './eventi.mjs';
 
 const S = TESTI.sito;
 const sepTurni = (lang) => (lang === 'it' ? ' e ' : ' and ');
@@ -45,6 +46,22 @@ ${voci}
   </section>`;
 }
 
+// Prossima serata: solo se c'e' un evento non ancora finito alla data del build.
+function prossimoEvento(lang) {
+  const [e] = eventiAttivi();
+  if (!e) return '';
+  const sv = TESTI.servizio;
+  return `<section class="evento" aria-labelledby="evento-titolo">
+    <h2 class="sezione__titolo rivela" id="evento-titolo">${sv.titolo_evento[lang]}</h2>
+    <div class="evento__scheda rivela">
+      <p class="evento__quando"><time datetime="${e.data}T${e.inizio}">${quando(e, lang)}</time></p>
+      <h3 class="evento__nome">${e.titolo[lang]}</h3>
+      <p class="evento__descrizione">${e.descrizione[lang]}</p>
+      <p class="evento__azioni"><a class="pulsante pulsante--vuoto" href="/${CARTELLA}/${nomeFile(e, lang)}" download>${sv.aggiungi_calendario[lang]}</a></p>
+    </div>
+  </section>`;
+}
+
 export function home(lang) {
   const t = TESTI.home, h = lang === 'it' ? '' : '/en';
   return `<section class="apertura">
@@ -80,6 +97,8 @@ ${schedePiatti(lang)}
     </div>
     <img class="racconto__figura rivela" src="/assets/img/segnaposto-sala.svg" alt="${t.sala_alt[lang]}" width="1200" height="800" loading="lazy">
   </section>
+
+  ${prossimoEvento(lang)}
 
   <section class="pratico" aria-labelledby="pratico-titolo">
     <h2 class="sezione__titolo rivela" id="pratico-titolo">${t.titolo_pratico[lang]}</h2>

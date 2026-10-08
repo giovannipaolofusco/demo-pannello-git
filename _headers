@@ -8,6 +8,9 @@
 /trattoria-del-molo.vcf
   Content-Type: text/vcard; charset=utf-8
 
+/calendario/*
+  Content-Type: text/calendar; charset=utf-8
+
 /assets/*
   Cache-Control: public, max-age=86400, must-revalidate
 
