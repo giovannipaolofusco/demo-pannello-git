@@ -3,6 +3,16 @@ import { footer as orariFooter } from './orari.mjs';
 
 export const DOM = 'https://demo-pannello-git.netlify.app';
 export const VCARD = 'trattoria-del-molo.vcf';
+
+// Pulsante WhatsApp (CLAUDE.md §13bis.9): wa.me col messaggio precompilato.
+// La nota piccola accanto dichiara a chi scrive: nella demo e' il numero del
+// titolare, non quello finto della trattoria.
+export function whatsapp(lang, cls = 'pulsante pulsante--vuoto') {
+  const w = TESTI.whatsapp;
+  const href = `https://wa.me/${w.numero}?text=${encodeURIComponent(w.messaggio)}`;
+  return `<a class="${cls}" href="${href}">${w.etichetta[lang]}</a>
+      <small class="whatsapp__nota">${w.nota[lang]}</small>`;
+}
 const OG = `${DOM}/assets/img/og-trattoria-del-molo.jpg`;
 
 // slug IT -> slug EN. Le pagine legali tengono il nome fisso in ogni lingua
@@ -103,6 +113,7 @@ export function piede(lang) {
       <p>${via}<br>
       <a href="tel:${s.telefono}">${s.telefono_leggibile.it}</a><br>
       <a href="mailto:${s.email}">${s.email}</a></p>
+      <p class="piede__whatsapp">${whatsapp(lang, 'piede__whatsapp-link')}</p>
       <p><button type="button" class="condividi" data-condividi data-copiato="${TESTI.servizio.condividi_copiato[lang]}" hidden>${TESTI.servizio.condividi[lang]}</button></p>
       <p class="condividi__ripiego" hidden>${TESTI.servizio.condividi_ripiego[lang]} <span class="condividi__indirizzo"></span></p>
     </div>

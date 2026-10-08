@@ -1,6 +1,6 @@
 import { TESTI, MENU, PIATTI, PRIVACY, prezzo, allergeniTesto, nomeBase, misureJpeg, listaAllergeni } from './dati.mjs';
 import { tabella, notaStagionale } from './orari.mjs';
-import { VCARD } from './guscio.mjs';
+import { VCARD, whatsapp } from './guscio.mjs';
 import { eventiAttivi, nomeFile, quando, CARTELLA } from './eventi.mjs';
 
 const S = TESTI.sito;
@@ -173,6 +173,7 @@ export function contatti(lang) {
         <h2 class="contatti__voce">${c.voce_prenotare[lang]}</h2>
         <p class="contatti__grande">${tel(lang)}</p>
         <p>${c.nota_orario[lang]}</p>
+        <p class="contatti__whatsapp">${whatsapp(lang)}</p>
         <p><a href="mailto:${S.email}">${S.email}</a></p>
         <p><a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${TESTI.servizio.salva_contatto[lang]}</a></p>
       </div>

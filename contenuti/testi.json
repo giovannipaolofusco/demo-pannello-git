@@ -375,5 +375,18 @@
       "it": "Copia questo indirizzo:",
       "en": "Copy this address:"
     }
+  },
+  "whatsapp": {
+    "_nota": "Eccezione della demo (AGENTS.md, in testa): il numero e quello reale del titolare della demo, e la nota accanto al pulsante lo dichiara.",
+    "numero": "393334919401",
+    "messaggio": "Ciao Giovanni, ho visto la demo della Trattoria del Molo",
+    "etichetta": {
+      "it": "Scrivi su WhatsApp",
+      "en": "Message on WhatsApp"
+    },
+    "nota": {
+      "it": "In questa demo il pulsante scrive a Giovanni Paolo Fusco",
+      "en": "In this demo the button messages Giovanni Paolo Fusco"
+    }
   }
 }
