@@ -11,7 +11,8 @@ const paginePagineEn = ['en/index.html', 'en/menu.html', 'en/about-us.html', 'en
 
 // tutto ciò che NON si minifica ma va pubblicato
 const servizio = ['_headers', '_redirects', 'robots.txt',
-                  'site.webmanifest', 'favicon.ico'];
+                  'site.webmanifest', 'favicon.ico',
+                  'trattoria-del-molo.vcf'];
 
 // admin/ e' il pannello: senza questa riga non esiste online.
 // Non e' fra le `pagine`, quindi il minificatore HTML non lo tocca.

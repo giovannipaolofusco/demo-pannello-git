@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:;;;;
+FN:Trattoria del Molo
+ORG:Trattoria del Molo
+X-ABShowAs:COMPANY
+TEL;TYPE=WORK,VOICE:+390771000000
+EMAIL;TYPE=INTERNET,WORK:demo@example.invalid
+ADR;TYPE=WORK:;;Via del Porto 1;Fondi;LT;04022;Italia
+GEO:41.3588836;13.4219646
+URL:https://demo-pannello-git.netlify.app/
+NOTE:Sito dimostrativo: la Trattoria del Molo non esiste.
+END:VCARD

@@ -2,6 +2,7 @@ import { TESTI } from './dati.mjs';
 import { footer as orariFooter } from './orari.mjs';
 
 export const DOM = 'https://demo-pannello-git.netlify.app';
+export const VCARD = 'trattoria-del-molo.vcf';
 const OG = `${DOM}/assets/img/og-trattoria-del-molo.jpg`;
 
 // slug IT -> slug EN. Le pagine legali tengono il nome fisso in ogni lingua

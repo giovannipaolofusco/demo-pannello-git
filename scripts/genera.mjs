@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { TESTI, verificaAllergeni, verificaImmagini } from './genera/dati.mjs';
-import { pagina, url, DOM } from './genera/guscio.mjs';
+import { pagina, url, DOM, VCARD } from './genera/guscio.mjs';
 import { jsonLd, moduloJs } from './genera/orari.mjs';
 import * as corpi from './genera/corpi.mjs';
 
@@ -79,4 +79,21 @@ const ORARI_JS = join(DEST, 'assets/js/orari.js');
 mkdirSync(dirname(ORARI_JS), { recursive: true });
 writeFileSync(ORARI_JS, moduloJs(TESTI.stato_apertura.motivo_chiusura_stagionale));
 
-console.log(`genera: ${n} pagine scritte in ${DEST}/, piu' assets/js/orari.js`);
+// Salva contatto (CLAUDE.md §13bis.4): un .vcf statico, campo per campo dai
+// dati di testi.json. vCard 3.0 con righe CRLF: e' la forma che rubriche iOS
+// e Android importano senza chiedere nulla.
+const esc = (v) => String(v).replace(/\\/g, '\\\\').replace(/([,;])/g, '\\$1');
+const vcard = [
+  'BEGIN:VCARD', 'VERSION:3.0',
+  'N:;;;;', `FN:${esc(S.nome)}`, `ORG:${esc(S.nome)}`, 'X-ABShowAs:COMPANY',
+  `TEL;TYPE=WORK,VOICE:${S.telefono}`,
+  `EMAIL;TYPE=INTERNET,WORK:${S.email}`,
+  `ADR;TYPE=WORK:;;${esc(S.indirizzo_riga1)};Fondi;LT;04022;Italia`,
+  `GEO:${S.coordinate.lat};${S.coordinate.lon}`,
+  `URL:${DOM}/`,
+  `NOTE:${esc(TESTI.demo.avviso.it)}`,
+  'END:VCARD', '',
+].join('\r\n');
+writeFileSync(join(DEST, VCARD), vcard);
+
+console.log(`genera: ${n} pagine scritte in ${DEST}/, piu' assets/js/orari.js e ${VCARD}`);

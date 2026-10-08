@@ -345,5 +345,11 @@
       "it": "Chiusura stagionale",
       "en": "Seasonal closure"
     }
+  },
+  "servizio": {
+    "salva_contatto": {
+      "it": "Salva il contatto",
+      "en": "Save contact"
+    }
   }
 }

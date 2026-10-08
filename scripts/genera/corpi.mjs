@@ -1,5 +1,6 @@
 import { TESTI, MENU, PIATTI, PRIVACY, prezzo, allergeniTesto, nomeBase, misureJpeg, listaAllergeni } from './dati.mjs';
 import { tabella, notaStagionale } from './orari.mjs';
+import { VCARD } from './guscio.mjs';
 
 const S = TESTI.sito;
 const sepTurni = (lang) => (lang === 'it' ? ' e ' : ' and ');
@@ -99,6 +100,7 @@ ${tabella(lang, sepTurni(lang), 12)}
         <p class="pratico__azioni">
           <a class="pulsante pulsante--vuoto" href="${h}/${lang === 'it' ? 'contatti' : 'contacts'}.html">${t.cta_arrivare[lang]}</a>
           <a class="pulsante pulsante--vuoto" href="tel:${S.telefono}">${S.telefono_leggibile.it}</a>
+          <a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${TESTI.servizio.salva_contatto[lang]}</a>
         </p>
       </div>
     </div>
@@ -153,6 +155,7 @@ export function contatti(lang) {
         <p class="contatti__grande">${tel(lang)}</p>
         <p>${c.nota_orario[lang]}</p>
         <p><a href="mailto:${S.email}">${S.email}</a></p>
+        <p><a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${TESTI.servizio.salva_contatto[lang]}</a></p>
       </div>
       <div class="rivela">
         <h2 class="contatti__voce">${c.voce_dove[lang]}</h2>
