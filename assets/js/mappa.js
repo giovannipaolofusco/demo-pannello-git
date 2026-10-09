@@ -22,7 +22,12 @@ if (contenitore && typeof maplibregl !== 'undefined' && typeof pmtiles !== 'unde
       zoom: 15,
       minZoom: 12,
       maxZoom: 15,
-      attributionControl: { compact: false }
+      // Il credito ODbL va scritto qui: il protocollo pmtiles legge i metadati
+      // dell'estratto e l'attribuzione dello stile non arriva in pagina.
+      attributionControl: {
+        compact: false,
+        customAttribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a> · <a href="https://protomaps.com">Protomaps</a>'
+      }
     });
 
     // WCAG 2.5.7: la mappa si sposta col trascinamento, quindi servono

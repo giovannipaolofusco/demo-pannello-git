@@ -1,5 +1,7 @@
 import { TESTI, MENU, PIATTI, PRIVACY, prezzo, allergeniTesto, nomeBase, misureJpeg, listaAllergeni } from './dati.mjs';
 import { tabella, notaStagionale } from './orari.mjs';
+import { VCARD, whatsapp } from './guscio.mjs';
+import { eventiAttivi, nomeFile, quando, CARTELLA } from './eventi.mjs';
 
 const S = TESTI.sito;
 const sepTurni = (lang) => (lang === 'it' ? ' e ' : ' and ');
@@ -26,6 +28,40 @@ function schedePiatti(lang) {
       </li>`).join('\n');
 }
 
+// Recensioni di esempio: testi statici, dichiarati come tali sotto il titolo.
+// Nessun JSON-LD Review/AggregateRating: le stelle restano testo in pagina.
+function recensioniEsempio(lang) {
+  const r = TESTI.recensioni_esempio;
+  const voci = r.voci.map((v) => `      <li class="recensione rivela">
+        <p class="recensione__stelle" role="img" aria-label="${r.stelle_etichetta[lang].replace('{n}', v.stelle)}">${'★'.repeat(v.stelle)}${'☆'.repeat(5 - v.stelle)}</p>
+        <blockquote class="recensione__testo"><p>${v.testo[lang]}</p></blockquote>
+        <p class="recensione__firma">${r.firma[lang]}</p>
+      </li>`).join('\n');
+  return `<section class="recensioni" aria-labelledby="recensioni-titolo">
+    <h2 class="sezione__titolo rivela" id="recensioni-titolo">${r.titolo[lang]}</h2>
+    <p class="recensioni__fonte rivela">${r.fonte[lang]}</p>
+    <ul class="recensioni__lista gruppo">
+${voci}
+    </ul>
+  </section>`;
+}
+
+// Prossima serata: solo se c'e' un evento non ancora finito alla data del build.
+function prossimoEvento(lang) {
+  const [e] = eventiAttivi();
+  if (!e) return '';
+  const sv = TESTI.servizio;
+  return `<section class="evento" aria-labelledby="evento-titolo">
+    <h2 class="sezione__titolo rivela" id="evento-titolo">${sv.titolo_evento[lang]}</h2>
+    <div class="evento__scheda rivela">
+      <p class="evento__quando"><time datetime="${e.data}T${e.inizio}">${quando(e, lang)}</time></p>
+      <h3 class="evento__nome">${e.titolo[lang]}</h3>
+      <p class="evento__descrizione">${e.descrizione[lang]}</p>
+      <p class="evento__azioni"><a class="pulsante pulsante--vuoto" href="/${CARTELLA}/${nomeFile(e, lang)}" download>${sv.aggiungi_calendario[lang]}</a></p>
+    </div>
+  </section>`;
+}
+
 export function home(lang) {
   const t = TESTI.home, h = lang === 'it' ? '' : '/en';
   return `<section class="apertura">
@@ -50,6 +86,8 @@ ${schedePiatti(lang)}
     <p class="piatti__coda rivela"><a class="collegamento-testo" href="${h}/menu.html">${t.link_menu_completo[lang]}</a></p>
   </section>
 
+  ${recensioniEsempio(lang)}
+
   <section class="racconto" aria-labelledby="racconto-titolo">
     <div class="racconto__testo gruppo">
       <h2 class="sezione__titolo rivela" id="racconto-titolo">${t.titolo_racconto[lang]}</h2>
@@ -60,11 +98,14 @@ ${schedePiatti(lang)}
     <img class="racconto__figura rivela" src="/assets/img/segnaposto-sala.svg" alt="${t.sala_alt[lang]}" width="1200" height="800" loading="lazy">
   </section>
 
+  ${prossimoEvento(lang)}
+
   <section class="pratico" aria-labelledby="pratico-titolo">
     <h2 class="sezione__titolo rivela" id="pratico-titolo">${t.titolo_pratico[lang]}</h2>
     <div class="pratico__griglia gruppo">
       <div class="rivela">
         <h3 class="pratico__voce">${t.voce_orari[lang]}</h3>
+        <p class="stato-apertura" data-stato-apertura hidden></p>
         <div class="tabella-scorrevole"><table class="orari">
           <tbody>
 ${tabella(lang, sepTurni(lang), 12)}
@@ -78,10 +119,11 @@ ${tabella(lang, sepTurni(lang), 12)}
         <p class="pratico__azioni">
           <a class="pulsante pulsante--vuoto" href="${h}/${lang === 'it' ? 'contatti' : 'contacts'}.html">${t.cta_arrivare[lang]}</a>
           <a class="pulsante pulsante--vuoto" href="tel:${S.telefono}">${S.telefono_leggibile.it}</a>
+          <a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${TESTI.servizio.salva_contatto[lang]}</a>
         </p>
       </div>
     </div>
-    <img class="pratico__mappa rivela" src="/assets/img/segnaposto-mappa-segnaposto.svg" alt="${t.mappa_alt[lang]}" width="1200" height="700" loading="lazy">
+    <p class="pratico__mappa-link rivela"><a class="collegamento-testo" href="${h}/${lang === 'it' ? 'contatti' : 'contacts'}.html#mappa">${t.link_mappa[lang]}</a></p>
   </section>`;
 }
 
@@ -131,7 +173,9 @@ export function contatti(lang) {
         <h2 class="contatti__voce">${c.voce_prenotare[lang]}</h2>
         <p class="contatti__grande">${tel(lang)}</p>
         <p>${c.nota_orario[lang]}</p>
+        <p class="contatti__whatsapp">${whatsapp(lang)}</p>
         <p><a href="mailto:${S.email}">${S.email}</a></p>
+        <p><a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${TESTI.servizio.salva_contatto[lang]}</a></p>
       </div>
       <div class="rivela">
         <h2 class="contatti__voce">${c.voce_dove[lang]}</h2>
@@ -148,6 +192,7 @@ export function contatti(lang) {
       </div>
     </div>
     <h2 class="contatti__voce">${c.voce_orari[lang]}</h2>
+    <p class="stato-apertura" data-stato-apertura hidden></p>
     <div class="tabella-scorrevole"><table class="orari">
       <tbody>
 ${tabella(lang, sepTurni(lang))}
@@ -177,5 +222,22 @@ export function quattrocentoquattro() {
       <p>${S.indirizzo_riga1} — ${S.indirizzo_riga2}<br><a href="mailto:${S.email}">${S.email}</a></p>
     </div>
     <p class="q404__en" lang="en">${q.riga_en}</p>
+  </section>`;
+}
+
+export function linkBio() {
+  const l = TESTI.link_bio;
+  return `  <section class="link-bio__corpo" aria-labelledby="t">
+    <h1 class="link-bio__nome" id="t">${S.nome}</h1>
+    <p class="link-bio__tagline">${l.tagline}</p>
+    <ul class="link-bio__lista">
+      <li><a class="pulsante pulsante--pieno" href="/">${l.sito}</a></li>
+      <li><a class="pulsante pulsante--vuoto" href="/menu.html">${l.menu}</a></li>
+      <li><a class="pulsante pulsante--vuoto" href="tel:${S.telefono}">${l.chiama} · ${S.telefono_leggibile.it}</a></li>
+      <li>${whatsapp('it')}</li>
+      <li><a class="pulsante pulsante--vuoto" href="/contatti.html#mappa">${l.mappa}</a></li>
+      <li><a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${l.salva}</a></li>
+    </ul>
+    <p class="link-bio__indirizzo">${S.indirizzo_riga1}, ${S.indirizzo_riga2}</p>
   </section>`;
 }

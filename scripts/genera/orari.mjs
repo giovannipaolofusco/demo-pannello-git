@@ -54,3 +54,26 @@ export function jsonLd() {
 }
 
 export const notaStagionale = (lang) => ORARI.chiusura_stagionale.nota[lang];
+
+// Uscita 4 — assets/js/orari.js, i dati del badge «aperto adesso»
+// (UTIL_stato_apertura.md). Stessa sorgente delle altre tre: il badge non
+// puo' dire un orario che tabella e JSON-LD non dicono. La chiusura
+// stagionale diventa una CHIUSURA con motivo, uno per lingua perche' il
+// motivo compare nel badge.
+const NUMERO_GIORNO = { Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6 };
+
+export function moduloJs(motivo) {
+  const orari = {};
+  for (const f of ORARI.settimana) {
+    if (f.chiuso) continue;
+    for (const g of f.giorni) orari[NUMERO_GIORNO[g]] = f.turni.map((t) => [t.apre, t.chiude]);
+  }
+  const cs = ORARI.chiusura_stagionale;
+  const chiusure = (lang) => [{ dal: cs.dal, al: cs.al, motivo: motivo[lang] }];
+  const j = (v) => JSON.stringify(v);
+  return `// Generato da scripts/genera.mjs a partire da contenuti/orari.json: non modificare a mano.
+export const ORARI = { tutto: ${j(orari)} };
+export const CHIUSURE = ${j(chiusure('it'))};
+export const CHIUSURE_PER_LINGUA = { it: ${j(chiusure('it'))}, en: ${j(chiusure('en'))} };
+`;
+}

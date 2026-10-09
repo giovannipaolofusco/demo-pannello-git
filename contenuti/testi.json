@@ -16,6 +16,16 @@
       "lon": 13.4219646
     }
   },
+  "demo": {
+    "avviso": {
+      "it": "Sito dimostrativo: la Trattoria del Molo non esiste.",
+      "en": "Demo website: Trattoria del Molo is not a real business."
+    },
+    "pannello": {
+      "it": "Il pannello per modificare menu e orari da soli è un servizio a parte (450 euro).",
+      "en": "The panel to edit menu and hours yourself is a separate service."
+    }
+  },
   "head": {
     "index": {
       "title": {
@@ -149,9 +159,9 @@
       "it": "Come arrivare",
       "en": "Get directions"
     },
-    "mappa_alt": {
-      "it": "Segnaposto: qui andrà la mappa della sede",
-      "en": "Placeholder: the location map goes here"
+    "link_mappa": {
+      "it": "Guarda la mappa nella pagina Contatti →",
+      "en": "See the map on the Contact page →"
     }
   },
   "chi_siamo": {
@@ -288,5 +298,107 @@
       "P.IVA 00000000000 — C.F. BNCMRA75A01D662X",
       "Iscr. Reg. Imprese di Latina"
     ]
+  },
+  "recensioni_esempio": {
+    "titolo": {
+      "it": "Recensioni di esempio, scritte per questa demo",
+      "en": "Sample reviews, written for this demo"
+    },
+    "fonte": {
+      "it": "Non sono recensioni di clienti veri.",
+      "en": "They are not reviews from real customers."
+    },
+    "firma": {
+      "it": "Cliente di esempio",
+      "en": "Sample customer"
+    },
+    "stelle_etichetta": {
+      "it": "{n} stelle su 5",
+      "en": "{n} out of 5 stars"
+    },
+    "voci": [
+      {
+        "stelle": 5,
+        "testo": {
+          "it": "Fritturina leggera e asciutta, arrivata in tavola appena uscita dalla padella. Si sente che il pesce è del giorno.",
+          "en": "Light, dry fritturina, brought to the table straight from the pan. You can tell the fish came in that morning."
+        }
+      },
+      {
+        "stelle": 5,
+        "testo": {
+          "it": "Sala piccola e tranquilla, servizio senza fretta. Abbiamo chiamato prima e ci hanno tenuto un tavolo fuori.",
+          "en": "A small, quiet room and unhurried service. We called ahead and they kept a table outside for us."
+        }
+      },
+      {
+        "stelle": 4,
+        "testo": {
+          "it": "Spaghetti alle vongole ottimi. Il crudo quella sera era finito, ma ce l’hanno detto subito.",
+          "en": "Excellent spaghetti with clams. The raw fish had run out that evening, but they told us straight away."
+        }
+      }
+    ]
+  },
+  "stato_apertura": {
+    "motivo_chiusura_stagionale": {
+      "it": "Chiusura stagionale",
+      "en": "Seasonal closure"
+    }
+  },
+  "servizio": {
+    "salva_contatto": {
+      "it": "Salva il contatto",
+      "en": "Save contact"
+    },
+    "aggiungi_calendario": {
+      "it": "Aggiungi al calendario",
+      "en": "Add to calendar"
+    },
+    "titolo_evento": {
+      "it": "Prossima serata",
+      "en": "Coming up"
+    },
+    "nota_evento_ics": {
+      "it": "Evento di esempio di un sito dimostrativo: la Trattoria del Molo non esiste.",
+      "en": "Sample event from a demo website: Trattoria del Molo is not a real business."
+    },
+    "condividi": {
+      "it": "Condividi questa pagina",
+      "en": "Share this page"
+    },
+    "condividi_copiato": {
+      "it": "Link copiato",
+      "en": "Link copied"
+    },
+    "condividi_ripiego": {
+      "it": "Copia questo indirizzo:",
+      "en": "Copy this address:"
+    }
+  },
+  "whatsapp": {
+    "_nota": "Eccezione della demo (AGENTS.md, in testa): il numero e quello reale del titolare della demo, e la nota accanto al pulsante lo dichiara.",
+    "numero": "393334919401",
+    "messaggio": "Ciao Giovanni, ho visto la demo della Trattoria del Molo",
+    "etichetta": {
+      "it": "Scrivi su WhatsApp",
+      "en": "Message on WhatsApp"
+    },
+    "nota": {
+      "it": "In questa demo il pulsante scrive a Giovanni Paolo Fusco",
+      "en": "In this demo the button messages Giovanni Paolo Fusco"
+    }
+  },
+  "link_bio": {
+    "_nota": "Pagina Link-in-Bio (MOD_pagina_link_bio.md), una versione sola per eccezione della demo. Non e linkata da nessuna pagina del sito e porta noindex.",
+    "title": "Trattoria del Molo — Link",
+    "description": "Menù, telefono, WhatsApp e indicazioni della Trattoria del Molo, sul porto di Fondi.",
+    "tagline": "Cucina di mare sul porto di Fondi",
+    "sito": "Il sito",
+    "menu": "Il menù",
+    "chiama": "Chiama per prenotare",
+    "mappa": "Mappa e indicazioni",
+    "salva": "Salva il contatto",
+    "privacy": "Privacy &amp; Cookie Policy"
   }
 }

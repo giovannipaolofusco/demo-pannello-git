@@ -1,9 +1,10 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { TESTI, verificaAllergeni, verificaImmagini } from './genera/dati.mjs';
-import { pagina, url, DOM } from './genera/guscio.mjs';
-import { jsonLd } from './genera/orari.mjs';
+import { pagina, url, DOM, VCARD, paginaLink, LINK_BIO } from './genera/guscio.mjs';
+import { jsonLd, moduloJs } from './genera/orari.mjs';
 import * as corpi from './genera/corpi.mjs';
+import { eventiAttivi, ics, nomeFile, CARTELLA } from './genera/eventi.mjs';
 
 const DEST = process.argv[2] || '.';
 verificaAllergeni();
@@ -73,4 +74,40 @@ writeFileSync(join(DEST, '404.html'),
   q.replace(/<link rel="canonical"[^>]*>\n/, '').replace(/<link rel="alternate"[^>]*>\n/g, ''));
 n++;
 
-console.log(`genera: ${n} pagine scritte in ${DEST}/`);
+// La pagina Link-in-Bio: fuori da PAGINE perche' non ha navigazione ne'
+// versione inglese, e nessuna pagina del sito la collega.
+writeFileSync(join(DEST, LINK_BIO), paginaLink(corpi.linkBio()));
+n++;
+
+// I dati del badge «aperto adesso»: generati come le pagine, dalla stessa
+// sorgente degli orari.
+const ORARI_JS = join(DEST, 'assets/js/orari.js');
+mkdirSync(dirname(ORARI_JS), { recursive: true });
+writeFileSync(ORARI_JS, moduloJs(TESTI.stato_apertura.motivo_chiusura_stagionale));
+
+// Salva contatto (CLAUDE.md §13bis.4): un .vcf statico, campo per campo dai
+// dati di testi.json. vCard 3.0 con righe CRLF: e' la forma che rubriche iOS
+// e Android importano senza chiedere nulla.
+const esc = (v) => String(v).replace(/\\/g, '\\\\').replace(/([,;])/g, '\\$1');
+const vcard = [
+  'BEGIN:VCARD', 'VERSION:3.0',
+  'N:;;;;', `FN:${esc(S.nome)}`, `ORG:${esc(S.nome)}`, 'X-ABShowAs:COMPANY',
+  `TEL;TYPE=WORK,VOICE:${S.telefono}`,
+  `EMAIL;TYPE=INTERNET,WORK:${S.email}`,
+  `ADR;TYPE=WORK:;;${esc(S.indirizzo_riga1)};Fondi;LT;04022;Italia`,
+  `GEO:${S.coordinate.lat};${S.coordinate.lon}`,
+  `URL:${DOM}/`,
+  `NOTE:${esc(TESTI.demo.avviso.it)}`,
+  'END:VCARD', '',
+].join('\r\n');
+writeFileSync(join(DEST, VCARD), vcard);
+
+// Un .ics per evento attivo e per lingua. La cartella si riscrive da capo:
+// un evento passato non deve restare scaricabile.
+const CAL = join(DEST, CARTELLA);
+rmSync(CAL, { recursive: true, force: true });
+mkdirSync(CAL, { recursive: true });
+const attivi = eventiAttivi();
+for (const e of attivi) for (const lang of ['it', 'en']) writeFileSync(join(CAL, nomeFile(e, lang)), ics(e, lang));
+
+console.log(`genera: ${n} pagine scritte in ${DEST}/, piu' assets/js/orari.js, ${VCARD} e ${attivi.length * 2} .ics`);

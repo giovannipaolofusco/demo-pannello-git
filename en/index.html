@@ -60,6 +60,7 @@
 <a class="salta-contenuto" href="#contenuto">Skip to content</a>
 
 <header class="testata">
+  <p class="avviso-demo">Demo website: Trattoria del Molo is not a real business. <span class="avviso-demo__pannello">The panel to edit menu and hours yourself is a separate service.</span></p>
   <div class="testata__interno">
     <a class="testata__marchio" href="/en/">Trattoria <em>del Molo</em></a>
     <button class="testata__attiva-menu" type="button" aria-expanded="false" aria-controls="menu-principale">Menu</button>
@@ -94,7 +95,7 @@
     <h2 class="sezione__titolo rivela" id="piatti-titolo">What people order most</h2>
     <ul class="piatti__lista gruppo">
       <li class="piatto rivela">
-        <picture><source srcset="/assets/img/test-gps.webp" type="image/webp"><img class="piatto__figura" src="/assets/img/test-gps.jpg" alt="Fritturina di paranza on the plate, with prawns, anchovies and squid" width="1125" height="2000" loading="lazy"></picture>
+        <picture><source srcset="/assets/img/trattoria-del-molo-fritturina-01.webp" type="image/webp"><img class="piatto__figura" src="/assets/img/trattoria-del-molo-fritturina-01.jpg" alt="Fritturina di paranza on the plate, with prawns, anchovies and squid" width="562" height="1000" loading="lazy"></picture>
         <h3 class="piatto__nome">Fritturina di paranza</h3>
         <p class="piatto__note">Small fish from the gulf, fried and nothing else.</p>
         <p class="piatto__allergeni">Fish, crustaceans, gluten</p>
@@ -118,6 +119,28 @@
     <p class="piatti__coda rivela"><a class="collegamento-testo" href="/en/menu.html">The full menu, twenty dishes with allergens →</a></p>
   </section>
 
+  <section class="recensioni" aria-labelledby="recensioni-titolo">
+    <h2 class="sezione__titolo rivela" id="recensioni-titolo">Sample reviews, written for this demo</h2>
+    <p class="recensioni__fonte rivela">They are not reviews from real customers.</p>
+    <ul class="recensioni__lista gruppo">
+      <li class="recensione rivela">
+        <p class="recensione__stelle" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+        <blockquote class="recensione__testo"><p>Light, dry fritturina, brought to the table straight from the pan. You can tell the fish came in that morning.</p></blockquote>
+        <p class="recensione__firma">Sample customer</p>
+      </li>
+      <li class="recensione rivela">
+        <p class="recensione__stelle" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+        <blockquote class="recensione__testo"><p>A small, quiet room and unhurried service. We called ahead and they kept a table outside for us.</p></blockquote>
+        <p class="recensione__firma">Sample customer</p>
+      </li>
+      <li class="recensione rivela">
+        <p class="recensione__stelle" role="img" aria-label="4 out of 5 stars">★★★★☆</p>
+        <blockquote class="recensione__testo"><p>Excellent spaghetti with clams. The raw fish had run out that evening, but they told us straight away.</p></blockquote>
+        <p class="recensione__firma">Sample customer</p>
+      </li>
+    </ul>
+  </section>
+
   <section class="racconto" aria-labelledby="racconto-titolo">
     <div class="racconto__testo gruppo">
       <h2 class="sezione__titolo rivela" id="racconto-titolo">A kitchen that invents nothing</h2>
@@ -128,11 +151,22 @@
     <img class="racconto__figura rivela" src="/assets/img/segnaposto-sala.svg" alt="" width="1200" height="800" loading="lazy">
   </section>
 
+  <section class="evento" aria-labelledby="evento-titolo">
+    <h2 class="sezione__titolo rivela" id="evento-titolo">Coming up</h2>
+    <div class="evento__scheda rivela">
+      <p class="evento__quando"><time datetime="2026-11-20T20:00">Friday, 20 November 2026, 20:00–23:00</time></p>
+      <h3 class="evento__nome">Pesce azzurro evening</h3>
+      <p class="evento__descrizione">A dinner of anchovies, mackerel and sardines from the morning boats. Booking required.</p>
+      <p class="evento__azioni"><a class="pulsante pulsante--vuoto" href="/calendario/serata-pesce-azzurro-en.ics" download>Add to calendar</a></p>
+    </div>
+  </section>
+
   <section class="pratico" aria-labelledby="pratico-titolo">
     <h2 class="sezione__titolo rivela" id="pratico-titolo">Hours and address</h2>
     <div class="pratico__griglia gruppo">
       <div class="rivela">
         <h3 class="pratico__voce">When we are open</h3>
+        <p class="stato-apertura" data-stato-apertura hidden></p>
         <div class="tabella-scorrevole"><table class="orari">
           <tbody>
             <tr><th scope="row">Monday – Friday</th><td>12:00–15:00 and 19:00–23:00</td></tr>
@@ -148,10 +182,11 @@
         <p class="pratico__azioni">
           <a class="pulsante pulsante--vuoto" href="/en/contacts.html">Get directions</a>
           <a class="pulsante pulsante--vuoto" href="tel:+390771000000">0771 000000</a>
+          <a class="pulsante pulsante--vuoto" href="/trattoria-del-molo.vcf" download>Save contact</a>
         </p>
       </div>
     </div>
-    <img class="pratico__mappa rivela" src="/assets/img/segnaposto-mappa-segnaposto.svg" alt="Placeholder: the location map goes here" width="1200" height="700" loading="lazy">
+    <p class="pratico__mappa-link rivela"><a class="collegamento-testo" href="/en/contacts.html#mappa">See the map on the Contact page →</a></p>
   </section>
 </main>
 
@@ -162,6 +197,10 @@
       <p>Via del Porto 1 — 04022 Fondi (LT)<br>
       <a href="tel:+390771000000">0771 000000</a><br>
       <a href="mailto:demo@example.invalid">demo@example.invalid</a></p>
+      <p class="piede__whatsapp"><a class="piede__whatsapp-link" href="https://wa.me/393334919401?text=Ciao%20Giovanni%2C%20ho%20visto%20la%20demo%20della%20Trattoria%20del%20Molo">Message on WhatsApp</a>
+      <small class="whatsapp__nota">In this demo the button messages Giovanni Paolo Fusco</small></p>
+      <p><button type="button" class="condividi" data-condividi data-copiato="Link copied" hidden>Share this page</button></p>
+      <p class="condividi__ripiego" hidden>Copy this address: <span class="condividi__indirizzo"></span></p>
     </div>
     <div class="piede__blocco">
       <p class="piede__etichetta">Opening hours</p>
@@ -182,5 +221,6 @@
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/libs/cookieconsent/cookieconsent.umd.js" defer></script>
 <script src="/assets/js/consenso.js" defer></script>
+<script type="module" src="/assets/js/avvio-stato-apertura.js"></script>
 </body>
 </html>

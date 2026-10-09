@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Trattoria del Molo//Eventi//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:serata-pesce-azzurro-2026@demo-pannello-git.netlify.app
+DTSTAMP:20261007T220000Z
+DTSTART:20261120T190000Z
+DTEND:20261120T220000Z
+SUMMARY:Pesce azzurro evening
+DESCRIPTION:A dinner of anchovies\, mackerel and sardines from the morning 
+ boats. Booking required. Sample event from a demo website: Trattoria del M
+ olo is not a real business.
+LOCATION:Trattoria del Molo\, Via del Porto 1\, 04022 Fondi (LT)\, Italy
+GEO:41.3588836;13.4219646
+URL:https://demo-pannello-git.netlify.app/en/
+END:VEVENT
+END:VCALENDAR

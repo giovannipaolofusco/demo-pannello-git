@@ -2,6 +2,17 @@ import { TESTI } from './dati.mjs';
 import { footer as orariFooter } from './orari.mjs';
 
 export const DOM = 'https://demo-pannello-git.netlify.app';
+export const VCARD = 'trattoria-del-molo.vcf';
+
+// Pulsante WhatsApp (CLAUDE.md §13bis.9): wa.me col messaggio precompilato.
+// La nota piccola accanto dichiara a chi scrive: nella demo e' il numero del
+// titolare, non quello finto della trattoria.
+export function whatsapp(lang, cls = 'pulsante pulsante--vuoto') {
+  const w = TESTI.whatsapp;
+  const href = `https://wa.me/${w.numero}?text=${encodeURIComponent(w.messaggio)}`;
+  return `<a class="${cls}" href="${href}">${w.etichetta[lang]}</a>
+      <small class="whatsapp__nota">${w.nota[lang]}</small>`;
+}
 const OG = `${DOM}/assets/img/og-trattoria-del-molo.jpg`;
 
 // slug IT -> slug EN. Le pagine legali tengono il nome fisso in ogni lingua
@@ -77,6 +88,7 @@ export function testata(lang, attiva) {
   return `<a class="salta-contenuto" href="#contenuto">${n.salta[lang]}</a>
 
 <header class="testata">
+  <p class="avviso-demo">${TESTI.demo.avviso[lang]} <span class="avviso-demo__pannello">${TESTI.demo.pannello[lang]}</span></p>
   <div class="testata__interno">
     <a class="testata__marchio" href="${lang === 'it' ? '/' : '/en/'}">Trattoria <em>del Molo</em></a>
     <button class="testata__attiva-menu" type="button" aria-expanded="false" aria-controls="menu-principale">Menu</button>
@@ -101,6 +113,9 @@ export function piede(lang) {
       <p>${via}<br>
       <a href="tel:${s.telefono}">${s.telefono_leggibile.it}</a><br>
       <a href="mailto:${s.email}">${s.email}</a></p>
+      <p class="piede__whatsapp">${whatsapp(lang, 'piede__whatsapp-link')}</p>
+      <p><button type="button" class="condividi" data-condividi data-copiato="${TESTI.servizio.condividi_copiato[lang]}" hidden>${TESTI.servizio.condividi[lang]}</button></p>
+      <p class="condividi__ripiego" hidden>${TESTI.servizio.condividi_ripiego[lang]} <span class="condividi__indirizzo"></span></p>
     </div>
     <div class="piede__blocco">
       <p class="piede__etichetta">${f.etichetta_orari[lang]}</p>
@@ -134,7 +149,40 @@ ${piede(lang)}
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/libs/cookieconsent/cookieconsent.umd.js" defer></script>
 <script src="/assets/js/consenso.js" defer></script>
-${mappa ? '<script src="/assets/libs/maplibre/maplibre-gl.js" defer></script>\n<script src="/assets/libs/pmtiles/pmtiles.js" defer></script>\n<script src="/assets/js/mappa.js" defer></script>\n' : ''}</body>
+${main.includes('data-stato-apertura') ? '<script type="module" src="/assets/js/avvio-stato-apertura.js"></script>\n' : ''}${mappa ? '<script src="/assets/libs/maplibre/maplibre-gl.js" defer></script>\n<script src="/assets/libs/pmtiles/pmtiles.js" defer></script>\n<script src="/assets/js/mappa.js" defer></script>\n' : ''}</body>
+</html>
+`;
+}
+
+// Pagina Link-in-Bio (MOD_pagina_link_bio.md): nessuna navigazione, nessuno
+// script, canonical su se stessa e nessun hreflang (esiste solo in italiano).
+export const LINK_BIO = 'link.html';
+export function paginaLink(main) {
+  const l = TESTI.link_bio, f = TESTI.footer;
+  const self = `${DOM}/${LINK_BIO}`;
+  const testa = head('it', 'index.html', l.title, l.description)
+    .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${self}">`)
+    .replace(/<link rel="alternate"[^>]*>\n/g, '')
+    .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${self}">`)
+    .replace(/<link rel="stylesheet" href="\/assets\/libs\/cookieconsent[^>]*>\n/, '');
+  return `<!DOCTYPE html>
+<html lang="it">
+<head>
+${testa}
+</head>
+<body class="link-bio">
+<a class="salta-contenuto" href="#contenuto">${TESTI.navigazione.salta.it}</a>
+<p class="avviso-demo">${TESTI.demo.avviso.it} <span class="avviso-demo__pannello">${TESTI.demo.pannello.it}</span></p>
+
+<main id="contenuto">
+${main}
+</main>
+
+<footer class="link-bio__piede">
+  <p><a href="/privacy.html">${l.privacy}</a></p>
+  <p class="credito">${f.credito_verbo.it} <a href="${f.credito_url}" rel="noopener">${f.credito_firma}</a></p>
+</footer>
+</body>
 </html>
 `;
 }

@@ -13,6 +13,7 @@ export const ORARI     = carica('orari');
 export const PIATTI    = carica('piatti');
 export const TESTI     = carica('testi');
 export const PRIVACY   = carica('privacy');
+export const EVENTI    = carica('eventi');
 
 // La lista degli allergeni è chiusa: un valore fuori elenco è un refuso che
 // finirebbe in pagina come categoria inventata, e in un menù gli allergeni

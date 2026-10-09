@@ -60,6 +60,7 @@
 <a class="salta-contenuto" href="#contenuto">Salta al contenuto</a>
 
 <header class="testata">
+  <p class="avviso-demo">Sito dimostrativo: la Trattoria del Molo non esiste. <span class="avviso-demo__pannello">Il pannello per modificare menu e orari da soli è un servizio a parte (450 euro).</span></p>
   <div class="testata__interno">
     <a class="testata__marchio" href="/">Trattoria <em>del Molo</em></a>
     <button class="testata__attiva-menu" type="button" aria-expanded="false" aria-controls="menu-principale">Menu</button>
@@ -94,7 +95,7 @@
     <h2 class="sezione__titolo rivela" id="piatti-titolo">Quello che ci chiedono di più</h2>
     <ul class="piatti__lista gruppo">
       <li class="piatto rivela">
-        <picture><source srcset="/assets/img/test-gps.webp" type="image/webp"><img class="piatto__figura" src="/assets/img/test-gps.jpg" alt="Fritturina di paranza servita nel piatto, con gamberi, alici e calamari" width="1125" height="2000" loading="lazy"></picture>
+        <picture><source srcset="/assets/img/trattoria-del-molo-fritturina-01.webp" type="image/webp"><img class="piatto__figura" src="/assets/img/trattoria-del-molo-fritturina-01.jpg" alt="Fritturina di paranza servita nel piatto, con gamberi, alici e calamari" width="562" height="1000" loading="lazy"></picture>
         <h3 class="piatto__nome">Fritturina di paranza</h3>
         <p class="piatto__note">Pesce piccolo del golfo, fritto e basta.</p>
         <p class="piatto__allergeni">Pesce, crostacei, glutine</p>
@@ -118,6 +119,28 @@
     <p class="piatti__coda rivela"><a class="collegamento-testo" href="/menu.html">Il menù completo, venti piatti con gli allergeni →</a></p>
   </section>
 
+  <section class="recensioni" aria-labelledby="recensioni-titolo">
+    <h2 class="sezione__titolo rivela" id="recensioni-titolo">Recensioni di esempio, scritte per questa demo</h2>
+    <p class="recensioni__fonte rivela">Non sono recensioni di clienti veri.</p>
+    <ul class="recensioni__lista gruppo">
+      <li class="recensione rivela">
+        <p class="recensione__stelle" role="img" aria-label="5 stelle su 5">★★★★★</p>
+        <blockquote class="recensione__testo"><p>Fritturina leggera e asciutta, arrivata in tavola appena uscita dalla padella. Si sente che il pesce è del giorno.</p></blockquote>
+        <p class="recensione__firma">Cliente di esempio</p>
+      </li>
+      <li class="recensione rivela">
+        <p class="recensione__stelle" role="img" aria-label="5 stelle su 5">★★★★★</p>
+        <blockquote class="recensione__testo"><p>Sala piccola e tranquilla, servizio senza fretta. Abbiamo chiamato prima e ci hanno tenuto un tavolo fuori.</p></blockquote>
+        <p class="recensione__firma">Cliente di esempio</p>
+      </li>
+      <li class="recensione rivela">
+        <p class="recensione__stelle" role="img" aria-label="4 stelle su 5">★★★★☆</p>
+        <blockquote class="recensione__testo"><p>Spaghetti alle vongole ottimi. Il crudo quella sera era finito, ma ce l’hanno detto subito.</p></blockquote>
+        <p class="recensione__firma">Cliente di esempio</p>
+      </li>
+    </ul>
+  </section>
+
   <section class="racconto" aria-labelledby="racconto-titolo">
     <div class="racconto__testo gruppo">
       <h2 class="sezione__titolo rivela" id="racconto-titolo">Una cucina che non inventa niente</h2>
@@ -128,11 +151,22 @@
     <img class="racconto__figura rivela" src="/assets/img/segnaposto-sala.svg" alt="" width="1200" height="800" loading="lazy">
   </section>
 
+  <section class="evento" aria-labelledby="evento-titolo">
+    <h2 class="sezione__titolo rivela" id="evento-titolo">Prossima serata</h2>
+    <div class="evento__scheda rivela">
+      <p class="evento__quando"><time datetime="2026-11-20T20:00">Venerdì 20 novembre 2026, 20:00–23:00</time></p>
+      <h3 class="evento__nome">Serata del pesce azzurro</h3>
+      <p class="evento__descrizione">Una cena di alici, sgombri e sarde della paranza del mattino. Su prenotazione.</p>
+      <p class="evento__azioni"><a class="pulsante pulsante--vuoto" href="/calendario/serata-pesce-azzurro.ics" download>Aggiungi al calendario</a></p>
+    </div>
+  </section>
+
   <section class="pratico" aria-labelledby="pratico-titolo">
     <h2 class="sezione__titolo rivela" id="pratico-titolo">Orari e indirizzo</h2>
     <div class="pratico__griglia gruppo">
       <div class="rivela">
         <h3 class="pratico__voce">Quando siamo aperti</h3>
+        <p class="stato-apertura" data-stato-apertura hidden></p>
         <div class="tabella-scorrevole"><table class="orari">
           <tbody>
             <tr><th scope="row">Lunedì – Venerdì</th><td>12:00–15:00 e 19:00–23:00</td></tr>
@@ -148,10 +182,11 @@
         <p class="pratico__azioni">
           <a class="pulsante pulsante--vuoto" href="/contatti.html">Come arrivare</a>
           <a class="pulsante pulsante--vuoto" href="tel:+390771000000">0771 000000</a>
+          <a class="pulsante pulsante--vuoto" href="/trattoria-del-molo.vcf" download>Salva il contatto</a>
         </p>
       </div>
     </div>
-    <img class="pratico__mappa rivela" src="/assets/img/segnaposto-mappa-segnaposto.svg" alt="Segnaposto: qui andrà la mappa della sede" width="1200" height="700" loading="lazy">
+    <p class="pratico__mappa-link rivela"><a class="collegamento-testo" href="/contatti.html#mappa">Guarda la mappa nella pagina Contatti →</a></p>
   </section>
 </main>
 
@@ -162,6 +197,10 @@
       <p>Via del Porto 1 — 04022 Fondi (LT)<br>
       <a href="tel:+390771000000">0771 000000</a><br>
       <a href="mailto:demo@example.invalid">demo@example.invalid</a></p>
+      <p class="piede__whatsapp"><a class="piede__whatsapp-link" href="https://wa.me/393334919401?text=Ciao%20Giovanni%2C%20ho%20visto%20la%20demo%20della%20Trattoria%20del%20Molo">Scrivi su WhatsApp</a>
+      <small class="whatsapp__nota">In questa demo il pulsante scrive a Giovanni Paolo Fusco</small></p>
+      <p><button type="button" class="condividi" data-condividi data-copiato="Link copiato" hidden>Condividi questa pagina</button></p>
+      <p class="condividi__ripiego" hidden>Copia questo indirizzo: <span class="condividi__indirizzo"></span></p>
     </div>
     <div class="piede__blocco">
       <p class="piede__etichetta">Orari</p>
@@ -182,5 +221,6 @@
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/libs/cookieconsent/cookieconsent.umd.js" defer></script>
 <script src="/assets/js/consenso.js" defer></script>
+<script type="module" src="/assets/js/avvio-stato-apertura.js"></script>
 </body>
 </html>

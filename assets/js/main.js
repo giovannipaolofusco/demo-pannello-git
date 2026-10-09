@@ -45,3 +45,33 @@ bottoniCopia.forEach((b) => {
     setTimeout(() => { b.textContent = originale; delete b.dataset.esito; }, 2500);
   });
 });
+
+// Condividi (CLAUDE.md §13bis.6): nessun widget di terzi. Il pulsante nasce
+// nascosto e compare solo con JavaScript. Catena: condivisione nativa del
+// sistema -> copia del link -> indirizzo mostrato in chiaro da copiare a mano.
+const condividi = document.querySelector('[data-condividi]');
+if (condividi) {
+  const ripiego = document.querySelector('.condividi__ripiego');
+  const mostraIndirizzo = () => {
+    if (!ripiego) return;
+    ripiego.querySelector('.condividi__indirizzo').textContent = location.href;
+    ripiego.hidden = false;
+  };
+  condividi.hidden = false;
+  condividi.addEventListener('click', async () => {
+    const dati = { title: document.title, url: location.href };
+    if (typeof navigator.share === 'function') {
+      try { await navigator.share(dati); return; }
+      catch (e) { if (e && e.name === 'AbortError') return; }
+    }
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('senza clipboard');
+      await navigator.clipboard.writeText(location.href);
+      const originale = condividi.textContent;
+      condividi.textContent = condividi.dataset.copiato || originale;
+      setTimeout(() => { condividi.textContent = originale; }, 2500);
+    } catch {
+      mostraIndirizzo();
+    }
+  });
+}
