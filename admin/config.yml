@@ -1,34 +1,20 @@
-# Use DecapBridge PKCE auth (required)
+# Backend GitHub nativo. L'editor si autentica con il proprio account GitHub;
+# lo scambio code -> token avviene su api.netlify.com/auth (servizio OAuth di
+# Netlify, gia' fornitore del sito). Nessun servizio terzo nella catena.
 backend:
-  name: git-gateway
+  name: github
   repo: giovannipaolofusco/demo-pannello-git
   branch: main
-  auth_type: pkce
-  base_url: https://auth.decapbridge.com
-  auth_endpoint: /sites/1519a2cf-c67e-4156-bc41-fecbfa945492/pkce
-  auth_token_endpoint: /sites/1519a2cf-c67e-4156-bc41-fecbfa945492/token
-  gateway_url: https://gateway.decapbridge.com
   commit_messages:
-    create: Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
-    update: Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
-    delete: Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
-    uploadMedia: Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge
-    deleteMedia: Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge
-    openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge
-
-auth:
-  email_claim: email
-  first_name_claim: first_name
-  last_name_claim: last_name
-  avatar_url_claim: avatar_url
+    create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'
+    update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'
+    delete: 'Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'
+    uploadMedia: 'Upload "{{path}}" - {{author-name}} <{{author-login}}>'
+    deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}>'
+    openAuthoring: 'Message {{message}} - {{author-name}} <{{author-login}}>'
 
 logo_url: /assets/favicon/icon.svg
 site_url: https://demo-pannello-git.netlify.app
-
-# ─────────────────────────────────────────────────────────────
-# Va IN CODA al backend generato da DecapBridge, nello stesso file.
-# Non sostituirlo: il backend resta quello.
-# ─────────────────────────────────────────────────────────────
 
 locale: it
 

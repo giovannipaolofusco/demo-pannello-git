@@ -1,0 +1,40 @@
+name: Coerenza del pannello
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  coerenza:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Il repo dichiarato nel pannello e' questo repository
+        run: |
+          set -euo pipefail
+          DICHIARATO=$(awk '/^backend:/{f=1} f && /^[[:space:]]+repo:/{gsub(/^[[:space:]]+repo:[[:space:]]*/,""); gsub(/["'"'"']/,""); print; exit}' admin/config.yml)
+          echo "dichiarato in admin/config.yml: $DICHIARATO"
+          echo "repository reale:               ${{ github.repository }}"
+          if [ "$DICHIARATO" != "${{ github.repository }}" ]; then
+            echo "::error file=admin/config.yml::backend.repo non corrisponde al repository. Alla consegna va aggiornato."
+            exit 1
+          fi
+
+      - name: Nessun riferimento residuo a DecapBridge
+        run: |
+          set -euo pipefail
+          if grep -rni decapbridge --exclude-dir=.git --exclude=coerenza-pannello.yml . ; then
+            echo "::error::Trovati riferimenti residui a DecapBridge."
+            exit 1
+          fi
+          echo "nessun riferimento a DecapBridge"
+
+      - name: "La CSP di /admin/ conserva blob: e api.github.com"
+        run: |
+          set -euo pipefail
+          RIGA=$(awk '/^\/admin\/\*/{f=1} f && /Content-Security-Policy/{print; exit}' _headers)
+          echo "$RIGA"
+          echo "$RIGA" | grep -q "blob:"
+          echo "$RIGA" | grep -q "https://api.github.com"
+          echo "CSP del pannello integra"
