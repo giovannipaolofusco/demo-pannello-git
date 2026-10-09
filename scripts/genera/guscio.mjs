@@ -91,7 +91,16 @@ export function testata(lang, attiva) {
   <p class="avviso-demo">${TESTI.demo.avviso[lang]} <span class="avviso-demo__pannello">${TESTI.demo.pannello[lang]}</span></p>
   <div class="testata__interno">
     <a class="testata__marchio" href="${lang === 'it' ? '/' : '/en/'}">Trattoria <em>del Molo</em></a>
-    <button class="testata__attiva-menu" type="button" aria-expanded="false" aria-controls="menu-principale">Menu</button>
+    <button class="testata__attiva-menu" type="button" aria-expanded="false" aria-controls="menu-principale">
+      <svg class="testata__icona-menu" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+        <path class="testata__onda testata__onda--alta" d="M3 6Q7.5 3 12 6T21 6"/>
+        <path class="testata__onda testata__onda--media" d="M3 12Q7.5 9 12 12T21 12"/>
+        <path class="testata__onda testata__onda--bassa" d="M3 18Q7.5 15 12 18T21 18"/>
+        <path class="testata__croce testata__croce--a" d="M4 12H20"/>
+        <path class="testata__croce testata__croce--b" d="M4 12H20"/>
+      </svg>
+      <span class="testata__etichetta-menu">Menu</span>
+    </button>
     <nav class="navigazione" id="menu-principale" aria-label="${n.etichetta[lang]}">
       <ul class="navigazione__lista">
 ${voci}

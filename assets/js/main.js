@@ -1,10 +1,15 @@
 const attiva = document.querySelector('.testata__attiva-menu');
 const menu = document.querySelector('.navigazione');
 if (attiva && menu) {
-  attiva.addEventListener('click', () => {
-    const aperto = menu.dataset.aperto === 'si';
-    menu.dataset.aperto = aperto ? 'no' : 'si';
-    attiva.setAttribute('aria-expanded', String(!aperto));
+  const imposta = (aperto) => {
+    menu.dataset.aperto = aperto ? 'si' : 'no';
+    attiva.setAttribute('aria-expanded', String(aperto));
+  };
+  attiva.addEventListener('click', () => imposta(menu.dataset.aperto !== 'si'));
+  document.addEventListener('keydown', (evento) => {
+    if (evento.key !== 'Escape' || menu.dataset.aperto !== 'si') return;
+    imposta(false);
+    attiva.focus();
   });
 }
 
