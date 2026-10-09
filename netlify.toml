@@ -4,18 +4,3 @@
 
 [build.environment]
   NODE_VERSION = "22"
-
-[[context.deploy-preview.headers]]
-  for = "/*"
-  [context.deploy-preview.headers.values]
-    X-Robots-Tag = "noindex"
-
-[[context.branch-deploy.headers]]
-  for = "/*"
-  [context.branch-deploy.headers.values]
-    X-Robots-Tag = "noindex"
-
-[[context.production.headers]]
-  for = "/*"
-  [context.production.headers.values]
-    X-Robots-Tag = "noindex, nofollow"
