@@ -3,8 +3,8 @@ const contenitore = document.getElementById('mappa');
 if (contenitore && typeof maplibregl !== 'undefined' && typeof pmtiles !== 'undefined') {
   // Coordinate dal campo "Coordinate esatte della sede" di AGENTS.md.
   // MapLibre vuole [lon, lat]: invertirle manda la sede in mare.
-  const LON = 13.4219646;
-  const LAT = 41.3588836;
+  const LON = 13.43040;
+  const LAT = 41.37995;
 
   const protocollo = new pmtiles.Protocol();
   maplibregl.addProtocol('pmtiles', protocollo.tile);
