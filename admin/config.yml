@@ -117,7 +117,7 @@ collections:
           - {name: fuso, label: "Fuso orario", widget: hidden, default: "Europe/Rome"}
 
           - name: settimana
-            label: "Settimana"
+            label: "Fasce di giorni"
             widget: list
             label_singular: "Fascia di giorni"
             summary: "{{fields.etichetta.it}}"
