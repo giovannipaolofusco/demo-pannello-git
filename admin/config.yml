@@ -165,8 +165,11 @@ collections:
             widget: object
             required: false
             fields:
-              - {name: dal, label: "Dal", widget: date, format: "YYYY-MM-DD"}
-              - {name: al, label: "Al", widget: date, format: "YYYY-MM-DD"}
+              # Il widget date non esiste piu' in Decap 3: datetime senza ora.
+              # Si salva in YYYY-MM-DD, il formato che legge il generatore; a
+              # video il giorno segue la lingua del browser.
+              - {name: dal, label: "Dal", widget: datetime, time_format: false, date_format: "DD/MM/YYYY", format: "YYYY-MM-DD"}
+              - {name: al, label: "Al", widget: datetime, time_format: false, date_format: "DD/MM/YYYY", format: "YYYY-MM-DD"}
               - name: nota
                 label: "Testo dell'avviso"
                 widget: object
