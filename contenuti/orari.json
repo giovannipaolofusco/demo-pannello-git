@@ -1,5 +1,5 @@
 {
-  "_nota": "Sorgente UNICA degli orari. Da qui il generatore produce tre uscite che oggi sono scritte a mano in undici file: la tabella di contatti.html e index.html, la riga compatta del footer, e openingHoursSpecification nel JSON-LD. Cambiare un orario qui li aggiorna tutti e tre insieme.",
+  "_nota": "Gli orari scritti qui si aggiornano da soli su tutto il sito: tabella in home e nei contatti, riga in fondo a ogni pagina, avviso «aperto adesso» e dati letti dai motori di ricerca.",
   "fuso": "Europe/Rome",
   "settimana": [
     {

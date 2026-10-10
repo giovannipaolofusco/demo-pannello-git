@@ -1,3 +1,8 @@
+// contenuti/orari.json e' la sorgente unica degli orari: da qui escono la
+// tabella di contatti.html e index.html, la riga compatta del footer,
+// openingHoursSpecification nel JSON-LD e assets/js/orari.js per il badge.
+// Il campo _nota di quel file e' la «Nota interna» del pannello: la legge
+// solo il cliente, il generatore la ignora.
 import { ORARI } from './dati.mjs';
 
 const turni = (f, sep) => f.turni.map((t) => `${t.apre}–${t.chiude}`).join(sep);
