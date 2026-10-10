@@ -1,6 +1,6 @@
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { TESTI, verificaAllergeni, verificaImmagini } from './genera/dati.mjs';
+import { TESTI, verificaAllergeni, verificaImmagini, leggiMisure } from './genera/dati.mjs';
 import { pagina, url, DOM, VCARD, paginaLink, LINK_BIO } from './genera/guscio.mjs';
 import { jsonLd, moduloJs } from './genera/orari.mjs';
 import * as corpi from './genera/corpi.mjs';
@@ -9,6 +9,7 @@ import { eventiAttivi, ics, nomeFile, CARTELLA } from './genera/eventi.mjs';
 const DEST = process.argv[2] || '.';
 verificaAllergeni();
 verificaImmagini();
+await leggiMisure();
 
 const OG = `${DOM}/assets/img/og-trattoria-del-molo.jpg`;
 const S = TESTI.sito;

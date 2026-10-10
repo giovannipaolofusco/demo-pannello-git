@@ -250,5 +250,3 @@ collections:
                   - {name: it, label: "Italiano", widget: string}
                   - {name: en, label: "English", widget: string}
 
-              - {name: larghezza, label: "Larghezza in pixel", widget: number, value_type: int}
-              - {name: altezza, label: "Altezza in pixel", widget: number, value_type: int}
