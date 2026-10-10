@@ -126,8 +126,14 @@ collections:
                 label: "Giorni"
                 widget: select
                 multiple: true
-                hint: "In inglese: è il formato che leggono i motori di ricerca."
-                options: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+                options:
+                  - {label: "Lunedì", value: Monday}
+                  - {label: "Martedì", value: Tuesday}
+                  - {label: "Mercoledì", value: Wednesday}
+                  - {label: "Giovedì", value: Thursday}
+                  - {label: "Venerdì", value: Friday}
+                  - {label: "Sabato", value: Saturday}
+                  - {label: "Domenica", value: Sunday}
 
               - name: etichetta
                 label: "Come appare nella tabella"
