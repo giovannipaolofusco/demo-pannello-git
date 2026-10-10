@@ -117,7 +117,7 @@ collections:
           - {name: fuso, label: "Fuso orario", widget: hidden, default: "Europe/Rome"}
 
           - name: settimana
-            label: "Settimana"
+            label: "Fasce di giorni"
             widget: list
             label_singular: "Fascia di giorni"
             summary: "{{fields.etichetta.it}}"
@@ -126,8 +126,14 @@ collections:
                 label: "Giorni"
                 widget: select
                 multiple: true
-                hint: "In inglese: è il formato che leggono i motori di ricerca."
-                options: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+                options:
+                  - {label: "Lunedì", value: Monday}
+                  - {label: "Martedì", value: Tuesday}
+                  - {label: "Mercoledì", value: Wednesday}
+                  - {label: "Giovedì", value: Thursday}
+                  - {label: "Venerdì", value: Friday}
+                  - {label: "Sabato", value: Saturday}
+                  - {label: "Domenica", value: Sunday}
 
               - name: etichetta
                 label: "Come appare nella tabella"
@@ -165,8 +171,11 @@ collections:
             widget: object
             required: false
             fields:
-              - {name: dal, label: "Dal", widget: date, format: "YYYY-MM-DD"}
-              - {name: al, label: "Al", widget: date, format: "YYYY-MM-DD"}
+              # Il widget date non esiste piu' in Decap 3: datetime senza ora.
+              # Si salva in YYYY-MM-DD, il formato che legge il generatore; a
+              # video il giorno segue la lingua del browser.
+              - {name: dal, label: "Dal", widget: datetime, time_format: false, date_format: "DD/MM/YYYY", format: "YYYY-MM-DD"}
+              - {name: al, label: "Al", widget: datetime, time_format: false, date_format: "DD/MM/YYYY", format: "YYYY-MM-DD"}
               - name: nota
                 label: "Testo dell'avviso"
                 widget: object
@@ -247,5 +256,3 @@ collections:
                   - {name: it, label: "Italiano", widget: string}
                   - {name: en, label: "English", widget: string}
 
-              - {name: larghezza, label: "Larghezza in pixel", widget: number, value_type: int}
-              - {name: altezza, label: "Altezza in pixel", widget: number, value_type: int}

@@ -13,7 +13,9 @@ for (const dir of CARTELLE) {
   for (const f of file.filter((x) => /\.(jpe?g|png)$/i.test(x))) {
     const src = join(dir, f);
     const out = join(dir, basename(f, extname(f)) + '.webp');
-    await sharp(src).webp({ quality: 72 }).toFile(out);
+    // rotate() senza argomenti applica l'orientamento EXIF: il .webp esce
+    // senza metadati, e senza rotazione sarebbe di lato rispetto al .jpg.
+    await sharp(src).rotate().webp({ quality: 72 }).toFile(out);
     totale++;
   }
 }

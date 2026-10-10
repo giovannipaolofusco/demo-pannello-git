@@ -1,4 +1,5 @@
 import { readFileSync, existsSync } from 'node:fs';
+import sharp from 'sharp';
 
 const carica = (n) => JSON.parse(readFileSync(new URL(`../../contenuti/${n}.json`, import.meta.url), 'utf8'));
 
@@ -90,24 +91,35 @@ export function verificaImmagini() {
   }
 }
 
-// Le dimensioni reali dell'immagine, lette dal file invece che dai dati.
-// Servono agli attributi width/height, che prevengono lo spostamento di
-// layout: se vengono dai dati, chi carica una foto di proporzioni diverse
-// e non aggiorna i due numeri reintroduce il difetto senza accorgersene.
-// Il file e' la sola fonte che non puo' mentire.
-export function misureJpeg(percorso) {
-  const b = readFileSync(percorso);
-  if (b.readUInt16BE(0) !== 0xffd8) return null; // non e' un JPEG
-  let o = 2;
-  while (o < b.length) {
-    if (b[o] !== 0xff) { o++; continue; }
-    const marker = b[o + 1];
-    // SOF0..SOF15, esclusi DHT (c4), JPGA (c8) e DAC (cc): sono i soli
-    // segmenti che portano le dimensioni del fotogramma.
-    if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
-      return { altezza: b.readUInt16BE(o + 5), larghezza: b.readUInt16BE(o + 7) };
+// Le dimensioni reali dell'immagine, lette dal file e mai dai dati: servono
+// agli attributi width/height, che prevengono lo spostamento di layout, e
+// chi carica una foto nuova non deve ricordarsi di riscriverle. sharp le
+// legge con l'orientamento EXIF gia' applicato (autoOrient): una foto da
+// telefono girata via EXIF ha larghezza e altezza scambiate rispetto ai
+// pixel salvati, ed e' cosi' che il browser la mostra.
+const MISURE = new Map();
+
+export async function leggiMisure() {
+  const slug = [...PIATTI.piatti.map((p) => nomeBase(p.immagine)), ...IMMAGINI_FISSE];
+  const errori = [];
+  for (const s of new Set(slug)) {
+    try {
+      const m = await sharp(`assets/img/${s}.jpg`).metadata();
+      const { width, height } = m.autoOrient || m;
+      if (!width || !height) throw new Error('misure assenti');
+      MISURE.set(s, { larghezza: width, altezza: height });
+    } catch (e) {
+      errori.push(`assets/img/${s}.jpg: non leggibile come immagine (${e.message})`);
     }
-    o += 2 + b.readUInt16BE(o + 2);
   }
-  return null;
+  if (errori.length) {
+    console.error('\nImmagini illeggibili:\n' + errori.map((e) => '  - ' + e).join('\n') + '\n');
+    process.exit(1);
+  }
+}
+
+export function misure(slug) {
+  const m = MISURE.get(slug);
+  if (!m) throw new Error(`misure di ${slug} non lette: manca leggiMisure() prima di generare`);
+  return m;
 }

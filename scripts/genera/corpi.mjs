@@ -1,4 +1,4 @@
-import { TESTI, MENU, PIATTI, PRIVACY, prezzo, allergeniTesto, nomeBase, misureJpeg, listaAllergeni } from './dati.mjs';
+import { TESTI, MENU, PIATTI, PRIVACY, prezzo, allergeniTesto, nomeBase, misure, listaAllergeni } from './dati.mjs';
 import { tabella, notaStagionale } from './orari.mjs';
 import { VCARD, whatsapp } from './guscio.mjs';
 import { eventiAttivi, nomeFile, quando, CARTELLA } from './eventi.mjs';
@@ -8,19 +8,16 @@ const sepTurni = (lang) => (lang === 'it' ? ' e ' : ' and ');
 const tel = (lang) => `<a href="tel:${S.telefono}">${S.telefono_leggibile[lang]}</a>`;
 const indirizzo2 = (lang) => (lang === 'it' ? S.indirizzo_riga2 : S.indirizzo_en_riga2);
 
-function figura(slug, alt, w, h, cls, priorita = false) {
-  // Le misure vengono dal file, non da chi compila: sono gli attributi che
-  // riservano lo spazio prima che l'immagine arrivi, e un valore stantio
-  // rimette in pagina lo spostamento di layout.
-  const reali = misureJpeg(`assets/img/${slug}.jpg`);
-  if (reali) { w = reali.larghezza; h = reali.altezza; }
+function figura(slug, alt, cls, priorita = false) {
+  // Le misure vengono dal file (dati.mjs, leggiMisure), non da chi compila.
+  const { larghezza: w, altezza: h } = misure(slug);
   const attr = priorita ? ' fetchpriority="high"' : ' loading="lazy"';
   return `<picture><source srcset="/assets/img/${slug}.webp" type="image/webp"><img class="${cls}" src="/assets/img/${slug}.jpg" alt="${alt}" width="${w}" height="${h}"${attr}></picture>`;
 }
 
 function schedePiatti(lang) {
   return PIATTI.piatti.map((p) => `      <li class="piatto rivela">
-        ${figura(nomeBase(p.immagine), p.alt[lang], p.larghezza, p.altezza, 'piatto__figura')}
+        ${figura(nomeBase(p.immagine), p.alt[lang], 'piatto__figura')}
         <h3 class="piatto__nome">${p.nome[lang]}</h3>
         <p class="piatto__note">${p.note[lang]}</p>
         <p class="piatto__allergeni">${allergeniTesto(listaAllergeni(p.allergeni), lang)}</p>
@@ -75,7 +72,7 @@ export function home(lang) {
         <a class="pulsante pulsante--vuoto" href="${h}/menu.html">${t.cta_menu[lang]}</a>
       </p>
     </div>
-    ${figura('trattoria-del-molo-apertura', t.apertura_alt[lang], 900, 1600, 'apertura__figura', true)}
+    ${figura('trattoria-del-molo-apertura', t.apertura_alt[lang], 'apertura__figura', true)}
   </section>
 
   <section class="piatti" aria-labelledby="piatti-titolo">
