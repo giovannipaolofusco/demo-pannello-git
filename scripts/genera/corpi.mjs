@@ -246,20 +246,20 @@ export function linkBio() {
 // Ordine: dal fondo verso chi sta davanti, cosi' chi copre arriva dopo chi e' coperto.
 export const FOTO_DOLCI = { l: 1179, a: 975 };
 export const DOLCI = [
-  { file: 'bianco', x: 690, y: 130, l: 208, a: 235, nome: 'Cocco', nota: 'Ganache bianca al cocco, guscio alla mandorla.' },
-  { file: 'verde', x: 196, y: 149, l: 254, a: 250, nome: 'Tè matcha', nota: 'Guscio al tè verde, crema al cioccolato bianco.' },
-  { file: 'lilla', x: 981, y: 296, l: 252, a: 222, nome: 'Violetta', nota: 'Crema leggera ai fiori di violetta.' },
-  { file: 'salmone', x: 470, y: 244, l: 251, a: 249, nome: 'Fragola', nota: 'Confettura di fragole di Fondi.' },
-  { file: 'arancio', x: 116, y: 343, l: 220, a: 185, nome: 'Albicocca', nota: 'Cuore di albicocca e mandorla.' },
-  { file: 'giallo', x: -13, y: 362, l: 301, a: 306, nome: 'Limone', nota: 'Crema al limone della piana.' },
-  { file: 'pistacchio', x: 921, y: 460, l: 283, a: 256, nome: 'Pistacchio', nota: 'Crema di pistacchio, granella nel guscio.' },
-  { file: 'puntinato', x: 438, y: 422, l: 284, a: 289, nome: 'Vaniglia', nota: 'Bacca di vaniglia Bourbon, guscio puntinato.' },
-  { file: 'caramello', x: 111, y: 636, l: 307, a: 256, nome: 'Caramello salato', nota: 'Caramello al burro salato.' },
-  { file: 'lampone', x: 760, y: 622, l: 319, a: 319, nome: 'Lampone', nota: 'Ganache al lampone, un filo acida.' },
+  { file: 'bianco', colore: '#f1d9c4', x: 690, y: 130, l: 208, a: 235, nome: 'Cocco', nota: 'Ganache bianca al cocco, guscio alla mandorla.' },
+  { file: 'verde', colore: '#a5cb88', x: 196, y: 149, l: 254, a: 250, nome: 'Tè matcha', nota: 'Guscio al tè verde, crema al cioccolato bianco.' },
+  { file: 'lilla', colore: '#c9a6d6', x: 981, y: 296, l: 252, a: 222, nome: 'Violetta', nota: 'Crema leggera ai fiori di violetta.' },
+  { file: 'salmone', colore: '#fa908d', x: 470, y: 244, l: 251, a: 249, nome: 'Fragola', nota: 'Confettura di fragole di Fondi.' },
+  { file: 'arancio', colore: '#efa660', x: 116, y: 343, l: 220, a: 185, nome: 'Albicocca', nota: 'Cuore di albicocca e mandorla.' },
+  { file: 'giallo', colore: '#f6d873', x: -13, y: 362, l: 301, a: 306, nome: 'Limone', nota: 'Crema al limone della piana.' },
+  { file: 'pistacchio', colore: '#c8d98a', x: 921, y: 460, l: 283, a: 256, nome: 'Pistacchio', nota: 'Crema di pistacchio, granella nel guscio.' },
+  { file: 'puntinato', colore: '#f2c07e', x: 438, y: 422, l: 284, a: 289, nome: 'Vaniglia', nota: 'Bacca di vaniglia Bourbon, guscio puntinato.' },
+  { file: 'caramello', colore: '#e5895d', x: 111, y: 636, l: 307, a: 256, nome: 'Caramello salato', nota: 'Caramello al burro salato.' },
+  { file: 'lampone', colore: '#f8728d', x: 760, y: 622, l: 319, a: 319, nome: 'Lampone', nota: 'Ganache al lampone, un filo acida.' },
 ];
 
 export function dolci() {
-  const voci = DOLCI.map((d, i) => `      <li class="dolce rivela" data-x="${d.x}" data-y="${d.y}" data-l="${d.l}" data-a="${d.a}">
+  const voci = DOLCI.map((d, i) => `      <li class="dolce rivela" data-x="${d.x}" data-y="${d.y}" data-l="${d.l}" data-a="${d.a}" data-colore="${d.colore}">
         <img class="dolce__foto" src="/assets/img/dolci/macaron-${d.file}.webp" alt="Macaron ${d.nome.toLowerCase()}" width="${d.l}" height="${d.a}" loading="${i < 4 ? 'eager' : 'lazy'}">
         <h2 class="dolce__nome">${d.nome}</h2>
         <p class="dolce__nota">${d.nota}</p>

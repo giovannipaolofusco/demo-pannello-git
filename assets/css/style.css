@@ -296,3 +296,22 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .dolci__didascalia--on{opacity:1;transform:none}
 .dolci__didascalia strong{display:block;font-family:var(--titolo);font-size:1.3rem;font-weight:600;line-height:1.15}
 .dolci__didascalia span{font-size:.92rem;color:var(--testo-tenue)}
+
+/* Dolci, seconda versione: arrivo ad arco con rimbalzo, alone nel colore del gusto, didascalie che non si sovrappongono */
+@property --alone{syntax:"<color>";inherits:true;initial-value:#F6F1E7}
+@property --alone-forza{syntax:"<number>";inherits:true;initial-value:0}
+@property --alone-x{syntax:"<percentage>";inherits:true;initial-value:50%}
+@property --alone-y{syntax:"<percentage>";inherits:true;initial-value:45%}
+.dolci--scena .dolce{transform-origin:50% 92%}
+.dolci--scena .dolci__palco{--alone:var(--crema);--alone-forza:0;transition:--alone .6s ease,--alone-forza .6s ease,--alone-x .8s ease,--alone-y .8s ease}
+/* alone su un livello a parte, sfumato verso i bordi del palco così non si vede dove finisce */
+.dolci--scena .dolci__palco::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle 55vmin at var(--alone-x) var(--alone-y),color-mix(in srgb,var(--alone) calc(var(--alone-forza)*55%),transparent),transparent);
+  -webkit-mask-image:radial-gradient(closest-side,#000 60%,transparent);mask-image:radial-gradient(closest-side,#000 60%,transparent)}
+/* chi esce sparisce subito, chi entra aspetta e scorre dal suo lato */
+.dolci__didascalia{transition:opacity .15s,transform .15s}
+.dolci__didascalia--on{transition:opacity .35s .15s,transform .35s .15s}
+.dolci__lato--sx .dolci__didascalia{--da:-2rem}
+.dolci__lato--dx .dolci__didascalia{--da:2rem}
+/* lilla e limone escono dalla foto di qualche pixel: un margine laterale li tiene interi */
+.dolci--scena .dolci__lista{width:min(90%,calc((100dvh - 14rem)*1.21))}
