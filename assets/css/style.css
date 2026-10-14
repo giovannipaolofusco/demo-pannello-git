@@ -277,41 +277,30 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .dolce__nota{margin:0;font-size:.92rem;color:var(--testo-tenue)}
 .dolci__avvertenza{margin:2rem 0 0;font-size:.85rem;color:var(--testo-tenue)}
 
-.dolci--scena .dolci__palco{position:sticky;display:grid;align-content:center;gap:1rem;overflow:clip}
-.dolci--scena .dolci__lista{display:block;position:relative;width:min(100%,calc((100dvh - 14rem)*1.21));margin:0 auto}
-.dolci--scena .dolce{position:absolute;opacity:0;will-change:transform,opacity}
-/* ombra di appoggio: compare man mano che il macaron si posa */
-.dolci--scena .dolce::after{content:"";position:absolute;left:8%;right:8%;bottom:-3%;height:16%;z-index:-1;
-  border-radius:50%;background:radial-gradient(closest-side,rgba(43,39,36,.28),rgba(43,39,36,0));
-  opacity:var(--posato,0)}
-.dolci--scena .dolce__foto{max-width:none;margin:0;filter:none}
-.dolci--scena .dolce__nome,.dolci--scena .dolce__nota{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.dolci__didascalie{display:grid;grid-template-columns:1fr 1fr;gap:1rem;min-height:4.4rem;
-  width:min(100%,calc((100dvh - 14rem)*1.21));margin:0 auto}
-.dolci__lato{position:relative}
-.dolci__lato--dx{text-align:right}
-.dolci__didascalia{position:absolute;inset:0;margin:0;opacity:0;transform:translateX(var(--da,0));transition:opacity .35s,transform .35s}
-.dolci__lato--sx .dolci__didascalia{--da:-1rem}
-.dolci__lato--dx .dolci__didascalia{--da:1rem}
-.dolci__didascalia--on{opacity:1;transform:none}
-.dolci__didascalia strong{display:block;font-family:var(--titolo);font-size:1.3rem;font-weight:600;line-height:1.15}
-.dolci__didascalia span{font-size:.92rem;color:var(--testo-tenue)}
-
-/* Dolci, seconda versione: arrivo ad arco con rimbalzo, alone nel colore del gusto, didascalie che non si sovrappongono */
-@property --alone{syntax:"<color>";inherits:true;initial-value:#F6F1E7}
-@property --alone-forza{syntax:"<number>";inherits:true;initial-value:0}
-@property --alone-x{syntax:"<percentage>";inherits:true;initial-value:50%}
-@property --alone-y{syntax:"<percentage>";inherits:true;initial-value:45%}
-.dolci--scena .dolce{transform-origin:50% 92%}
-.dolci--scena .dolci__palco{--alone:var(--crema);--alone-forza:0;transition:--alone .6s ease,--alone-forza .6s ease,--alone-x .8s ease,--alone-y .8s ease}
-/* alone su un livello a parte, sfumato verso i bordi del palco così non si vede dove finisce */
-.dolci--scena .dolci__palco::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(circle 55vmin at var(--alone-x) var(--alone-y),color-mix(in srgb,var(--alone) calc(var(--alone-forza)*55%),transparent),transparent);
-  -webkit-mask-image:radial-gradient(closest-side,#000 60%,transparent);mask-image:radial-gradient(closest-side,#000 60%,transparent)}
-/* chi esce sparisce subito, chi entra aspetta e scorre dal suo lato */
-.dolci__didascalia{transition:opacity .15s,transform .15s}
-.dolci__didascalia--on{transition:opacity .35s .15s,transform .35s .15s}
-.dolci__lato--sx .dolci__didascalia{--da:-2rem}
-.dolci__lato--dx .dolci__didascalia{--da:2rem}
-/* lilla e limone escono dalla foto di qualche pixel: un margine laterale li tiene interi */
-.dolci--scena .dolci__lista{width:min(90%,calc((100dvh - 14rem)*1.21))}
+/* Dolci, vetrina: un gusto per schermata, poi la scatola (solo con JS e senza "riduci movimento") */
+@property --gusto{syntax:"<color>";inherits:true;initial-value:#F6F1E7}
+.dolci--scena{max-width:none;padding-inline:0}
+.dolci--scena>.dolci__intro{max-width:var(--max);margin:0 auto 2rem;padding-inline:var(--sp)}
+.dolci--scena>.dolci__intro>*{max-width:40rem}
+.dolci--scena>.dolci__avvertenza{max-width:var(--max);margin:2rem auto 0;padding-inline:var(--sp)}
+.dolci--scena .dolci__lista{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.dolci__palco{position:sticky;overflow:clip;--gusto:var(--crema);
+  background:color-mix(in srgb,var(--gusto) 45%,var(--crema));transition:--gusto .7s ease}
+.dolci__gigante{position:absolute;left:50%;top:42%;margin:0;pointer-events:none;white-space:nowrap;
+  font-family:var(--titolo);font-style:italic;font-weight:600;font-size:clamp(5rem,26vw,17rem);line-height:1;
+  color:color-mix(in srgb,var(--gusto) 70%,var(--inchiostro));opacity:0;will-change:transform,opacity}
+.dolci__pezzo{position:absolute;left:50%;top:42%;width:min(62vw,40vh);opacity:0;will-change:transform,opacity;
+  filter:drop-shadow(0 1.4rem 1.2rem color-mix(in srgb,color-mix(in srgb,var(--gusto) 50%,var(--inchiostro)) 40%,transparent))}
+.dolci__pezzo>img{width:100%;will-change:transform}
+.dolci__didascalia{position:absolute;left:0;right:0;bottom:max(1.6rem,env(safe-area-inset-bottom));max-width:36rem;
+  margin:0 auto;padding:0 var(--sp);text-align:center;color:var(--inchiostro);transition:opacity .25s}
+.dolci__didascalia--via{opacity:0}
+.dolci__contatore{margin:0 0 .35rem;font-size:.9rem;font-weight:600;letter-spacing:.24em;font-variant-numeric:tabular-nums}
+.dolci__nome{margin:0 0 .3rem;font-family:var(--titolo);font-weight:600;font-size:clamp(1.8rem,7vw,2.8rem);line-height:1.1}
+.dolci__nota{margin:0;font-size:1rem}
+.dolci__scatola{position:absolute;left:50%;top:50%;width:min(calc(100% - 2 * var(--sp)),34rem);margin:0;text-align:center;opacity:0}
+.dolci__cassa{padding:1rem .8rem;background:#fff;border:6px solid color-mix(in srgb,var(--ottone) 28%,#fff);border-radius:10px;
+  box-shadow:0 1.6rem 3rem rgba(43,39,36,.16),0 .3rem .8rem rgba(43,39,36,.08)}
+.dolci__griglia{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem .5rem}
+.dolci__griglia li{display:grid;justify-items:center;align-content:end;gap:.3rem;font-size:.85rem;line-height:1.2;color:var(--inchiostro)}
+.dolci__griglia img{width:min(100%,6.5rem)}

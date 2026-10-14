@@ -78,7 +78,7 @@ n++;
 // Pagina dolci (prova dello scroll con i macaron): solo italiano e fuori dal
 // menu, quindi niente hreflang. Canonical su se stessa come le altre.
 const d = pagina('it', 'dolci.html', 'I nostri dolci — Trattoria del Molo',
-                 'Prova di scroll: i macaron della foto arrivano uno alla volta.', corpi.dolci());
+                 'Prova di scroll: un macaron per schermata, poi la scatola.', corpi.dolci());
 writeFileSync(join(DEST, 'dolci.html'),
   d.replace(/<link rel="alternate"[^>]*>\n/g, '')
    .replace('<script src="/assets/js/main.js" defer></script>', '<script src="/assets/js/main.js" defer></script>\n<script src="/assets/js/dolci.js" defer></script>'));

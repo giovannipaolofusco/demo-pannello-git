@@ -241,30 +241,28 @@ export function linkBio() {
 
 // Pagina dolci (prova scroll, solo italiano, fuori dal menu): i macaron sono
 // ritagli della foto originale; le parti coperte o tagliate dal bordo sono
-// completate con l'IA. Testi e gusti sono di esempio. x/y/l/a sono la
-// posizione del ritaglio nella foto (1179x975): servono a ricomporla a fine scroll.
-// Ordine: dal fondo verso chi sta davanti, cosi' chi copre arriva dopo chi e' coperto.
-export const FOTO_DOLCI = { l: 1179, a: 975 };
+// completate con l'IA. Testi e gusti sono di esempio. l/a sono le misure native
+// del ritaglio: l fa da tetto alla larghezza (oltre si sfoca), a va nell'height
+// dell'img. colore tinge la schermata del gusto.
 export const DOLCI = [
-  { file: 'bianco', colore: '#f1d9c4', x: 690, y: 130, l: 208, a: 235, nome: 'Cocco', nota: 'Ganache bianca al cocco, guscio alla mandorla.' },
-  { file: 'verde', colore: '#a5cb88', x: 196, y: 149, l: 254, a: 250, nome: 'Tè matcha', nota: 'Guscio al tè verde, crema al cioccolato bianco.' },
-  { file: 'lilla', colore: '#c9a6d6', x: 981, y: 296, l: 252, a: 222, nome: 'Violetta', nota: 'Crema leggera ai fiori di violetta.' },
-  { file: 'salmone', colore: '#fa908d', x: 470, y: 244, l: 251, a: 249, nome: 'Fragola', nota: 'Confettura di fragole di Fondi.' },
-  { file: 'arancio', colore: '#efa660', x: 116, y: 343, l: 220, a: 185, nome: 'Albicocca', nota: 'Cuore di albicocca e mandorla.' },
-  { file: 'giallo', colore: '#f6d873', x: -13, y: 362, l: 301, a: 306, nome: 'Limone', nota: 'Crema al limone della piana.' },
-  { file: 'pistacchio', colore: '#c8d98a', x: 921, y: 460, l: 283, a: 256, nome: 'Pistacchio', nota: 'Crema di pistacchio, granella nel guscio.' },
-  { file: 'puntinato', colore: '#f2c07e', x: 438, y: 422, l: 284, a: 289, nome: 'Vaniglia', nota: 'Bacca di vaniglia Bourbon, guscio puntinato.' },
-  { file: 'caramello', colore: '#e5895d', x: 111, y: 636, l: 307, a: 256, nome: 'Caramello salato', nota: 'Caramello al burro salato.' },
-  { file: 'lampone', colore: '#f8728d', x: 760, y: 622, l: 319, a: 319, nome: 'Lampone', nota: 'Ganache al lampone, un filo acida.' },
+  { file: 'bianco', colore: '#f1d9c4', l: 208, a: 235, nome: 'Cocco', nota: 'Ganache bianca al cocco, guscio alla mandorla.' },
+  { file: 'lilla', colore: '#c9a6d6', l: 252, a: 222, nome: 'Violetta', nota: 'Crema leggera ai fiori di violetta.' },
+  { file: 'salmone', colore: '#fa908d', l: 251, a: 249, nome: 'Fragola', nota: 'Confettura di fragole di Fondi.' },
+  { file: 'arancio', colore: '#efa660', l: 220, a: 185, nome: 'Albicocca', nota: 'Cuore di albicocca e mandorla.' },
+  { file: 'giallo', colore: '#f6d873', l: 301, a: 306, nome: 'Limone', nota: 'Crema al limone della piana.' },
+  { file: 'pistacchio', colore: '#c8d98a', l: 283, a: 256, nome: 'Pistacchio', nota: 'Crema di pistacchio, granella nel guscio.' },
+  { file: 'puntinato', colore: '#f2c07e', l: 284, a: 289, nome: 'Vaniglia', nota: 'Bacca di vaniglia Bourbon, guscio puntinato.' },
+  { file: 'caramello', colore: '#e5895d', l: 307, a: 256, nome: 'Caramello salato', nota: 'Caramello al burro salato.' },
+  { file: 'lampone', colore: '#f8728d', l: 319, a: 319, nome: 'Lampone', nota: 'Ganache al lampone, un filo acida.' },
 ];
 
 export function dolci() {
-  const voci = DOLCI.map((d, i) => `      <li class="dolce rivela" data-x="${d.x}" data-y="${d.y}" data-l="${d.l}" data-a="${d.a}" data-colore="${d.colore}">
+  const voci = DOLCI.map((d, i) => `      <li class="dolce rivela" data-l="${d.l}" data-colore="${d.colore}">
         <img class="dolce__foto" src="/assets/img/dolci/macaron-${d.file}.webp" alt="Macaron ${d.nome.toLowerCase()}" width="${d.l}" height="${d.a}" loading="${i < 4 ? 'eager' : 'lazy'}">
         <h2 class="dolce__nome">${d.nome}</h2>
         <p class="dolce__nota">${d.nota}</p>
       </li>`).join('\n');
-  return `  <section class="dolci" aria-labelledby="dolci-titolo" data-dolci data-foto-l="${FOTO_DOLCI.l}" data-foto-a="${FOTO_DOLCI.a}">
+  return `  <section class="dolci" aria-labelledby="dolci-titolo" data-dolci>
     <div class="dolci__intro">
       <p class="occhiello">Pagina di prova</p>
       <h1 class="sezione__titolo" id="dolci-titolo">I nostri dolci</h1>
