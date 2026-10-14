@@ -243,22 +243,22 @@ export function linkBio() {
 // ritagli della foto originale; le parti coperte o tagliate dal bordo sono
 // completate con l'IA. Testi e gusti sono di esempio. l/a sono le misure native
 // del ritaglio: l fa da tetto alla larghezza (oltre si sfoca), a va nell'height
-// dell'img. colore tinge la schermata del gusto.
+// dell'img. colore tinge la schermata del gusto. top mette il badge «Il più richiesto».
 export const DOLCI = [
-  { file: 'bianco', colore: '#f1d9c4', l: 208, a: 235, nome: 'Cocco', nota: 'Ganache bianca al cocco, guscio alla mandorla.' },
-  { file: 'lilla', colore: '#c9a6d6', l: 252, a: 222, nome: 'Violetta', nota: 'Crema leggera ai fiori di violetta.' },
-  { file: 'salmone', colore: '#fa908d', l: 251, a: 249, nome: 'Fragola', nota: 'Confettura di fragole di Fondi.' },
-  { file: 'arancio', colore: '#efa660', l: 220, a: 185, nome: 'Albicocca', nota: 'Cuore di albicocca e mandorla.' },
-  { file: 'giallo', colore: '#f6d873', l: 301, a: 306, nome: 'Limone', nota: 'Crema al limone della piana.' },
-  { file: 'pistacchio', colore: '#c8d98a', l: 283, a: 256, nome: 'Pistacchio', nota: 'Crema di pistacchio, granella nel guscio.' },
+  { file: 'bianco', colore: '#f1d9c4', l: 208, a: 235, nome: 'Cocco', nota: 'Guscio croccante, cuore morbido di ganache al cocco.' },
+  { file: 'lilla', colore: '#c9a6d6', l: 252, a: 222, nome: 'Violetta', nota: 'Crema leggera ai fiori di violetta, profumo delicato.' },
+  { file: 'salmone', colore: '#fa908d', l: 251, a: 249, nome: 'Fragola', nota: 'Confettura di fragole di Fondi, dolce e succosa.' },
+  { file: 'arancio', colore: '#efa660', l: 220, a: 185, nome: 'Albicocca', nota: 'Cuore di albicocca e mandorla, tra dolce e aspro.' },
+  { file: 'giallo', colore: '#f6d873', l: 301, a: 306, nome: 'Limone', nota: 'Crema al limone della piana, fresca e vivace.' },
+  { file: 'pistacchio', colore: '#c8d98a', l: 283, a: 256, top: true, nome: 'Pistacchio', nota: 'Crema di pistacchio vellutata, granella nel guscio.' },
   { file: 'puntinato', colore: '#f2c07e', l: 284, a: 289, nome: 'Vaniglia', nota: 'Bacca di vaniglia Bourbon, guscio puntinato.' },
-  { file: 'caramello', colore: '#e5895d', l: 307, a: 256, nome: 'Caramello salato', nota: 'Caramello al burro salato.' },
-  { file: 'lampone', colore: '#f8728d', l: 319, a: 319, nome: 'Lampone', nota: 'Ganache al lampone, un filo acida.' },
+  { file: 'caramello', colore: '#e5895d', l: 307, a: 256, nome: 'Caramello salato', nota: 'Caramello al burro salato, si scioglie in bocca.' },
+  { file: 'lampone', colore: '#f8728d', l: 319, a: 319, top: true, nome: 'Lampone', nota: 'Ganache al lampone, un filo acida.' },
 ];
 
 export function dolci() {
   const voci = DOLCI.map((d, i) => `      <li class="dolce rivela" data-l="${d.l}" data-colore="${d.colore}">
-        <img class="dolce__foto" src="/assets/img/dolci/macaron-${d.file}.webp" alt="Macaron ${d.nome.toLowerCase()}" width="${d.l}" height="${d.a}" loading="${i < 4 ? 'eager' : 'lazy'}">
+${d.top ? '        <p class="dolce__badge">Il più richiesto</p>\n' : ''}        <img class="dolce__foto" src="/assets/img/dolci/macaron-${d.file}.webp" alt="Macaron ${d.nome.toLowerCase()}" width="${d.l}" height="${d.a}" loading="${i < 4 ? 'eager' : 'lazy'}">
         <h2 class="dolce__nome">${d.nome}</h2>
         <p class="dolce__nota">${d.nota}</p>
       </li>`).join('\n');
@@ -271,6 +271,13 @@ export function dolci() {
     <ul class="dolci__lista gruppo">
 ${voci}
     </ul>
+    <div class="dolci__ordine">
+      <h2 class="dolci__ordine-titolo">Scatola da ${DOLCI.length} gusti</h2>
+      <p class="dolci__prezzo">€ 18</p>
+      <p class="dolci__allergeni">Allergeni (esempio): frutta a guscio, uova, latte</p>
+      <p class="dolci__ordine-azione">${whatsapp('it', 'pulsante pulsante--vuoto', { messaggio: 'Ciao Giovanni, ho visto la demo dei dolci', etichetta: 'Ordina la tua scatola su WhatsApp' })}
+      <small class="whatsapp__nota">Gusti, testi e prezzo sono d'esempio.</small></p>
+    </div>
     <p class="dolci__avvertenza">Gusti e descrizioni sono testi di esempio. Le parti dei macaron coperte nella foto sono completate con l'IA.</p>
   </section>`;
 }

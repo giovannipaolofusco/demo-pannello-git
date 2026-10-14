@@ -22,6 +22,7 @@ if (sezione && !fermo) {
     delete li.dataset.fuori;
     const img = li.querySelector('.dolce__foto');
     return {
+      top: !!li.querySelector('.dolce__badge'),
       src: img.getAttribute('src'), w: img.getAttribute('width'), h: img.getAttribute('height'),
       l: Number(li.dataset.l), colore: li.dataset.colore,
       nome: li.querySelector('.dolce__nome').textContent, nota: li.querySelector('.dolce__nota').textContent,
@@ -53,7 +54,12 @@ if (sezione && !fermo) {
   });
   const didascalia = crea('div', 'dolci__didascalia');
   const contatore = crea('p', 'dolci__contatore'), nome = crea('p', 'dolci__nome'), nota = crea('p', 'dolci__nota');
-  didascalia.append(contatore, nome, nota);
+  // avanzamento: un puntino per gusto, pieno quello corrente (il contatore dice già lo stesso)
+  const puntini = crea('div', 'dolci__puntini');
+  puntini.setAttribute('aria-hidden', 'true');
+  const punti = gusti.map(() => puntini.appendChild(crea('span')));
+  const badge = crea('p', 'dolci__badge', 'Il più richiesto');
+  didascalia.append(puntini, contatore, badge, nome, nota);
   const scatola = crea('div', 'dolci__scatola');
   const cassa = crea('div', 'dolci__cassa'), griglia = crea('ul', 'dolci__griglia');
   const celle = gusti.map((g) => {
@@ -124,6 +130,9 @@ if (sezione && !fermo) {
       contatore.textContent = `${due(i + 1)} / ${due(n)}`;
       nome.textContent = gusti[i].nome;
       nota.textContent = gusti[i].nota;
+      // visibility e non display: la didascalia tiene la stessa altezza su ogni gusto
+      badge.classList.toggle('dolci__badge--via', !gusti[i].top);
+      punti.forEach((pt, j) => pt.classList.toggle('dolci__puntino--on', j === i));
       if (didascalia.animate) {
         didascalia.animate([{ opacity: 0, transform: 'translateY(.8rem)' }, { opacity: 1, transform: 'none' }], { duration: 350, easing: 'ease-out' });
       }
