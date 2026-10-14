@@ -265,3 +265,34 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .link-bio__indirizzo{margin:1.6rem 0 0;font-size:.92rem;color:var(--testo-tenue)}
 .link-bio__piede{text-align:center;font-size:.85rem;padding:1rem var(--sp) max(1.4rem,env(safe-area-inset-bottom));color:var(--testo-tenue)}
 .link-bio__piede p{margin:0 0 .4rem}
+
+/* Dolci (prova scroll): lista di schede senza JS o con "riduci movimento", palco con lo scroll */
+.dolci{max-width:var(--max);margin:0 auto;padding:2.75rem var(--sp)}
+.dolci__intro{max-width:40rem;margin:0 0 2rem}
+.dolci__intro p:last-child{color:var(--testo-tenue);margin:0}
+.dolci__lista{list-style:none;margin:0;padding:0;display:grid;gap:1.6rem 1rem;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.dolce__foto{width:100%;max-width:220px;margin:0 auto .6rem;filter:drop-shadow(0 10px 8px rgba(43,39,36,.18))}
+.dolce__nome{font-size:1.15rem;margin:0 0 .2rem}
+.dolce__nota{margin:0;font-size:.92rem;color:var(--testo-tenue)}
+.dolci__avvertenza{margin:2rem 0 0;font-size:.85rem;color:var(--testo-tenue)}
+
+.dolci--scena .dolci__palco{position:sticky;display:grid;align-content:center;gap:1rem}
+.dolci--scena .dolci__lista{display:block;position:relative;width:min(100%,calc((100dvh - 14rem)*1.21));margin:0 auto}
+.dolci--scena .dolce{position:absolute;opacity:0;will-change:transform,opacity}
+/* ombra di appoggio: compare man mano che il macaron si posa */
+.dolci--scena .dolce::after{content:"";position:absolute;left:8%;right:8%;bottom:-3%;height:16%;z-index:-1;
+  border-radius:50%;background:radial-gradient(closest-side,rgba(43,39,36,.28),rgba(43,39,36,0));
+  opacity:var(--posato,0)}
+.dolci--scena .dolce__foto{max-width:none;margin:0;filter:none}
+.dolci--scena .dolce__nome,.dolci--scena .dolce__nota{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.dolci__didascalie{display:grid;grid-template-columns:1fr 1fr;gap:1rem;min-height:4.4rem;
+  width:min(100%,calc((100dvh - 14rem)*1.21));margin:0 auto}
+.dolci__lato{position:relative}
+.dolci__lato--dx{text-align:right}
+.dolci__didascalia{position:absolute;inset:0;margin:0;opacity:0;transform:translateX(var(--da,0));transition:opacity .35s,transform .35s}
+.dolci__lato--sx .dolci__didascalia{--da:-1rem}
+.dolci__lato--dx .dolci__didascalia{--da:1rem}
+.dolci__didascalia--on{opacity:1;transform:none}
+.dolci__didascalia strong{display:block;font-family:var(--titolo);font-size:1.3rem;font-weight:600;line-height:1.15}
+.dolci__didascalia span{font-size:.92rem;color:var(--testo-tenue)}

@@ -238,3 +238,41 @@ export function linkBio() {
     <p class="link-bio__indirizzo">${S.indirizzo_riga1}, ${S.indirizzo_riga2}</p>
   </section>`;
 }
+
+// Pagina dolci (prova scroll, solo italiano, fuori dal menu): i macaron sono
+// ritagli della foto originale; le parti coperte o tagliate dal bordo sono
+// completate con l'IA. Testi e gusti sono di esempio. x/y/l/a sono la
+// posizione del ritaglio nella foto (1179x975): servono a ricomporla a fine scroll.
+// Ordine: dal fondo verso chi sta davanti, cosi' chi copre arriva dopo chi e' coperto.
+export const FOTO_DOLCI = { l: 1179, a: 975 };
+export const DOLCI = [
+  { file: 'bianco', x: 690, y: 130, l: 208, a: 235, nome: 'Cocco', nota: 'Ganache bianca al cocco, guscio alla mandorla.' },
+  { file: 'verde', x: 196, y: 149, l: 254, a: 250, nome: 'Tè matcha', nota: 'Guscio al tè verde, crema al cioccolato bianco.' },
+  { file: 'lilla', x: 981, y: 296, l: 252, a: 222, nome: 'Violetta', nota: 'Crema leggera ai fiori di violetta.' },
+  { file: 'salmone', x: 470, y: 244, l: 251, a: 249, nome: 'Fragola', nota: 'Confettura di fragole di Fondi.' },
+  { file: 'arancio', x: 116, y: 343, l: 220, a: 185, nome: 'Albicocca', nota: 'Cuore di albicocca e mandorla.' },
+  { file: 'giallo', x: -13, y: 362, l: 301, a: 306, nome: 'Limone', nota: 'Crema al limone della piana.' },
+  { file: 'pistacchio', x: 921, y: 460, l: 283, a: 256, nome: 'Pistacchio', nota: 'Crema di pistacchio, granella nel guscio.' },
+  { file: 'puntinato', x: 438, y: 422, l: 284, a: 289, nome: 'Vaniglia', nota: 'Bacca di vaniglia Bourbon, guscio puntinato.' },
+  { file: 'caramello', x: 111, y: 636, l: 307, a: 256, nome: 'Caramello salato', nota: 'Caramello al burro salato.' },
+  { file: 'lampone', x: 760, y: 622, l: 319, a: 319, nome: 'Lampone', nota: 'Ganache al lampone, un filo acida.' },
+];
+
+export function dolci() {
+  const voci = DOLCI.map((d, i) => `      <li class="dolce rivela" data-x="${d.x}" data-y="${d.y}" data-l="${d.l}" data-a="${d.a}">
+        <img class="dolce__foto" src="/assets/img/dolci/macaron-${d.file}.webp" alt="Macaron ${d.nome.toLowerCase()}" width="${d.l}" height="${d.a}" loading="${i < 4 ? 'eager' : 'lazy'}">
+        <h2 class="dolce__nome">${d.nome}</h2>
+        <p class="dolce__nota">${d.nota}</p>
+      </li>`).join('\n');
+  return `  <section class="dolci" aria-labelledby="dolci-titolo" data-dolci data-foto-l="${FOTO_DOLCI.l}" data-foto-a="${FOTO_DOLCI.a}">
+    <div class="dolci__intro">
+      <p class="occhiello">Pagina di prova</p>
+      <h1 class="sezione__titolo" id="dolci-titolo">I nostri dolci</h1>
+      <p>Scorri: i macaron arrivano uno alla volta, ognuno con il suo gusto. Sono quelli della foto, non disegnati.</p>
+    </div>
+    <ul class="dolci__lista gruppo">
+${voci}
+    </ul>
+    <p class="dolci__avvertenza">Gusti e descrizioni sono testi di esempio. Le parti dei macaron coperte nella foto sono completate con l'IA.</p>
+  </section>`;
+}

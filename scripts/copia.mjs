@@ -6,7 +6,7 @@ await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
 
 // pagine HTML (minificate dopo, dentro dist/)
-const pagine = ['index.html', 'menu.html', 'chi-siamo.html', 'contatti.html', 'privacy.html', '404.html', 'link.html'];
+const pagine = ['index.html', 'menu.html', 'chi-siamo.html', 'contatti.html', 'privacy.html', '404.html', 'link.html', 'dolci.html'];
 const paginePagineEn = ['en/index.html', 'en/menu.html', 'en/about-us.html', 'en/contacts.html', 'en/privacy.html'];
 
 // tutto ciò che NON si minifica ma va pubblicato
