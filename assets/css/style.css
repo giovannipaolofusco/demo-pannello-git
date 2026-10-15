@@ -272,7 +272,8 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .dolci__intro p:last-child{color:var(--testo-tenue);margin:0}
 .dolci__lista{list-style:none;margin:0;padding:0;display:grid;gap:1.6rem 1rem;
   grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-.dolce__foto{width:100%;max-width:220px;margin:0 auto .6rem;filter:drop-shadow(0 10px 8px rgba(43,39,36,.18))}
+/* riquadro quadrato uguale per tutte le foto, la foto intera dentro: i nomi restano in riga */
+.dolce__foto{width:100%;max-width:220px;aspect-ratio:1;object-fit:contain;margin:0 auto .6rem;filter:drop-shadow(0 10px 8px rgba(43,39,36,.18))}
 .dolce__nome{font-size:1.15rem;margin:0 0 .2rem}
 .dolce__nota{margin:0;font-size:.92rem;color:var(--testo-tenue)}
 .dolci__avvertenza{margin:2rem 0 0;font-size:.85rem;color:var(--testo-tenue)}
