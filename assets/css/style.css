@@ -10,6 +10,7 @@
   --corpo:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
   --sp:1.15rem; --raggio:4px; --max:71rem;
   color-scheme:only light;
+  --rivela-spostamento:22px;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -137,7 +138,8 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 
 /* Rivelazione coordinata: gruppi in sequenza con ritardo progressivo */
 .rivela{opacity:1;transform:none;transition:opacity .6s ease-out,transform .6s ease-out}
-.rivela[data-fuori="si"]{opacity:0;transform:translateY(22px)}
+.rivela[data-fuori="si"]{opacity:0;transform:translateY(var(--rivela-spostamento))}
+.rivela[data-fuori="sopra"]{opacity:0;transform:translateY(calc(-1 * var(--rivela-spostamento)))}
 .gruppo .rivela:nth-child(2){transition-delay:.09s}
 .gruppo .rivela:nth-child(3){transition-delay:.18s}
 .gruppo .rivela:nth-child(4){transition-delay:.27s}
@@ -167,7 +169,7 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .rivela[data-fuori="si"]{opacity:1;transform:none}
+  .rivela[data-fuori]{opacity:1;transform:none}
   .apertura__onda{display:none}
 }
 @media print{
