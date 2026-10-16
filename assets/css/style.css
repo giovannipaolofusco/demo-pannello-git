@@ -278,6 +278,8 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .dolce__foto{width:100%;max-width:220px;aspect-ratio:1;object-fit:contain;margin:0 auto .6rem;filter:drop-shadow(0 10px 8px rgba(43,39,36,.18))}
 .dolce__nome{font-size:1.15rem;margin:0 0 .2rem}
 .dolce__nota{margin:0;font-size:.92rem;color:var(--testo-tenue)}
+.dolce__origine,.dolci__origine{margin:.35rem 0 0;font-size:.8rem;font-style:italic;color:var(--testo-tenue)}
+.dolci__origine{color:inherit}
 .dolci__avvertenza{margin:2rem 0 0;font-size:.85rem;color:var(--testo-tenue)}
 
 /* Dolci, vetrina: un gusto per schermata, poi la scatola (solo con JS e senza "riduci movimento") */

@@ -59,7 +59,9 @@ if (sezione && !fermo) {
   puntini.setAttribute('aria-hidden', 'true');
   const punti = gusti.map(() => puntini.appendChild(crea('span')));
   const badge = crea('p', 'dolci__badge', 'Il più richiesto');
-  didascalia.append(puntini, contatore, badge, nome, nota);
+  // la didascalia sull'origine è nel markup di ogni gusto: si riusa lo stesso testo
+  const testoOrigine = sezione.querySelector('.dolce__origine')?.textContent || '';
+  didascalia.append(puntini, contatore, badge, nome, nota, crea('p', 'dolci__origine', testoOrigine));
   const scatola = crea('div', 'dolci__scatola');
   const cassa = crea('div', 'dolci__cassa'), griglia = crea('ul', 'dolci__griglia');
   const celle = gusti.map((g) => {
@@ -69,7 +71,7 @@ if (sezione && !fermo) {
     return li;
   });
   cassa.append(griglia);
-  scatola.append(crea('p', 'occhiello', 'La scatola'), cassa);
+  scatola.append(crea('p', 'occhiello', 'La scatola'), cassa, crea('p', 'dolci__origine', sezione.dataset.origineScatola || testoOrigine));
   palco.append(...giganti, ...pezzi, didascalia, scatola);
   scena.append(palco);
   lista.after(scena);

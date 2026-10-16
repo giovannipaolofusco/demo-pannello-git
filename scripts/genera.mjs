@@ -84,6 +84,12 @@ writeFileSync(join(DEST, 'dolci.html'),
    .replace('<script src="/assets/js/main.js" defer></script>', '<script src="/assets/js/main.js" defer></script>\n<script src="/assets/js/dolci.js" defer></script>'));
 n++;
 
+// Note legali: solo italiano come la pagina dolci, l'unica con asset del registro.
+const nl = pagina('it', 'note-legali.html', 'Note legali — Trattoria del Molo',
+                  'Da dove vengono le immagini dei dolci.', corpi.noteLegali(), briciole('it', 'Note legali', 'note-legali.html'));
+writeFileSync(join(DEST, 'note-legali.html'), nl.replace(/<link rel="alternate"[^>]*>\n/g, ''));
+n++;
+
 // La pagina Link-in-Bio: fuori da PAGINE perche' non ha navigazione ne'
 // versione inglese, e nessuna pagina del sito la collega.
 writeFileSync(join(DEST, LINK_BIO), paginaLink(corpi.linkBio()));

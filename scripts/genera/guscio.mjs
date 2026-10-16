@@ -134,7 +134,7 @@ export function piede(lang) {
     <div class="piede__blocco piede__blocco--legale">
       <p>${f.legale.join('<br>\n      ')}</p>
       <p><a href="${ph}">${f.privacy[lang]}</a></p>
-      <p><button type="button" class="footer__preferenze" data-cc="show-preferencesModal">${f.preferenze[lang]}</button></p>
+${lang === 'it' ? '      <p><a href="/note-legali.html">Note legali</a></p>\n' : ''}      <p><button type="button" class="footer__preferenze" data-cc="show-preferencesModal">${f.preferenze[lang]}</button></p>
       <p class="credito">${f.credito_verbo[lang]} <a href="${f.credito_url}" rel="noopener">${f.credito_firma}</a></p>
     </div>
   </div>
