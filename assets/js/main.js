@@ -13,6 +13,15 @@ if (attiva && menu) {
   });
 }
 
+// Il margine di entrata, in pixel e col segno. Negativo: il riquadro di
+// entrata si stringe, e l'elemento compare quando ne tocca il bordo invece
+// che al raggiungimento di una frazione della propria area (01 §7).
+const RIVELA_MARGINE_ENTRATA_PX = -10;
+// Il margine di uscita, in pixel. Supera RIVELA_MARGINE_ENTRATA_PX piu'
+// --rivela-spostamento: sotto quella somma l'elemento appena uscito rientra
+// da solo e lampeggia (01 §7).
+const RIVELA_MARGINE_USCITA_PX = 200;
+
 const preferisceFermo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const daRivelare = document.querySelectorAll('.rivela');
 
@@ -21,11 +30,13 @@ if (!preferisceFermo && 'IntersectionObserver' in window && daRivelare.length) {
 
   const entrata = new IntersectionObserver((voci) => {
     voci.forEach((voce) => { if (voce.isIntersecting) voce.target.dataset.fuori = 'no'; });
-  }, { threshold: 0.12 });
+  }, { threshold: 0, rootMargin: `${RIVELA_MARGINE_ENTRATA_PX}px 0px` });
 
   const uscita = new IntersectionObserver((voci) => {
-    voci.forEach((voce) => { if (!voce.isIntersecting) voce.target.dataset.fuori = 'si'; });
-  }, { threshold: 0 });
+    // Uscito dal bordo alto: rientrera' dall'alto, e scende (01 §7).
+    voci.forEach((voce) => { if (!voce.isIntersecting)
+      voce.target.dataset.fuori = voce.boundingClientRect.bottom < 0 ? 'sopra' : 'si'; });
+  }, { threshold: 0, rootMargin: `${RIVELA_MARGINE_USCITA_PX}px 0px` });
 
   daRivelare.forEach((el) => { entrata.observe(el); uscita.observe(el); });
 }
