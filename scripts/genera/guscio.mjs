@@ -6,11 +6,12 @@ export const VCARD = 'trattoria-del-molo.vcf';
 
 // Pulsante WhatsApp (CLAUDE.md §13bis.9): wa.me col messaggio precompilato.
 // La nota piccola accanto dichiara a chi scrive: nella demo e' il numero del
-// titolare, non quello finto della trattoria.
-export function whatsapp(lang, cls = 'pulsante pulsante--vuoto') {
+// titolare, non quello finto della trattoria. messaggio ed etichetta si possono
+// cambiare per una pagina (i dolci), numero e nota restano quelli di testi.json.
+export function whatsapp(lang, cls = 'pulsante pulsante--vuoto', { messaggio, etichetta } = {}) {
   const w = TESTI.whatsapp;
-  const href = `https://wa.me/${w.numero}?text=${encodeURIComponent(w.messaggio)}`;
-  return `<a class="${cls}" href="${href}">${w.etichetta[lang]}</a>
+  const href = `https://wa.me/${w.numero}?text=${encodeURIComponent(messaggio || w.messaggio)}`;
+  return `<a class="${cls}" href="${href}">${etichetta || w.etichetta[lang]}</a>
       <small class="whatsapp__nota">${w.nota[lang]}</small>`;
 }
 const OG = `${DOM}/assets/img/og-trattoria-del-molo.jpg`;
@@ -133,7 +134,7 @@ export function piede(lang) {
     <div class="piede__blocco piede__blocco--legale">
       <p>${f.legale.join('<br>\n      ')}</p>
       <p><a href="${ph}">${f.privacy[lang]}</a></p>
-      <p><button type="button" class="footer__preferenze" data-cc="show-preferencesModal">${f.preferenze[lang]}</button></p>
+${lang === 'it' ? '      <p><a href="/note-legali.html">Note legali</a></p>\n' : ''}      <p><button type="button" class="footer__preferenze" data-cc="show-preferencesModal">${f.preferenze[lang]}</button></p>
       <p class="credito">${f.credito_verbo[lang]} <a href="${f.credito_url}" rel="noopener">${f.credito_firma}</a></p>
     </div>
   </div>

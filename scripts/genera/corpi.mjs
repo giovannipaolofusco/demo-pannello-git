@@ -238,3 +238,66 @@ export function linkBio() {
     <p class="link-bio__indirizzo">${S.indirizzo_riga1}, ${S.indirizzo_riga2}</p>
   </section>`;
 }
+
+// Pagina dolci (prova scroll, solo italiano, fuori dal menu): i macaron sono
+// ritagli della foto originale, ricomposti dove erano coperti o tagliati dal
+// bordo. Testi e gusti sono di esempio. l/a sono le misure native
+// del ritaglio: l fa da tetto alla larghezza (oltre si sfoca), a va nell'height
+// dell'img. colore tinge la schermata del gusto. top mette il badge «Il più richiesto».
+export const DOLCI = [
+  { file: 'bianco', colore: '#f1d9c4', l: 208, a: 235, nome: 'Cocco', nota: 'Guscio croccante, cuore morbido di ganache al cocco.' },
+  { file: 'lilla', colore: '#c9a6d6', l: 252, a: 222, nome: 'Violetta', nota: 'Crema leggera ai fiori di violetta, profumo delicato.' },
+  { file: 'salmone', colore: '#fa908d', l: 251, a: 249, nome: 'Fragola', nota: 'Confettura di fragole di Fondi, dolce e succosa.' },
+  { file: 'arancio', colore: '#efa660', l: 220, a: 185, nome: 'Albicocca', nota: 'Cuore di albicocca e mandorla, tra dolce e aspro.' },
+  { file: 'giallo', colore: '#f6d873', l: 301, a: 306, nome: 'Limone', nota: 'Crema al limone della piana, fresca e vivace.' },
+  { file: 'pistacchio', colore: '#c8d98a', l: 283, a: 256, top: true, nome: 'Pistacchio', nota: 'Crema di pistacchio vellutata, granella nel guscio.' },
+  { file: 'puntinato', colore: '#f2c07e', l: 284, a: 289, nome: 'Vaniglia', nota: 'Bacca di vaniglia Bourbon, guscio puntinato.' },
+  { file: 'caramello', colore: '#e5895d', l: 307, a: 256, nome: 'Caramello salato', nota: 'Caramello al burro salato, si scioglie in bocca.' },
+  { file: 'lampone', colore: '#f8728d', l: 319, a: 319, top: true, nome: 'Lampone', nota: 'Ganache al lampone, un filo acida.' },
+];
+
+// Didascalia sull'origine delle immagini: accanto a ogni macaron, in ogni vista.
+export const DIDASCALIA_ORIGINE = 'Immagine completata con IA da una foto reale';
+export const DIDASCALIA_ORIGINE_SCATOLA = 'Immagini completate con IA da una foto reale';
+
+export function dolci() {
+  const voci = DOLCI.map((d, i) => `      <li class="dolce rivela" data-l="${d.l}" data-colore="${d.colore}">
+${d.top ? '        <p class="dolce__badge">Il più richiesto</p>\n' : ''}        <img class="dolce__foto" src="/assets/img/dolci/macaron-${d.file}.webp" alt="Macaron ${d.nome.toLowerCase()}" width="${d.l}" height="${d.a}" loading="${i < 4 ? 'eager' : 'lazy'}">
+        <h2 class="dolce__nome">${d.nome}</h2>
+        <p class="dolce__nota">${d.nota}</p>
+        <p class="dolce__origine">${DIDASCALIA_ORIGINE}</p>
+      </li>`).join('\n');
+  return `  <section class="dolci" aria-labelledby="dolci-titolo" data-dolci data-origine-scatola="${DIDASCALIA_ORIGINE_SCATOLA}">
+    <div class="dolci__intro">
+      <p class="occhiello">Pagina di prova</p>
+      <h1 class="sezione__titolo" id="dolci-titolo">I nostri dolci</h1>
+      <p>Scorri: i macaron arrivano uno alla volta, ognuno con il suo gusto. Sono quelli della foto, completati dove erano coperti.</p>
+    </div>
+    <ul class="dolci__lista gruppo">
+${voci}
+    </ul>
+    <div class="dolci__ordine">
+      <h2 class="dolci__ordine-titolo">Scatola da ${DOLCI.length} gusti</h2>
+      <p class="dolci__prezzo">€ 18</p>
+      <p class="dolci__allergeni">Allergeni (esempio): frutta a guscio, uova, latte</p>
+      <p class="dolci__ordine-azione">${whatsapp('it', 'pulsante pulsante--vuoto', { messaggio: 'Ciao Giovanni, ho visto la demo dei dolci', etichetta: 'Ordina la tua scatola su WhatsApp' })}
+      <small class="whatsapp__nota">Gusti, testi e prezzo sono d'esempio.</small></p>
+    </div>
+    <p class="dolci__avvertenza">Gusti e descrizioni sono testi di esempio.</p>
+  </section>`;
+}
+
+// Note legali: esiste finche' la pagina dolci ha immagini ricomposte.
+export function noteLegali() {
+  return `  <section class="legale" aria-labelledby="t">
+    <h1 class="sezione__titolo" id="t">Note legali</h1>
+
+    <h2>Immagini dei dolci</h2>
+    <p>Le immagini dei macaron nella pagina <a href="/dolci.html">I nostri dolci</a> vengono da una foto reale.
+    Le parti dei macaron coperte o tagliate dal bordo della foto sono state completate con strumenti di
+    intelligenza artificiale; dove il macaron si vede, l'immagine è quella della foto. Accanto a ogni
+    immagine una didascalia lo ricorda.</p>
+
+    <p class="legale__data">Ultimo aggiornamento: 16/10/2026</p>
+  </section>`;
+}

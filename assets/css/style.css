@@ -267,3 +267,64 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .link-bio__indirizzo{margin:1.6rem 0 0;font-size:.92rem;color:var(--testo-tenue)}
 .link-bio__piede{text-align:center;font-size:.85rem;padding:1rem var(--sp) max(1.4rem,env(safe-area-inset-bottom));color:var(--testo-tenue)}
 .link-bio__piede p{margin:0 0 .4rem}
+
+/* Dolci (prova scroll): lista di schede senza JS o con "riduci movimento", palco con lo scroll */
+.dolci{max-width:var(--max);margin:0 auto;padding:2.75rem var(--sp)}
+.dolci__intro{max-width:40rem;margin:0 0 2rem}
+.dolci__intro p:last-child{color:var(--testo-tenue);margin:0}
+.dolci__lista{list-style:none;margin:0;padding:0;display:grid;gap:1.6rem 1rem;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+/* riquadro quadrato uguale per tutte le foto, la foto intera dentro: i nomi restano in riga */
+.dolce__foto{width:100%;max-width:220px;aspect-ratio:1;object-fit:contain;margin:0 auto .6rem;filter:drop-shadow(0 10px 8px rgba(43,39,36,.18))}
+.dolce__nome{font-size:1.15rem;margin:0 0 .2rem}
+.dolce__nota{margin:0;font-size:.92rem;color:var(--testo-tenue)}
+.dolce__origine,.dolci__origine{margin:.35rem 0 0;font-size:.8rem;font-style:italic;color:var(--testo-tenue)}
+.dolci__origine{color:inherit}
+.dolci__avvertenza{margin:2rem 0 0;font-size:.85rem;color:var(--testo-tenue)}
+
+/* Dolci, vetrina: un gusto per schermata, poi la scatola (solo con JS e senza "riduci movimento") */
+@property --gusto{syntax:"<color>";inherits:true;initial-value:#F6F1E7}
+.dolci--scena{max-width:none;padding-inline:0}
+.dolci--scena>.dolci__intro{max-width:var(--max);margin:0 auto 2rem;padding-inline:var(--sp)}
+.dolci--scena>.dolci__intro>*{max-width:40rem}
+.dolci--scena>.dolci__avvertenza{max-width:var(--max);margin:2rem auto 0;padding-inline:var(--sp)}
+.dolci--scena .dolci__lista{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.dolci__palco{position:sticky;overflow:clip;--gusto:var(--crema);
+  background:color-mix(in srgb,var(--gusto) 45%,var(--crema));transition:--gusto .7s ease}
+.dolci__gigante{position:absolute;left:50%;top:42%;margin:0;pointer-events:none;white-space:nowrap;
+  font-family:var(--titolo);font-style:italic;font-weight:600;font-size:clamp(5rem,26vw,17rem);line-height:1;
+  color:color-mix(in srgb,var(--gusto) 70%,var(--inchiostro));opacity:0;will-change:transform,opacity}
+.dolci__pezzo{position:absolute;left:50%;top:42%;width:min(62vw,40vh);opacity:0;will-change:transform,opacity;
+  filter:drop-shadow(0 1.4rem 1.2rem color-mix(in srgb,color-mix(in srgb,var(--gusto) 50%,var(--inchiostro)) 40%,transparent))}
+.dolci__pezzo>img{width:100%;will-change:transform}
+.dolci__didascalia{position:absolute;left:0;right:0;bottom:max(1.6rem,env(safe-area-inset-bottom));max-width:36rem;
+  margin:0 auto;padding:0 var(--sp);text-align:center;color:var(--inchiostro);transition:opacity .25s}
+.dolci__didascalia--via{opacity:0}
+.dolci__contatore{margin:0 0 .35rem;font-size:.9rem;font-weight:600;letter-spacing:.24em;font-variant-numeric:tabular-nums}
+.dolci__nome{margin:0 0 .3rem;font-family:var(--titolo);font-weight:600;font-size:clamp(1.8rem,7vw,2.8rem);line-height:1.1}
+.dolci__nota{margin:0;font-size:1rem}
+.dolci__scatola{position:absolute;left:50%;top:50%;width:min(calc(100% - 2 * var(--sp)),34rem);margin:0;text-align:center;opacity:0}
+.dolci__cassa{padding:1rem .8rem;background:#fff;border:6px solid color-mix(in srgb,var(--ottone) 28%,#fff);border-radius:10px;
+  box-shadow:0 1.6rem 3rem rgba(43,39,36,.16),0 .3rem .8rem rgba(43,39,36,.08)}
+.dolci__griglia{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem .5rem}
+.dolci__griglia li{display:grid;justify-items:center;align-content:end;gap:.3rem;font-size:.85rem;line-height:1.2;color:var(--inchiostro)}
+.dolci__griglia img{width:min(100%,6.5rem)}
+
+/* Dolci: badge «Il più richiesto», puntini di avanzamento, ordine della scatola (con e senza JS) */
+.dolce__badge,.dolci__badge{display:inline-block;margin:0 0 .4rem;padding:.2rem .65rem;border-radius:999px;
+  background:var(--crema);box-shadow:inset 0 0 0 1px rgba(43,39,36,.22);color:var(--inchiostro);
+  font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1.4}
+.dolci__badge--via{visibility:hidden}
+/* nella griglia il badge sta sopra la foto, così non sposta il nome rispetto alle schede vicine */
+.dolce{position:relative}
+.dolce__badge{position:absolute;top:0;left:0;z-index:1}
+.dolci__puntini{display:flex;justify-content:center;gap:.45rem;margin:0 0 .75rem}
+.dolci__puntini span{width:.5rem;height:.5rem;border-radius:50%;border:1.5px solid var(--inchiostro)}
+.dolci__puntini .dolci__puntino--on{background:var(--inchiostro)}
+.dolci__ordine{width:min(calc(100% - 2 * var(--sp)),34rem);margin:2.5rem auto 0;padding:1.6rem 1.2rem;text-align:center;background:#fff;
+  border:6px solid color-mix(in srgb,var(--ottone) 28%,#fff);border-radius:10px;
+  box-shadow:0 1.6rem 3rem rgba(43,39,36,.16),0 .3rem .8rem rgba(43,39,36,.08)}
+.dolci__ordine-titolo{margin:0 0 .2rem;font-size:1.5rem}
+.dolci__prezzo{margin:0 0 .4rem;font-family:var(--titolo);font-size:2.2rem;font-weight:600;line-height:1.1}
+.dolci__allergeni{margin:0 0 1rem;font-size:.9rem;color:var(--inchiostro)}
+.dolci__ordine-azione{margin:0}
