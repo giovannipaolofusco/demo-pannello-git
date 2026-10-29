@@ -1,10 +1,12 @@
-# Backend GitHub nativo. L'editor si autentica con il proprio account GitHub;
-# lo scambio code -> token avviene su api.netlify.com/auth (servizio OAuth di
-# Netlify, gia' fornitore del sito). Nessun servizio terzo nella catena.
+# Backend GitHub nativo. L'editor si autentica con il proprio account GitHub.
+# PILOTA CLOUDFLARE: lo scambio code -> token avviene sul Worker OAuth
+# (sveltia-cms-auth) nell'account Cloudflare che ospita il sito. Nessun
+# fornitore oltre a quello dell'hosting.
 backend:
   name: github
   repo: giovannipaolofusco/demo-pannello-git
-  branch: main
+  branch: pilota-cloudflare
+  base_url: https://pannello-auth-demo.gpf-edge.workers.dev
   commit_messages:
     create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'
     update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'
@@ -14,7 +16,7 @@ backend:
     openAuthoring: 'Message {{message}} - {{author-name}} <{{author-login}}>'
 
 logo_url: /assets/favicon/icon.svg
-site_url: https://demo-pannello-git.netlify.app
+site_url: https://demo-pannello-git.pages.dev
 
 locale: it
 

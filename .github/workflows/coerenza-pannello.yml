@@ -33,7 +33,7 @@ jobs:
       - name: "La CSP di /admin/ conserva blob: e api.github.com"
         run: |
           set -euo pipefail
-          RIGA=$(awk '/^\/admin\/\*/{f=1} f && /Content-Security-Policy/{print; exit}' _headers)
+          RIGA=$(awk '/^\/admin\/\*/{f=1} f && /^[[:space:]]*Content-Security-Policy:/{print; exit}' _headers)
           echo "$RIGA"
           echo "$RIGA" | grep -q "blob:"
           echo "$RIGA" | grep -q "https://api.github.com"
