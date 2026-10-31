@@ -1,7 +1,7 @@
 import { TESTI } from './dati.mjs';
 import { footer as orariFooter } from './orari.mjs';
 
-export const DOM = 'https://demo-pannello-git.netlify.app';
+export const DOM = 'https://demo-pannello-git.pages.dev';
 export const VCARD = 'trattoria-del-molo.vcf';
 
 // Pulsante WhatsApp (CLAUDE.md §13bis.9): wa.me col messaggio precompilato.

@@ -1,11 +1,12 @@
 # Backend GitHub nativo. L'editor si autentica con il proprio account GitHub.
-# PILOTA CLOUDFLARE: lo scambio code -> token avviene sul Worker OAuth
-# (sveltia-cms-auth) nell'account Cloudflare che ospita il sito. Nessun
-# fornitore oltre a quello dell'hosting.
+# Lo scambio code -> token avviene sul Worker OAuth (sveltia-cms-auth)
+# nell'account Cloudflare che ospita il sito. Nessun fornitore oltre a
+# quello dell'hosting. `branch` e' il ramo di produzione di Pages: un
+# salvataggio su un altro ramo non arriverebbe mai al sito.
 backend:
   name: github
   repo: giovannipaolofusco/demo-pannello-git
-  branch: pilota-cloudflare
+  branch: main
   base_url: https://pannello-auth-demo.gpf-edge.workers.dev
   commit_messages:
     create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'

@@ -21,6 +21,16 @@ jobs:
             exit 1
           fi
 
+      - name: Il pannello salva sul ramo di produzione (main)
+        run: |
+          set -euo pipefail
+          RAMO=$(awk '/^backend:/{f=1} f && /^[[:space:]]+branch:/{gsub(/^[[:space:]]+branch:[[:space:]]*/,""); gsub(/["'"'"']/,""); print; exit}' admin/config.yml)
+          echo "ramo del pannello: $RAMO"
+          if [ "$RAMO" != "main" ]; then
+            echo "::error file=admin/config.yml::backend.branch e' '$RAMO': i salvataggi non arriverebbero al sito, che Pages pubblica da main."
+            exit 1
+          fi
+
       - name: Nessun riferimento residuo a DecapBridge
         run: |
           set -euo pipefail

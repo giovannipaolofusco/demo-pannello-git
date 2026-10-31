@@ -1,6 +1,16 @@
+# Il demo sta su Cloudflare Pages dal 30/10/2026. Netlify resta solo per non
+# rompere i link gia' mandati a demo-pannello-git.netlify.app: tutto va in 301
+# verso pages.dev. Niente build del sito: Netlify pubblica una cartella con una
+# pagina sola, cosi' non legge il _headers e il _redirects scritti per Pages.
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = "mkdir -p netlify-vuoto && echo '<!doctype html><title>Spostato</title>' > netlify-vuoto/index.html"
+  publish = "netlify-vuoto"
+  # Ricostruisce solo quando cambia questo file. Senza, ogni salvataggio del
+  # pannello su main costerebbe un deploy anche su Netlify (15 crediti).
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- netlify.toml"
 
-[build.environment]
-  NODE_VERSION = "22"
+[[redirects]]
+  from = "/*"
+  to = "https://demo-pannello-git.pages.dev/:splat"
+  status = 301
+  force = true
