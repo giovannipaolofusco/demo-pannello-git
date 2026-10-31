@@ -183,8 +183,8 @@
         "en": "The room is small, twenty covers, and in summer you can eat outside. If you are a large group, call ahead and we will find a way to seat you together."
       },
       {
-        "it": "<a class=\"collegamento-testo\" href=\"/menu.html\">Guarda il menù →</a>",
-        "en": "<a class=\"collegamento-testo\" href=\"/en/menu.html\">See the menu →</a>"
+        "it": "<a class=\"collegamento-testo\" href=\"/menu/\">Guarda il menù →</a>",
+        "en": "<a class=\"collegamento-testo\" href=\"/en/menu/\">See the menu →</a>"
       }
     ]
   },

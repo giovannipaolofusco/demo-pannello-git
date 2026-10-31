@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
             sections: [
               { title: 'Cookie tecnici', description: 'Servono a far funzionare il sito: la lingua scelta e il fatto che l’animazione di apertura sia già stata vista. Non si possono disattivare.', linkedCategory: 'necessario' },
               { title: 'Misurazione', description: 'Al momento non attiva: il sito non raccoglie alcuna statistica di visita.', linkedCategory: 'misurazione' },
-              { title: 'Vuoi saperne di più?', description: 'Trovi tutto nell’<a href="/privacy.html">informativa</a>.' }
+              { title: 'Vuoi saperne di più?', description: 'Trovi tutto nell’<a href="/privacy/">informativa</a>.' }
             ]
           }
         },
@@ -54,7 +54,7 @@ window.addEventListener('load', () => {
             sections: [
               { title: 'Technical cookies', description: 'They make the site work: the language you picked, and whether you have already seen the opening animation. They cannot be turned off.', linkedCategory: 'necessario' },
               { title: 'Measurement', description: 'Currently inactive: the site collects no visit statistics.', linkedCategory: 'misurazione' },
-              { title: 'Want to know more?', description: 'It is all in the <a href="/en/privacy.html">privacy notice</a>.' }
+              { title: 'Want to know more?', description: 'It is all in the <a href="/en/privacy/">privacy notice</a>.' }
             ]
           }
         }

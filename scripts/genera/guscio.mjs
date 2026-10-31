@@ -1,7 +1,7 @@
 import { TESTI } from './dati.mjs';
 import { footer as orariFooter } from './orari.mjs';
 
-export const DOM = 'https://demo-pannello-git.netlify.app';
+export const DOM = 'https://demo-pannello-git.pages.dev';
 export const VCARD = 'trattoria-del-molo.vcf';
 
 // Pulsante WhatsApp (CLAUDE.md §13bis.9): wa.me col messaggio precompilato.
@@ -26,16 +26,19 @@ export const COPPIE = {
 };
 
 const NAV = {
-  it: [['/', 'Home', 'index.html'], ['/menu.html', 'Il menù', 'menu.html'],
-       ['/chi-siamo.html', 'Chi siamo', 'chi-siamo.html'], ['/contatti.html', 'Contatti', 'contatti.html']],
-  en: [['/en/', 'Home', 'index.html'], ['/en/menu.html', 'Menu', 'menu.html'],
-       ['/en/about-us.html', 'About us', 'about-us.html'], ['/en/contacts.html', 'Contact', 'contacts.html']],
+  it: [['/', 'Home', 'index.html'], ['/menu/', 'Il menù', 'menu.html'],
+       ['/chi-siamo/', 'Chi siamo', 'chi-siamo.html'], ['/contatti/', 'Contatti', 'contatti.html']],
+  en: [['/en/', 'Home', 'index.html'], ['/en/menu/', 'Menu', 'menu.html'],
+       ['/en/about-us/', 'About us', 'about-us.html'], ['/en/contacts/', 'Contact', 'contacts.html']],
 };
 
 export function url(lang, slugIt) {
-  const s = lang === 'it' ? slugIt : COPPIE[slugIt];
+  // Le pagine solo italiane (dolci, note legali) non hanno coppia: l'hreflang
+  // che ne esce viene tolto da genera.mjs.
+  const s = (lang === 'it' ? slugIt : COPPIE[slugIt]) ?? slugIt;
   const base = lang === 'it' ? DOM : `${DOM}/en`;
-  return s === 'index.html' ? `${base}/` : `${base}/${s}`;
+  // §6.8bis: una cartella per pagina, l'URL senza .html e con lo slash finale.
+  return s === 'index.html' ? `${base}/` : `${base}/${s.replace(/\.html$/, '')}/`;
 }
 
 export function head(lang, slugIt, title, desc, ld = '', mappa = false) {
@@ -114,7 +117,7 @@ ${voci}
 
 export function piede(lang) {
   const f = TESTI.footer, s = TESTI.sito;
-  const ph = lang === 'it' ? '/privacy.html' : '/en/privacy.html';
+  const ph = lang === 'it' ? '/privacy/' : '/en/privacy/';
   const via = lang === 'it' ? `${s.indirizzo_riga1} — ${s.indirizzo_riga2}` : `${s.indirizzo_riga1} — ${s.indirizzo_riga2}`;
   return `<footer class="piede">
   <div class="piede__interno">
@@ -134,7 +137,7 @@ export function piede(lang) {
     <div class="piede__blocco piede__blocco--legale">
       <p>${f.legale.join('<br>\n      ')}</p>
       <p><a href="${ph}">${f.privacy[lang]}</a></p>
-${lang === 'it' ? '      <p><a href="/note-legali.html">Note legali</a></p>\n' : ''}      <p><button type="button" class="footer__preferenze" data-cc="show-preferencesModal">${f.preferenze[lang]}</button></p>
+${lang === 'it' ? '      <p><a href="/note-legali/">Note legali</a></p>\n' : ''}      <p><button type="button" class="footer__preferenze" data-cc="show-preferencesModal">${f.preferenze[lang]}</button></p>
       <p class="credito">${f.credito_verbo[lang]} <a href="${f.credito_url}" rel="noopener">${f.credito_firma}</a></p>
     </div>
   </div>
@@ -159,7 +162,7 @@ ${piede(lang)}
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/libs/cookieconsent/cookieconsent.umd.js" defer></script>
 <script src="/assets/js/consenso.js" defer></script>
-${main.includes('data-stato-apertura') ? '<script type="module" src="/assets/js/avvio-stato-apertura.js"></script>\n' : ''}${mappa ? '<script src="/assets/libs/maplibre/maplibre-gl.js" defer></script>\n<script src="/assets/libs/pmtiles/pmtiles.js" defer></script>\n<script src="/assets/js/mappa.js" defer></script>\n' : ''}</body>
+${main.includes('data-stato-apertura') ? '<script type="module" src="/assets/js/avvio-stato-apertura.js"></script>\n' : ''}${mappa ? '<script src="/assets/libs/maplibre/maplibre-gl.js" defer></script>\n<script src="/assets/js/mappa.js" defer></script>\n' : ''}</body>
 </html>
 `;
 }
@@ -189,7 +192,7 @@ ${main}
 </main>
 
 <footer class="link-bio__piede">
-  <p><a href="/privacy.html">${l.privacy}</a></p>
+  <p><a href="/privacy/">${l.privacy}</a></p>
   <p class="credito">${f.credito_verbo.it} <a href="${f.credito_url}" rel="noopener">${f.credito_firma}</a></p>
 </footer>
 </body>

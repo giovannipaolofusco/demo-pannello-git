@@ -8,6 +8,6 @@ TEL;TYPE=WORK,VOICE:+390771000000
 EMAIL;TYPE=INTERNET,WORK:demo@example.invalid
 ADR;TYPE=WORK:;;Via del Porto 1;Fondi;LT;04022;Italia
 GEO:41.37995;13.4304
-URL:https://demo-pannello-git.netlify.app/
+URL:https://demo-pannello-git.pages.dev/
 NOTE:Sito dimostrativo: la Trattoria del Molo non esiste.
 END:VCARD

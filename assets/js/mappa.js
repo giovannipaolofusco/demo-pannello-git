@@ -1,19 +1,20 @@
 const contenitore = document.getElementById('mappa');
 
-if (contenitore && typeof maplibregl !== 'undefined' && typeof pmtiles !== 'undefined') {
+if (contenitore && typeof maplibregl !== 'undefined') {
   // Coordinate dal campo "Coordinate esatte della sede" di AGENTS.md.
   // MapLibre vuole [lon, lat]: invertirle manda la sede in mare.
   const LON = 13.43040;
   const LAT = 41.37995;
-
-  const protocollo = new pmtiles.Protocol();
-  maplibregl.addProtocol('pmtiles', protocollo.tile);
 
   const avvia = async () => {
     const stile = await (await fetch('/assets/map/stile.json')).json();
     // MapLibre rifiuta un percorso relativo per lo sprite e lo segnala solo
     // come warning per ogni icona mancante: la mappa si disegna senza POI.
     stile.sprite = new URL(stile.sprite, location.origin).href;
+    // Stesso discorso per le tessere, che i worker di MapLibre scaricano da
+    // un URL blob: senza origine. Niente new URL(): codificherebbe {z}/{x}/{y}.
+    const sorgente = stile.sources.protomaps;
+    sorgente.tiles = sorgente.tiles.map((t) => location.origin + t);
 
     const mappa = new maplibregl.Map({
       container: 'mappa',
@@ -22,12 +23,8 @@ if (contenitore && typeof maplibregl !== 'undefined' && typeof pmtiles !== 'unde
       zoom: 15,
       minZoom: 12,
       maxZoom: 15,
-      // Il credito ODbL va scritto qui: il protocollo pmtiles legge i metadati
-      // dell'estratto e l'attribuzione dello stile non arriva in pagina.
-      attributionControl: {
-        compact: false,
-        customAttribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a> · <a href="https://protomaps.com">Protomaps</a>'
-      }
+      // Il credito ODbL arriva dall'attribution della sorgente in stile.json.
+      attributionControl: { compact: false }
     });
 
     // WCAG 2.5.7: la mappa si sposta col trascinamento, quindi servono
