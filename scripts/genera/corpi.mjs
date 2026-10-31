@@ -69,7 +69,7 @@ export function home(lang) {
       <p class="apertura__sommario">${t.sommario[lang]}</p>
       <p class="apertura__azioni">
         <a class="pulsante pulsante--pieno" href="tel:${S.telefono}">${t.cta_chiama[lang]}</a>
-        <a class="pulsante pulsante--vuoto" href="${h}/menu.html">${t.cta_menu[lang]}</a>
+        <a class="pulsante pulsante--vuoto" href="${h}/menu/">${t.cta_menu[lang]}</a>
       </p>
     </div>
     ${figura('trattoria-del-molo-apertura', t.apertura_alt[lang], 'apertura__figura', true)}
@@ -80,7 +80,7 @@ export function home(lang) {
     <ul class="piatti__lista gruppo">
 ${schedePiatti(lang)}
     </ul>
-    <p class="piatti__coda rivela"><a class="collegamento-testo" href="${h}/menu.html">${t.link_menu_completo[lang]}</a></p>
+    <p class="piatti__coda rivela"><a class="collegamento-testo" href="${h}/menu/">${t.link_menu_completo[lang]}</a></p>
   </section>
 
   ${recensioniEsempio(lang)}
@@ -90,7 +90,7 @@ ${schedePiatti(lang)}
       <h2 class="sezione__titolo rivela" id="racconto-titolo">${t.titolo_racconto[lang]}</h2>
       <p class="rivela">${t.racconto_p1[lang]}</p>
       <p class="rivela">${t.racconto_p2[lang]}</p>
-      <p class="rivela"><a class="collegamento-testo" href="${h}/${lang === 'it' ? 'chi-siamo' : 'about-us'}.html">${t.racconto_link[lang]}</a></p>
+      <p class="rivela"><a class="collegamento-testo" href="${h}/${lang === 'it' ? 'chi-siamo' : 'about-us'}/">${t.racconto_link[lang]}</a></p>
     </div>
     <img class="racconto__figura rivela" src="/assets/img/segnaposto-sala.svg" alt="${t.sala_alt[lang]}" width="1200" height="800" loading="lazy">
   </section>
@@ -114,13 +114,13 @@ ${tabella(lang, sepTurni(lang), 12)}
         <h3 class="pratico__voce">${t.voce_dove[lang]}</h3>
         <p class="pratico__indirizzo">${S.indirizzo_riga1}<br>${indirizzo2(lang)}</p>
         <p class="pratico__azioni">
-          <a class="pulsante pulsante--vuoto" href="${h}/${lang === 'it' ? 'contatti' : 'contacts'}.html">${t.cta_arrivare[lang]}</a>
+          <a class="pulsante pulsante--vuoto" href="${h}/${lang === 'it' ? 'contatti' : 'contacts'}/">${t.cta_arrivare[lang]}</a>
           <a class="pulsante pulsante--vuoto" href="tel:${S.telefono}">${S.telefono_leggibile.it}</a>
           <a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${TESTI.servizio.salva_contatto[lang]}</a>
         </p>
       </div>
     </div>
-    <p class="pratico__mappa-link rivela"><a class="collegamento-testo" href="${h}/${lang === 'it' ? 'contatti' : 'contacts'}.html#mappa">${t.link_mappa[lang]}</a></p>
+    <p class="pratico__mappa-link rivela"><a class="collegamento-testo" href="${h}/${lang === 'it' ? 'contatti' : 'contacts'}/#mappa">${t.link_mappa[lang]}</a></p>
   </section>`;
 }
 
@@ -211,7 +211,7 @@ export function quattrocentoquattro() {
     <p class="q404__testo">${q.testo}</p>
     <p class="q404__azioni">
       <a class="pulsante pulsante--pieno" href="/">${q.cta_home}</a>
-      <a class="pulsante pulsante--vuoto" href="/menu.html">${q.cta_menu}</a>
+      <a class="pulsante pulsante--vuoto" href="/menu/">${q.cta_menu}</a>
     </p>
     <div class="q404__recapiti">
       <p>${q.recapiti_intro}</p>
@@ -229,10 +229,10 @@ export function linkBio() {
     <p class="link-bio__tagline">${l.tagline}</p>
     <ul class="link-bio__lista">
       <li><a class="pulsante pulsante--pieno" href="/">${l.sito}</a></li>
-      <li><a class="pulsante pulsante--vuoto" href="/menu.html">${l.menu}</a></li>
+      <li><a class="pulsante pulsante--vuoto" href="/menu/">${l.menu}</a></li>
       <li><a class="pulsante pulsante--vuoto" href="tel:${S.telefono}">${l.chiama} · ${S.telefono_leggibile.it}</a></li>
       <li>${whatsapp('it')}</li>
-      <li><a class="pulsante pulsante--vuoto" href="/contatti.html#mappa">${l.mappa}</a></li>
+      <li><a class="pulsante pulsante--vuoto" href="/contatti/#mappa">${l.mappa}</a></li>
       <li><a class="pulsante pulsante--vuoto" href="/${VCARD}" download>${l.salva}</a></li>
     </ul>
     <p class="link-bio__indirizzo">${S.indirizzo_riga1}, ${S.indirizzo_riga2}</p>
@@ -293,7 +293,7 @@ export function noteLegali() {
     <h1 class="sezione__titolo" id="t">Note legali</h1>
 
     <h2>Immagini dei dolci</h2>
-    <p>Le immagini dei macaron nella pagina <a href="/dolci.html">I nostri dolci</a> vengono da una foto reale.
+    <p>Le immagini dei macaron nella pagina <a href="/dolci/">I nostri dolci</a> vengono da una foto reale.
     Le parti dei macaron coperte o tagliate dal bordo della foto sono state completate con strumenti di
     intelligenza artificiale; dove il macaron si vede, l'immagine è quella della foto. Accanto a ogni
     immagine una didascalia lo ricorda.</p>

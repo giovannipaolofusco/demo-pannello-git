@@ -6,8 +6,10 @@ await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
 
 // pagine HTML (minificate dopo, dentro dist/)
-const pagine = ['index.html', 'menu.html', 'chi-siamo.html', 'contatti.html', 'privacy.html', '404.html', 'link.html', 'dolci.html', 'note-legali.html'];
-const paginePagineEn = ['en/index.html', 'en/menu.html', 'en/about-us.html', 'en/contacts.html', 'en/privacy.html'];
+// Una cartella per pagina (§6.8bis). 404.html e link.html restano file: la
+// prima e' il nome che l'hosting cerca, la seconda non e' indicizzabile.
+const pagine = ['index.html', 'menu/index.html', 'chi-siamo/index.html', 'contatti/index.html', 'privacy/index.html', '404.html', 'link.html', 'dolci/index.html', 'note-legali/index.html'];
+const paginePagineEn = ['en/index.html', 'en/menu/index.html', 'en/about-us/index.html', 'en/contacts/index.html', 'en/privacy/index.html'];
 
 // tutto ciò che NON si minifica ma va pubblicato
 const servizio = ['_headers', '_redirects', 'robots.txt',

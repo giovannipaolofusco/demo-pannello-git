@@ -56,12 +56,16 @@ const PAGINE = [
   { lang: 'en', slug: 'privacy.html',   file: 'en/privacy.html',   meta: H.privacy,   corpo: corpi.privacy,   bc: 'Privacy' },
 ];
 
+// §6.8bis: ogni pagina indicizzabile esce come cartella (menu/index.html), cosi'
+// risponde 200 su /menu/ con qualunque hosting. Le home restano index.html.
+const cartella = (file) => file.endsWith('index.html') ? file : file.replace(/\.html$/, '/index.html');
+
 let n = 0;
 for (const p of PAGINE) {
   let ld = p.ld === 'ristorante' ? ristorante() : '';
   if (p.bc) ld += briciole(p.lang, p.bc, p.slug);
   const html = pagina(p.lang, p.slug, p.meta.title[p.lang], p.meta.description[p.lang], p.corpo(p.lang), ld, p.mappa === true);
-  const dest = join(DEST, p.file);
+  const dest = join(DEST, cartella(p.file));
   mkdirSync(dirname(dest), { recursive: true });
   writeFileSync(dest, html);
   n++;
@@ -79,7 +83,8 @@ n++;
 // menu, quindi niente hreflang. Canonical su se stessa come le altre.
 const d = pagina('it', 'dolci.html', 'I nostri dolci — Trattoria del Molo',
                  'Prova di scroll: un macaron per schermata, poi la scatola.', corpi.dolci());
-writeFileSync(join(DEST, 'dolci.html'),
+mkdirSync(join(DEST, 'dolci'), { recursive: true });
+writeFileSync(join(DEST, cartella('dolci.html')),
   d.replace(/<link rel="alternate"[^>]*>\n/g, '')
    .replace('<script src="/assets/js/main.js" defer></script>', '<script src="/assets/js/main.js" defer></script>\n<script src="/assets/js/dolci.js" defer></script>'));
 n++;
@@ -87,7 +92,8 @@ n++;
 // Note legali: solo italiano come la pagina dolci, l'unica con asset del registro.
 const nl = pagina('it', 'note-legali.html', 'Note legali — Trattoria del Molo',
                   'Da dove vengono le immagini dei dolci.', corpi.noteLegali(), briciole('it', 'Note legali', 'note-legali.html'));
-writeFileSync(join(DEST, 'note-legali.html'), nl.replace(/<link rel="alternate"[^>]*>\n/g, ''));
+mkdirSync(join(DEST, 'note-legali'), { recursive: true });
+writeFileSync(join(DEST, cartella('note-legali.html')), nl.replace(/<link rel="alternate"[^>]*>\n/g, ''));
 n++;
 
 // La pagina Link-in-Bio: fuori da PAGINE perche' non ha navigazione ne'
