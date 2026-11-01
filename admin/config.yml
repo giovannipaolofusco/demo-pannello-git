@@ -21,10 +21,10 @@ site_url: https://demo-pannello-git.pages.dev
 
 locale: it
 
-# La colonna di anteprima mostrava i campi grezzi e non somigliava al sito:
-# il pannello resta il solo form.
+# Anteprima con la grafica del sito: style.css e markup del generatore,
+# registrati in admin/anteprima.js per menu, orari e piatti in evidenza.
 editor:
-  preview: false
+  preview: true
 
 # Le immagini caricate finiscono qui. Il .webp lo genera il build dal .jpg.
 media_folder: "assets/img"
