@@ -76,7 +76,8 @@ h1,h2,h3{font-family:var(--titolo);font-weight:600;line-height:1.12;margin:0 0 .
 .piatti,.racconto,.pratico{max-width:var(--max);margin:0 auto;padding:2.75rem var(--sp)}
 .piatti__lista{list-style:none;margin:0;padding:0;display:grid;gap:1.6rem}
 .piatto{background:#fff;border:1px solid rgba(43,39,36,.12);border-radius:var(--raggio);padding:1rem}
-.piatto--senza-foto{align-self:end}
+.piatto--senza-foto{display:flex;flex-direction:column}
+.piatto--senza-foto .piatto__prezzo{margin-top:auto}
 .piatto__figura{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--raggio);margin-bottom:.9rem}
 .piatto__nome{font-size:1.2rem;margin:0 0 .3rem}
 .piatto__note{margin:0 0 .45rem;color:var(--testo-tenue);font-size:.97rem}
