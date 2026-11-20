@@ -8,7 +8,7 @@ await mkdir(DIST, { recursive: true });
 // pagine HTML (minificate dopo, dentro dist/)
 // Una cartella per pagina (§6.8bis). 404.html e link.html restano file: la
 // prima e' il nome che l'hosting cerca, la seconda non e' indicizzabile.
-const pagine = ['index.html', 'menu/index.html', 'chi-siamo/index.html', 'contatti/index.html', 'privacy/index.html', '404.html', 'link.html', 'dolci/index.html', 'note-legali/index.html'];
+const pagine = ['index.html', 'menu/index.html', 'chi-siamo/index.html', 'contatti/index.html', 'privacy/index.html', '404.html', 'link.html'];
 const paginePagineEn = ['en/index.html', 'en/menu/index.html', 'en/about-us/index.html', 'en/contacts/index.html', 'en/privacy/index.html'];
 
 // tutto ciò che NON si minifica ma va pubblicato

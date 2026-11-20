@@ -7,7 +7,7 @@ export const VCARD = 'trattoria-del-molo.vcf';
 // Pulsante WhatsApp (CLAUDE.md §13bis.9): wa.me col messaggio precompilato.
 // La nota piccola accanto dichiara a chi scrive: nella demo e' il numero del
 // titolare, non quello finto della trattoria. messaggio ed etichetta si possono
-// cambiare per una pagina (i dolci), numero e nota restano quelli di testi.json.
+// cambiare per una pagina, numero e nota restano quelli di testi.json.
 export function whatsapp(lang, cls = 'pulsante pulsante--vuoto', { messaggio, etichetta } = {}) {
   const w = TESTI.whatsapp;
   const href = `https://wa.me/${w.numero}?text=${encodeURIComponent(messaggio || w.messaggio)}`;
@@ -33,8 +33,7 @@ const NAV = {
 };
 
 export function url(lang, slugIt) {
-  // Le pagine solo italiane (dolci, note legali) non hanno coppia: l'hreflang
-  // che ne esce viene tolto da genera.mjs.
+  // Una pagina senza coppia inglese ricade sullo slug italiano.
   const s = (lang === 'it' ? slugIt : COPPIE[slugIt]) ?? slugIt;
   const base = lang === 'it' ? DOM : `${DOM}/en`;
   // §6.8bis: una cartella per pagina, l'URL senza .html e con lo slash finale.
@@ -137,7 +136,7 @@ export function piede(lang) {
     <div class="piede__blocco piede__blocco--legale">
       <p>${f.legale.join('<br>\n      ')}</p>
       <p><a href="${ph}">${f.privacy[lang]}</a></p>
-${lang === 'it' ? '      <p><a href="/note-legali/">Note legali</a></p>\n' : ''}      <p><button type="button" class="footer__preferenze" data-cc="show-preferencesModal">${f.preferenze[lang]}</button></p>
+      <p><button type="button" class="footer__preferenze" data-cc="show-preferencesModal">${f.preferenze[lang]}</button></p>
       <p class="credito">${f.credito_verbo[lang]} <a href="${f.credito_url}" rel="noopener">${f.credito_firma}</a></p>
     </div>
   </div>

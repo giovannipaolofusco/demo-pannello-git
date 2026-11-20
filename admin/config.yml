@@ -249,13 +249,15 @@ collections:
               - name: immagine
                 label: "Fotografia"
                 widget: image
+                required: false
                 media_library: {config: {multiple: false}}
                 hint: "Viene alleggerita e ripulita dei metadati prima del caricamento."
 
               - name: alt
                 label: "Descrizione della foto per chi non la vede"
                 widget: object
+                required: false
                 fields:
-                  - {name: it, label: "Italiano", widget: string}
-                  - {name: en, label: "English", widget: string}
+                  - {name: it, label: "Italiano", widget: string, required: false}
+                  - {name: en, label: "English", widget: string, required: false}
 
