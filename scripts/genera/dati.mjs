@@ -81,7 +81,8 @@ export function verificaImmagini() {
     const jpg = `assets/img/${slug}.jpg`;
     if (!existsSync(jpg)) errori.push(`${dove}: manca ${jpg} (il campo "immagine" vale "${slug}")`);
   };
-  for (const p of PIATTI.piatti) attesa(nomeBase(p.immagine), `piatti → ${p.nome.it}`);
+  // Una scheda senza foto e' ammessa: meglio nessuna immagine che quella di un altro piatto.
+  for (const p of PIATTI.piatti) if (p.immagine) attesa(nomeBase(p.immagine), `piatti → ${p.nome.it}`);
   for (const s of IMMAGINI_FISSE) attesa(s, 'template');
   if (errori.length) {
     console.error('\nImmagini mancanti:\n' + errori.map((e) => '  - ' + e).join('\n')
@@ -100,7 +101,7 @@ export function verificaImmagini() {
 const MISURE = new Map();
 
 export async function leggiMisure() {
-  const slug = [...PIATTI.piatti.map((p) => nomeBase(p.immagine)), ...IMMAGINI_FISSE];
+  const slug = [...PIATTI.piatti.filter((p) => p.immagine).map((p) => nomeBase(p.immagine)), ...IMMAGINI_FISSE];
   const errori = [];
   for (const s of new Set(slug)) {
     try {

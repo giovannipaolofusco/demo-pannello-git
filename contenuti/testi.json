@@ -120,24 +120,20 @@
       "en": "The full menu, twenty dishes with allergens →"
     },
     "titolo_racconto": {
-      "it": "Una cucina che non inventa niente",
-      "en": "A kitchen that invents nothing"
+      "it": "Si cucina quello che porta la paranza",
+      "en": "We cook what the boats bring in"
     },
     "racconto_p1": {
-      "it": "Il pesce è quello della paranza che rientra la mattina, e quando una cosa finisce, è finita.",
-      "en": "The fish is whatever the boats bring in at dawn, and when something runs out, it is out."
+      "it": "Il pesce arriva la mattina con la paranza. Quando un piatto finisce, per quel giorno è finito.",
+      "en": "The fish comes off the boats every morning. When a dish runs out, that's it for the day."
     },
     "racconto_p2": {
-      "it": "Per questo il menù cambia: non è una scelta di stile, è come funziona qui.",
-      "en": "That is why the menu changes: not a matter of style, just how it works here."
+      "it": "Per questo il menù cambia spesso. Se cerchi un piatto in particolare, chiama prima.",
+      "en": "That's why the menu changes so often. If you're after a particular dish, give us a call first."
     },
     "racconto_link": {
       "it": "Come lavoriamo →",
       "en": "How we work →"
-    },
-    "sala_alt": {
-      "it": "",
-      "en": ""
     },
     "titolo_pratico": {
       "it": "Orari e indirizzo",
@@ -171,12 +167,12 @@
     },
     "paragrafi": [
       {
-        "it": "La trattoria sta sul porto, e questo decide quasi tutto. Il pesce lo prendiamo dalla paranza che rientra la mattina: non scegliamo noi cosa cucinare, lo decide quello che c'è nelle cassette.",
-        "en": "The trattoria sits on the harbour, and that decides almost everything. We buy the fish from the boats that come in at dawn: we do not choose what to cook, the crates do."
+        "it": "La trattoria sta sul porto, e questo decide quasi tutto. Il pesce lo prendiamo dalla paranza che rientra la mattina, e si cucina quello che c'è nelle cassette.",
+        "en": "The trattoria sits on the harbour, and that decides almost everything. We buy the fish from the boats that come in at dawn, and we cook whatever is in the crates."
       },
       {
-        "it": "Per questo il menù cambia, e per questo qualche piatto ogni tanto non c'è. Quando finisce, è finita: non lo ricompriamo altrove per averlo comunque in carta.",
-        "en": "That is why the menu changes, and why a dish is sometimes missing. When it runs out, it is out: we do not buy it elsewhere just to keep it on the card."
+        "it": "Per questo il menù cambia, e ogni tanto qualche piatto manca. Se un pesce finisce, non lo compriamo altrove solo per tenerlo in carta.",
+        "en": "That's why the menu changes, and now and then a dish is missing. If a fish runs out, we don't buy it in elsewhere just to keep it on the menu."
       },
       {
         "it": "La sala è piccola, venti coperti, e d'estate si mangia anche fuori. Se siete in tanti conviene chiamare prima, così troviamo il modo di farvi stare tutti insieme.",
@@ -226,8 +222,8 @@
       "en": "Opening hours"
     },
     "mappa_label": {
-      "it": "Mappa della zona del porto di Fondi, con il segnaposto della trattoria in Via del Porto 1",
-      "en": "Map of the harbour area of Fondi, with the marker of the trattoria at Via del Porto 1"
+      "it": "Mappa della zona di Fondi, con un segnaposto indicativo della trattoria",
+      "en": "Map of the Fondi area, with an approximate marker for the trattoria"
     },
     "mappa_ripiego": {
       "it": "Se la mappa non si carica, l'indirizzo è <strong>Via del Porto 1, 04022 Fondi (LT)</strong> e i collegamenti alle indicazioni stradali sono qui sopra.",

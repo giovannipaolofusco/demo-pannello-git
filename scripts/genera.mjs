@@ -76,24 +76,8 @@ for (const p of PAGINE) {
 const q = pagina('it', 'index.html', TESTI.head.quattrocentoquattro.title.it,
                  TESTI.head.quattrocentoquattro.description.it, corpi.quattrocentoquattro());
 writeFileSync(join(DEST, '404.html'),
-  q.replace(/<link rel="canonical"[^>]*>\n/, '').replace(/<link rel="alternate"[^>]*>\n/g, ''));
-n++;
-
-// Pagina dolci (prova dello scroll con i macaron): solo italiano e fuori dal
-// menu, quindi niente hreflang. Canonical su se stessa come le altre.
-const d = pagina('it', 'dolci.html', 'I nostri dolci — Trattoria del Molo',
-                 'Prova di scroll: un macaron per schermata, poi la scatola.', corpi.dolci());
-mkdirSync(join(DEST, 'dolci'), { recursive: true });
-writeFileSync(join(DEST, cartella('dolci.html')),
-  d.replace(/<link rel="alternate"[^>]*>\n/g, '')
-   .replace('<script src="/assets/js/main.js" defer></script>', '<script src="/assets/js/main.js" defer></script>\n<script src="/assets/js/dolci.js" defer></script>'));
-n++;
-
-// Note legali: solo italiano come la pagina dolci, l'unica con asset del registro.
-const nl = pagina('it', 'note-legali.html', 'Note legali — Trattoria del Molo',
-                  'Da dove vengono le immagini dei dolci.', corpi.noteLegali(), briciole('it', 'Note legali', 'note-legali.html'));
-mkdirSync(join(DEST, 'note-legali'), { recursive: true });
-writeFileSync(join(DEST, cartella('note-legali.html')), nl.replace(/<link rel="alternate"[^>]*>\n/g, ''));
+  q.replace(/<link rel="canonical"[^>]*>\n/, '').replace(/<link rel="alternate"[^>]*>\n/g, '')
+   .replace(' aria-current="page"', ''));
 n++;
 
 // La pagina Link-in-Bio: fuori da PAGINE perche' non ha navigazione ne'

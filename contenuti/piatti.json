@@ -28,17 +28,17 @@
         "en": "Spaghetti alle vongole"
       },
       "note": {
-        "it": "Quello per cui torna la gente.",
-        "en": "The one people come back for."
+        "it": "Vongole, aglio, olio e prezzemolo.",
+        "en": "Clams, garlic, olive oil and parsley."
       },
       "allergeni": [
         "glutine",
         "molluschi"
       ],
-      "immagine": "/assets/img/trattoria-del-molo-tagliatelle-01.webp",
+      "immagine": "",
       "alt": {
-        "it": "Un primo di pasta fresca appena impiattato",
-        "en": "A fresh pasta dish just plated"
+        "it": "",
+        "en": ""
       },
       "prezzo": 14
     },
